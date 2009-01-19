@@ -1,0 +1,32 @@
+#summary time-based planning, strictly aspirational.
+
+= Structure =
+
+interfaces written by 30 jan
+
+
+= Code =
+
+== Quantum ==
+
+Simulator working by ~20 feb
+
+== Algorithm ==
+
+work starting ~16 feb
+
+finished ~6 march
+
+= Report =
+
+some ongoing work, needs an editor,
+
+done by ~27th March
+
+= Presentation = 
+
+1 week should be enough, 23-27th march
+
+use rough draft of report?
+
+=Who wants to do what? =
