@@ -1,0 +1,5 @@
+#summary Just a place to chuck useful links we come across
+
+http://code.google.com/p/qdd/
+
+http://arxiv.org/abs/quant-ph/0301079
