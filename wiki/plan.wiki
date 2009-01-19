@@ -1,5 +1,7 @@
 #summary time-based planning, strictly aspirational.
 
+"no plan survives implementation"
+
 = Structure =
 
 interfaces written by 30 jan
