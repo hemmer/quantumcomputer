@@ -13,7 +13,7 @@ Could have some sort of abstract class Gate which acts on a qubit, in psuedo(ish
 {{{
 public class Gate  
 
-double matrix[][]; // store matrix
+double matrix[][]; // allocate memory for matrix
 
 public Gate(){} // child class initialises actual matrix etc
 
