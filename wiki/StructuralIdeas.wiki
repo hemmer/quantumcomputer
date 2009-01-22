@@ -6,6 +6,8 @@ Just a few ideas about structure after last meeting. After looking at various ot
 
 The postive side of this is that if both qubits and gates are represented by double matrices, then multiplication etc should be trival (i.e. no type checking required!).
 
+= Psuedo-code
+
 Could have some sort of abstract class Gate which acts on a qubit, in psuedo(ish)code:
 
 {{{
