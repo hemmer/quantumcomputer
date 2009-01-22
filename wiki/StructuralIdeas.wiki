@@ -16,8 +16,8 @@ double matrix[][]; // store matrix
 public Gate(){} // child class initialises actual matrix etc
 
 public perform Qubit (Qubit q){
-    // take q . matrix
-    return q . matrix; // or whatever
+    // do matrix opertations
+    // return updated qubit
 } 
 }}}
 
