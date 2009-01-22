@@ -1,0 +1,38 @@
+#summary Place to kick about basic structural ideas
+
+= Ideas =
+
+Just a few ideas about structure after last meeting. After looking at various other gates, I don't think the prefactor idea will work (i.e not all gates have as nice a prefactor as Hamanard Gate), and so gates might be well represented by a double matrix. The cost isn't too great, and matrix consolidation at a later stage could help.
+
+The postive side of this is that if both qubits and gates are represented by double matrices, then multiplication etc should be trival (i.e. no type checking required!).
+
+Could have some sort of abstract class Gate which acts on a qubit, in psuedo(ish)code:
+
+{{{
+abstract class Gate
+
+double matrix[][]; // store matrix
+
+public Gate(){} // child class initialises actual matrix etc
+
+public perform Qubit (Qubit q){
+    // take q . matrix
+    return q . matrix; // or whatever
+} 
+}}}
+
+and could use by something like:
+
+{{{
+Qubit testBit = new Qubit();
+Gate testGate = new HGate();   // where Gate is abstract class, HGate is implementation
+
+test = testGate.perform(testBit);   // perform gate operation
+}}}
+
+could also create a composite gate:
+
+{{{
+CompositeGate cGate = new Gate();     // where cGate is a combination of gates
+testBit = cGate.perform(testBit);     //  still works as perform method defined in abstract class
+}}}
