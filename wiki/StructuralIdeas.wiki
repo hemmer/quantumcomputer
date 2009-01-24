@@ -5,36 +5,3 @@
 Just a few ideas about structure after last meeting. After looking at various other gates, I don't think the idea of representing the gate as an integer matrix with double prefactor would work as not all gates have a common prefactor (rotation gate etc), and so gates might be better represented by a double matrix. The cost isn't too great, and matrix consolidation could help at a later stage.
 
 The postive side of this is that if both qubits and gates are represented by double matrices, then multiplication etc should be trival (i.e. no type checking/conversion required!).
-
-= Psuedo-code =
-
-Could have some sort of abstract class Gate which acts on a qubit, in psuedo(ish)code:
-
-{{{
-public class Gate  
-
-double matrix[][]; // allocate memory for matrix
-
-public Gate(){} // child class initialises actual matrix etc
-
-public perform Qubit (Qubit q){    
-    // do matrix opertations
-    // return updated qubit
-} 
-}}}
-
-and could use by something like:
-
-{{{
-Qubit testBit = new Qubit();
-Gate testGate = new HGate();   // where Gate is parent class, HGate is implementation
-
-test = testGate.perform(testBit);   // perform gate operation
-}}}
-
-could also create a composite gate:
-
-{{{
-Gate cGate = new CompositeGate();     // where cGate is a combination of gates
-testBit = cGate.perform(testBit);     //  still works as perform method would/could be defined in parent class (or if not in implemented class)
-}}}
