@@ -1,7 +1,0 @@
-#summary Place to kick about basic structural ideas
-
-= Ideas =
-
-Just a few ideas about structure after last meeting. After looking at various other gates, I don't think the idea of representing the gate as an integer matrix with double prefactor would work as not all gates have a common prefactor (rotation gate etc), and so gates might be better represented by a double matrix. The cost isn't too great, and matrix consolidation could help at a later stage.
-
-The postive side of this is that if both qubits and gates are represented by double matrices, then multiplication etc should be trival (i.e. no type checking/conversion required!).
