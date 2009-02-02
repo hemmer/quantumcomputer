@@ -45,7 +45,7 @@ public class DenseMatrix extends Matrix {
 			for(int b=0; b<am; b++){
 				for(int c=0; c<bn; c++){
 					for(int d=0; d<bm; d++){
-						values[(z*bn)][k+(i*bm)] = getE()[a][b]*z.getE()[c][d]; 			
+						values[c+(a*bn)][d+(b*bm)] = getE()[a][b]*z.getE()[c][d]; 			
 					}	
 				}	
 			}	
@@ -70,7 +70,10 @@ public class DenseMatrix extends Matrix {
 
 
 	public void setE(double[][] i) {
-		this.e=i;		
+		this.e=i;
+		this.n=i.length;
+		this.m=i[0].length;
+		
 	}
 
 	public String toString(){
