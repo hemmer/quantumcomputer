@@ -16,11 +16,14 @@ public class DenseMatrix extends Matrix {
 			}
 		}
 	}
-
+	
+	
 	public void multiply(Matrix a) {
-		if(this.m==a.getM()){
-			double[][] C = new double[m][m];
-			for (int i = 0; i < m; i++){
+		/*
+		This function doesn't work because vokes is rubbish
+		if(this.n==a.getM()){
+			double[][] C = new double[n][m];
+			for (int i = 0; i < n; i++){
 				for (int j = 0; j < m; j++){
 					for (int k = 0; k < m; k++){
 						C[i][k] += e[i][j] * a.getElem(j,k);
@@ -32,6 +35,26 @@ public class DenseMatrix extends Matrix {
 		else{
 			System.out.println("Matrices are not compatable");
 		}
+		*/
+	}
+	
+	
+
+	
+	//apply a matrix to the this register
+	
+	public void apply(Matrix a){
+		
+		double[][] values = new double[n][1];
+		double sum;
+		for (int i=0;i<n;i++){
+			sum=0;
+			for (int j=0;j<m;j++){
+				sum=sum+(getElem(0,j)*a.getElem(i,j));
+			}
+			values[i][0]=sum;
+		}
+		setE(values);
 	}
 
 	public void tensor(Matrix z) {
@@ -78,7 +101,7 @@ public class DenseMatrix extends Matrix {
 
 	public String toString(){
 		
-		String s = "";
+		String s = "[";
 		for (int i=0;i<n;i++){
 			for (int j=0;j<m;j++){
 				s = s+e[i][j]+",";
@@ -87,6 +110,8 @@ public class DenseMatrix extends Matrix {
 			s=s+"\n";
 		}
 		s = s.substring(0,s.length()-1);
-		return s;
+		return (s+"]");
 	}
+	
+	
 }

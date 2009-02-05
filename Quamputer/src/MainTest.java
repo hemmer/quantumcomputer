@@ -5,10 +5,27 @@ public class MainTest {
     {
        System.out.println("Quantum Computer");
        System.out.println();
-       Matrix m1 = new DenseMatrix(new double[][] {{1, 2, 3}, {4, 5, 6}});
-       Matrix m2 = new DenseMatrix(new double[][] {{2, 2}, {2, 2}});
-       m1.tensor(m2);
-       System.out.println(m1);
+       
+       //size of register
+       int n = 2;
+       
+       //create a hadamard gate to apply to a register of n cubits
+       System.out.println("Hadamard Gate = ");
+       Matrix had = new Had(n);
+       System.out.println(had);
+       System.out.println();
+       
+       //create register of n quibits in 1 state
+       Register reg = new Register(n);
+       System.out.println(reg);
+       System.out.println();
+       
+       //Once the hadamard gate is applied, each state has equal probability
+       reg.apply(had);
+       System.out.println(reg);
+       
+       
+       
     }
 
 }
