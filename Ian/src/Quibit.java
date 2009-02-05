@@ -15,6 +15,6 @@ public class Quibit implements MatrixRep {
 	}
 	
 	public String toString(){
-		return "("+m.toString()+")";
+		return m.toString();
 	}
 }

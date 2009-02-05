@@ -7,10 +7,19 @@ public class Register implements MatrixRep{
 		return m;
 	}
 	
-	public Register(Matrix m){
+	public Register(Quibit[] q){
 		
-		this.m=m;
+		m=q[0].returnMatrix();
+		for (int i=1;i<q.length;i++){
 		
+			m.tensorProduct(q[i].returnMatrix());
+			
+		}
+		
+	}
+	
+	public String toString(){
+		return m.toString();
 	}
 	
 }

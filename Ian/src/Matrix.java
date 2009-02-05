@@ -36,6 +36,30 @@ public class Matrix implements MatrixRep {
 		
 	}
 	
+	public void tensorProduct( Matrix B){
+		
+		int an = n;
+		int am = m;
+		int bn = B.getN();
+		int bm = B.getM();
+		double[][] original = values;
+		n = an*bn;
+		m = am*bm;
+			
+		values = new double[n][m];	
+			for(int z = 0; z<an; z++){
+				for(int i=0; i<am; i++){
+					for(int j=0; j<bn; j++){
+						for(int k=0; k<bm; k++){
+							values[j+(z*bn)][k+(i*bm)] = original[z][i]*B.getArray()[j][k]; 			
+						}	
+					}	
+				}	
+			}
+
+		
+	}
+	
 	private double[][] getArray(){
 		return values;
 	}
@@ -49,7 +73,7 @@ public class Matrix implements MatrixRep {
 	
 	public String toString(){
 		
-		String s = "";
+		String s = "[";
 		for (int i=0;i<n;i++){
 			for (int j=0;j<m;j++){
 				s = s+values[i][j]+",";
@@ -58,6 +82,7 @@ public class Matrix implements MatrixRep {
 			s=s+"\n";
 		}
 		s = s.substring(0,s.length()-1);
+		s = s+"]";
 		return s;
 	}
 	
