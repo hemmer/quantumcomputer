@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+	<settings>
+		<label>QuComp</label>
+		<root_path>\</root_path>
+		<output_path>classes\</output_path>
+		<source_path>src\</source_path>
+		<jdkprofile_ref>JDK version 1.6.0_11</jdkprofile_ref>
+		<compiler_ref/>
+		<ant_ref/>
+	</settings>
+	<ant_events/>
+	<run_items>
+		<item run="QuComp"/>
+	</run_items>
+	<runtimes>
+		<runtime>
+			<label>&lt;Default&gt;</label>
+			<application_ref>&lt;Default&gt;</application_ref>
+			<applet_ref>&lt;Default&gt;</applet_ref>
+			<debugger_ref>&lt;Default&gt;</debugger_ref>
+			<param/>
+			<run>QuComp</run>
+			<verify>true</verify>
+		</runtime>
+	</runtimes>
+	<libraries/>
+	<files>
+		<include>
+			<folderitem>
+				<path>src</path>
+			</folderitem>
+			<folderitem>
+				<path>src\maths</path>
+			</folderitem>
+			<fileitem>
+				<path>src\DenseGate.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\Gate.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\QuComp.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\QuReg.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\maths\ComplexNum.java</path>
+				<folder>src\maths</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\maths\DenseMatrix.java</path>
+				<folder>src\maths</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\maths\Matrix.java</path>
+				<folder>src\maths</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\maths\MatrixAlgebra.java</path>
+				<folder>src\maths</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\maths\StateVector.java</path>
+				<folder>src\maths</folder>
+			</fileitem>
+		</include>
+	</files>
+	<tasks/>
+</project>
