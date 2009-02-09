@@ -1,6 +1,7 @@
 
 public class MainTest {
-
+	
+	
 	public static void main(String args[])
     {
        System.out.println("Quantum Computer");
@@ -11,7 +12,7 @@ public class MainTest {
        
        //create a hadamard gate to apply to a register of n cubits
        System.out.println("Hadamard Gate = ");
-       Matrix had = new Had(n);
+       Matrix had = new Had(n,0,0,0);
        System.out.println(had);
        System.out.println();
        
@@ -22,6 +23,7 @@ public class MainTest {
        
        //Once the hadamard gate is applied, each state has equal probability
        reg.apply(had);
+       reg.normalise();
        System.out.println(reg);
        
        

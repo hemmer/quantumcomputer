@@ -8,6 +8,8 @@ abstract public class Matrix {
 	abstract public void add(Matrix a);	
 
 	abstract public void multiply(Matrix a);
+	
+	abstract public void multiply(double a);
 
 	abstract public void tensor(Matrix a);
 

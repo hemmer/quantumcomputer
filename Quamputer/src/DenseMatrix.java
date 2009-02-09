@@ -38,7 +38,18 @@ public class DenseMatrix extends Matrix {
 		*/
 	}
 	
-	
+	public void multiply(double a) {
+		
+		
+		for (int i=0;i<getN();i++){
+			for (int j=0;j<getM();j++){
+				e[i][j] = e[i][j]*a;
+			}
+		}
+		
+		
+		
+	}
 
 	
 	//apply a matrix to the this register
@@ -101,16 +112,17 @@ public class DenseMatrix extends Matrix {
 
 	public String toString(){
 		
-		String s = "[";
+		String s = "";
 		for (int i=0;i<n;i++){
+			s = s+"|";
 			for (int j=0;j<m;j++){
 				s = s+e[i][j]+",";
 			}
 			s = s.substring(0,s.length()-1);
-			s=s+"\n";
+			s=s+"|\n";
 		}
 		s = s.substring(0,s.length()-1);
-		return (s+"]");
+		return (s);
 	}
 	
 	
