@@ -1,5 +1,5 @@
 
-public abstract class Gate extends DenseMatrix {
+public abstract class Gate extends DenseMatrix implements GateInterface{
 
 	String name;
 	int targetBit;
