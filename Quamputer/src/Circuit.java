@@ -1,14 +1,32 @@
 
 public class Circuit {
 
-	Gate gate;
+	Gate nextGate;
 	Register reg;
 	
-	
-	void apply(){
+	public Circuit(Register reg){
 		
-		reg.apply(gate);
-		gate = gate.nextGate();
+		this.reg = reg;
+		nextGate = null;
+		
+	}
+	
+	public void addGate(Gate gate){
+		
+		Gate first = gate; 
+		if (gate == null){
+			nextGate = gate;
+		}
+		else{
+			//nextGate
+			
+		}
+		
+	}
+	
+	public void apply(){
+		
+		reg.apply(nextGate);
 		
 	}
 	

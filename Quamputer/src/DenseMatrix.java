@@ -125,5 +125,21 @@ public class DenseMatrix extends Matrix {
 		return (s);
 	}
 	
+	public static DenseMatrix returnIdentity(int size){
+		
+		double[][] values = new double[size][size];
+		for (int i=0;i<size;i++){
+			for (int j=0;j<size;j++){
+				if (i==j){values[i][j]=1;}
+				else {values[i][j]=0;}
+			}
+			
+			
+		}
+		return new DenseMatrix(values);
+		
+		
+	}
+	
 	
 }
