@@ -26,6 +26,7 @@ public class MainTest {
 			System.out.println(reg);
 			System.out.println();
 			circuit.apply();
+			reg.normalise();
 			System.out.println(reg);
 			
 			

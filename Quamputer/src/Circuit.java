@@ -1,8 +1,10 @@
 
-public class Circuit {
+public class Circuit implements CircuitInterface {
 
 	Gate nextGate;
+	Gate firstGate;
 	Register reg;
+	int total;
 	
 	public Circuit(Register reg){
 		
@@ -14,7 +16,9 @@ public class Circuit {
 	//add a gate to end of the list
 	public void addGate(Gate gate){
 		
+		total++;
 		if (nextGate==null){
+			firstGate = gate;
 			nextGate = gate;
 		}
 		else{
@@ -42,4 +46,22 @@ public class Circuit {
 			reg.apply(nextGate);
 		}
 	}
+	
+	public Gate getNextGate(){
+		return nextGate;
+	}
+	
+	public int getTotal(){
+		
+		return total;
+	}
+	
+	public Gate getFirst(){
+		return firstGate;
+	}
+	public Register getRegister(){
+		return reg;
+	}
+
+
 }
