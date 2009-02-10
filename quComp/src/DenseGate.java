@@ -1,13 +1,19 @@
 import maths.*;
 
-public class DenseGate {
+public class DenseGate extends Gate{
 	
+	
+	
+	public DenseGate(String name, int target, int ctrl1, int ctrl2) {
+		super(name, target, ctrl1, ctrl2);
+	}
+
 	// apply hadamard gate to a specific bit
-	public static void applyHadamard(QuReg q, int targetBit){
+	public static void apply(QuReg q, int targetBit){
 		
 		System.out.println("Applying Hadamard Gate to bit " + targetBit + "...");
 		
-		// store indiviual gates in array
+		// store individual gates in array
 		DenseMatrix[] gates = new DenseMatrix[q.getNumQubits()];
 		
 		for(int i = 0; i < q.getNumQubits(); i++){

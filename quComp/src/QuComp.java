@@ -12,17 +12,17 @@ public class QuComp {
     
     public static void main(String[] args) {
     	
-    	QuReg q = new QuReg(3, false);
+    	QuReg q = new QuReg(2, false);
     	q.setGroundState();
     	System.out.println(q);
     	
-		DenseGate.applyHadamard(q,1);
+		//DenseGate.applyHadamard(q,1);
     	System.out.println("\n" + q);
     	
-    	DenseGate.applyHadamard(q,2);
+    	//DenseGate.applyHadamard(q,2);
     	System.out.println("\n" + q);
     	
-    	DenseGate.applyHadamard(q,3);
+    	//DenseGate.applyHadamard(q,3);
     	System.out.println("\n" + q);
     	
     	

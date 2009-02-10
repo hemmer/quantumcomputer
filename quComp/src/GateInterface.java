@@ -7,10 +7,7 @@ public interface GateInterface{
 	int ctrl2;
 	
 	Gate nextGate;*/
-	
-	//public abstract QuReg applyHadamard(QuReg q, int targetBit);
-	
-	//public Gate(String name, int target, int ctrl1, int ctrl2);
+
 	
 	public void applyGate(QuReg q);
 	// select name
