@@ -1,0 +1,53 @@
+For the graphics package, an object of type CircuitInterface (any object that implements the following interface) could be passed to the class that draws.
+
+public interface CircuitInterface {
+
+        //return number of gates in circuit
+        public int getTotal();
+
+	//add a gate to end of the list
+	public void addGate(Gate gate);
+	
+	//apply the gate and set the next gate as the next one in the list
+	public void apply();
+	
+	//apply all the gates in order
+	public void applyAll();
+	
+	//return the nextGate
+	public Gate getNextGate();
+
+        //return the first gate in the circuit
+        public Gate getFirst();
+
+        //return the register
+        public Register getRegister();
+		
+}
+
+With that and the gate interface,
+
+public interface GateInterface{
+	
+      	public Gate getNextGate();
+	public void setNextGate(Gate a);
+	
+	public int getCtrl1();
+	public int getCtrl2();
+
+	public String getName();
+	public int getTarget();
+
+}
+
+As a convention, if my gates dont have a control bit, getCtrl1(), getCtrl2 etc. will return 0.
+
+We will also need standard Strings that are in the 'name' field. I currently just have "Hadamard"
+
+I think you could draw a circuit with that information; but maybe not run through it. Its a start though
+
+
+
+Feel free to change or ignore the interface
+
+Ian
