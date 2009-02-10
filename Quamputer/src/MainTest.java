@@ -4,36 +4,39 @@ public class MainTest {
 	
 	public static void main(String args[])
     {
-       System.out.println("Quantum Computer");
-       System.out.println();
-       
-       //size of register
-       int n = 3;
-       Gate[] gates = new Gate[n];
-       
-       //create a hadamard gate to apply to a register of n cubits
-       System.out.println("Hadamard Gate = ");
-       Matrix had = new Had(n,2,0,0);
-       System.out.println(had);
-       System.out.println();
-       
-       /*for (int i=0;i<n;i++){
-    	   gates[i] = new Had(n,i+1,0,0);
-    	   //System.out.println(gates[i]);
-    	   System.out.println();
-       }*/
-       
-       //create register of n quibits in 1 state
-       Register reg = new Register(n);
-       System.out.println(reg);
-       System.out.println();
-       
+		try {
+			
+			
+			System.out.println("******************");
+		    System.out.println("*Quantum Computer*");
+		    System.out.println("******************");
+		    System.out.println();
+			int n = 3;
+			Register reg = new Register(n);
+			Circuit circuit = new Circuit(reg);
+			circuit.addGate(new Had(n,1,0,0));
+			circuit.addGate(new Had(n,2,0,0));
+			circuit.addGate(new Had(n,3,0,0));
+			System.out.println(reg);
+			System.out.println();
+			circuit.apply();
+			System.out.println(reg);
+			System.out.println();
+			circuit.apply();
+			System.out.println(reg);
+			System.out.println();
+			circuit.apply();
+			System.out.println(reg);
+			
+			
+		}
+		catch(IllegalArgumentException e) {
+		    System.out.println("Must select appropriate arguments");
+		}
 
-       reg.apply(had);
-       //reg.apply(new Had(n,2,0,0));
-       reg.normalise();
-       System.out.println(reg);
-       
+
+
+
        
        
     }

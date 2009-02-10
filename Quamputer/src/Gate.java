@@ -13,6 +13,7 @@ public abstract class Gate extends DenseMatrix implements GateInterface{
 		this.targetBit = targetBit;
 		this.ctrl1 = ctrl1;
 		this.ctrl2 = ctrl2;
+		nextGate = null;
 	}
 	
 
@@ -43,6 +44,19 @@ public abstract class Gate extends DenseMatrix implements GateInterface{
 		this.nextGate = a;
 		
 	}
+	
+	//add a gate to the end of the list
+	public void addToEnd(Gate a){
+	
+		if (nextGate==null){
+			setNextGate(a);
+		}
+		else{
+			nextGate.addToEnd(a);
+		}
+	
+	}
+
 	
 	
 

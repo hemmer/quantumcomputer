@@ -60,8 +60,8 @@ public class DenseMatrix extends Matrix {
 		double sum;
 		for (int i=0;i<n;i++){
 			sum=0;
-			for (int j=0;j<m;j++){
-				sum=sum+(getElem(0,j)*a.getElem(i,j));
+			for (int j=0;j<a.getM();j++){
+				sum=sum+(getElem(j,0)*a.getElem(i,j));
 			}
 			values[i][0]=sum;
 		}
