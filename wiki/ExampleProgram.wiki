@@ -1,1 +1,0 @@
-I made a program which pretty much tensor products matrices and has a couple of toString methods. (it is under Ian in the source bit).
