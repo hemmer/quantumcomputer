@@ -1,3 +1,0 @@
-We were thinking about meeting on the 30th at 11 to decide on the structure of the program. There are already two alternative UML diagrams in the downloads section. It would be good if we can decide which one to base our program on (or use a different one entirely) by friday. If you cant make it you could put your design preference on the wiki or something and we could all see it at the meeting. Try to look at the things before the meeting if you have time - that way i can go home early ;)
-
-Ian
