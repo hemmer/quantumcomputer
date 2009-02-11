@@ -1,5 +1,5 @@
 For the graphics package, an object of type CircuitInterface (any object that implements the following interface) could be passed to the class that draws.
-
+{{{
 public interface CircuitInterface {
 
         //return number of gates in circuit
@@ -24,9 +24,9 @@ public interface CircuitInterface {
         public Register getRegister();
 		
 }
-
+}}}
 With that and the gate interface,
-
+{{{
 public interface GateInterface{
 	
       	public Gate getNextGate();
@@ -39,7 +39,7 @@ public interface GateInterface{
 	public int getTarget();
 
 }
-
+}}}
 As a convention, if my gates dont have a control bit, getCtrl1(), getCtrl2 etc. will return 0.
 
 We will also need standard Strings that are in the 'name' field. I currently just have "Hadamard"
