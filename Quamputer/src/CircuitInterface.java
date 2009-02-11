@@ -1,4 +1,3 @@
-
 public interface CircuitInterface {
 
     //return number of gates in circuit

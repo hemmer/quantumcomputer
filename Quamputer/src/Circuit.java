@@ -43,7 +43,8 @@ public class Circuit implements CircuitInterface {
 	public void applyAll(){
 	
 		while(nextGate!=null){
-			reg.apply(nextGate);
+			this.apply();
+			
 		}
 	}
 	
