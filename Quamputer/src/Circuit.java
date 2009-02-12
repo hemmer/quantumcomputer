@@ -5,11 +5,13 @@ public class Circuit implements CircuitInterface {
 	Gate firstGate;
 	Register reg;
 	int total;
+	int current;
 	
 	public Circuit(Register reg){
 		
 		this.reg = reg;
 		nextGate = null;
+		current = 0;
 		
 	}
 	
@@ -18,6 +20,7 @@ public class Circuit implements CircuitInterface {
 		
 		total++;
 		if (nextGate==null){
+			current = 1;
 			firstGate = gate;
 			nextGate = gate;
 		}
@@ -36,6 +39,7 @@ public class Circuit implements CircuitInterface {
 			System.out.println("Applying " + nextGate.getName() + " to quibt "+nextGate.getTarget());
 			reg.apply(nextGate);
 			nextGate = nextGate.getNextGate();
+			current++;
 		}
 	}
 	
@@ -57,11 +61,16 @@ public class Circuit implements CircuitInterface {
 		return total;
 	}
 	
-	public Gate getFirst(){
-		return firstGate;
+	public void reset(){
+		nextGate = firstGate;
 	}
 	public Register getRegister(){
 		return reg;
+	}
+	public int getCurrent(){
+		
+		return current;
+		
 	}
 
 
