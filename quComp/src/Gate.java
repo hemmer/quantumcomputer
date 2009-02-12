@@ -21,7 +21,7 @@ public abstract class Gate implements GateInterface{
 	}
 	
 	
-	public abstract void applyGate(QuReg q);
+	public abstract void applyGate(Register q);
 
 	public int getCtrl1() {
 		return ctrl1;
@@ -43,10 +43,18 @@ public abstract class Gate implements GateInterface{
 		return targetBit;
 	}
 
-	public void setNextGate() {
-		// TODO Auto-generated method stub
-		
+	public void setNextGate(Gate a) {
+		this.setNextGate(a);
 	}
 
+	public void addToEnd(Gate a){
+		   
+        if (nextGate==null){
+                setNextGate(a);
+        }
+        else{
+                nextGate.addToEnd(a);
+        }
+	}
 	
 }

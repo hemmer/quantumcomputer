@@ -1,19 +1,12 @@
 
 public interface GateInterface{
 	
-/*	String name;
-	int targetBit;
-	int ctrl1;
-	int ctrl2;
 	
-	Gate nextGate;*/
-
-	
-	public void applyGate(QuReg q);
+	public void applyGate(Register q);
 	// select name
 	
 	public Gate getNextGate();
-	public void setNextGate();
+	public void setNextGate(Gate a);
 	
 	public int getCtrl1();
 	public int getCtrl2();

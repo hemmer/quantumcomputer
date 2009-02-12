@@ -6,7 +6,7 @@ public class DenseGate extends Gate{
 		super(name, target, ctrl1, ctrl2);
 	}
 
-	public void applyGate(QuReg q){
+	public void applyGate(Register q){
 		
 		if(targetBit > q.getNumQubits()){
 			System.out.println("Invalid gate operation: target bit (" + targetBit + ") larger than register size (" + q.getNumQubits() + ").");
@@ -25,7 +25,7 @@ public class DenseGate extends Gate{
 	}
 	
 	// apply hadamard gate to a specific bit
-	public static void applyHadamard(QuReg q, int targetBit){
+	public static void applyHadamard(Register q, int targetBit){
 		
 		System.out.println("Applying Hadamard Gate to bit " + targetBit + "...");
 		
@@ -46,7 +46,7 @@ public class DenseGate extends Gate{
 	}
 	
 	// apply not gate
-	public static void applyNot(QuReg q, int targetBit){
+	public static void applyNot(Register q, int targetBit){
 		
 		System.out.println("Applying Not Gate to bit " + targetBit + "...");
 		
@@ -65,13 +65,13 @@ public class DenseGate extends Gate{
 		q.updateStateVector(DenseMatrix.multiply(gate, q.getStateVector()) );
 	}
 	
-	public static void applyCNot(QuReg q, int targetBit){
+	public static void applyCNot(Register q, int targetBit){
 		
 		System.out.println("Applying CNot Gate to bit " + targetBit + "...");
 		
-		DenseMatrix[] gates = new DenseMatrix[q.getNumQubits()];
+		DenseMatrix[] gates = new DenseMatrix[q.getNumQubits()-1];
 		
-		for(int i = 0; i < q.getNumQubits(); i++){
+		for(int i = 0; i < q.getNumQubits()-1; i++){
 			if(i+1 == targetBit){        // 1 is first bit
 				gates[i] = new DenseMatrix(4,4,"cnot");
 			}else{
@@ -80,12 +80,13 @@ public class DenseGate extends Gate{
 		}
 		
 		// create gate of Hadamard tensor producted with itself n times (n number of bits)
-		DenseMatrix gate = new DenseMatrix(4,4,"cnot");//DenseMatrix.tensorProductArray(gates);
+		DenseMatrix gate = DenseMatrix.tensorProductArray(gates);  //new DenseMatrix(4,4,"cnot");
+		//System.out.println(" test" + gate);
 		q.updateStateVector(DenseMatrix.multiply(gate, q.getStateVector()) );
 	}
 	
 	// apply hadamard to all bits i.e normalise
-	public static void applyPrepare(QuReg q){
+	public static void applyPrepare(Register q){
 		
 		System.out.println("Applying Hadamard Gate to all bits...");
 		

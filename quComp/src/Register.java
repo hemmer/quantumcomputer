@@ -1,7 +1,7 @@
 import maths.*;
 
 
-public class QuReg {
+public class Register {
 	
 	//public ComplexNum[] amplitudes;
 	public StateVector v;
@@ -9,7 +9,7 @@ public class QuReg {
 	public int size;
 	boolean decimal;   // print out in decimal or binary
 		
-	public QuReg(int inNumQubits, boolean dec){
+	public Register(int inNumQubits, boolean dec){
 		
 		numQubits = inNumQubits;
 		size = (int) Math.pow(2, numQubits);

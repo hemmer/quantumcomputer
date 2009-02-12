@@ -1,3 +1,4 @@
+
 public interface CircuitInterface {
 
     //return number of gates in circuit
@@ -15,10 +16,13 @@ public interface CircuitInterface {
 	//return the nextGate
 	public Gate getNextGate();
 
-    //return the first gate in the circuit
-    public Gate getFirst();
+    //set nextGate to firstGate
+    public void reset();
     
     //return the register
-    public QuReg getRegister();
+    public Register getRegister();
+    
+    //return the position of 'nextGate' in the list
+    public int getCurrent();
 		
 }

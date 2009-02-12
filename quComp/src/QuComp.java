@@ -12,7 +12,7 @@ public class QuComp {
     
     public static void main(String[] args) {
     	
-    	QuReg q = new QuReg(2, true);
+    	Register q = new Register(2, false);
     	q.setGroundState();
     	System.out.println(q);
     	
@@ -28,11 +28,11 @@ public class QuComp {
     		hadamard.setBit(i);
     		hadamard.applyGate(q);
         	System.out.println("\n" + q);
-
+        	
+        	cnot.applyGate(q);
+        	System.out.println("\n" + q);
     	}
-    	
-    	
-    	 	
+    	 	 	
     	// applying Hadamard (tensor p'ed with itself n times)
     	// should reset to ground state 
     	DenseGate.applyPrepare(q);
