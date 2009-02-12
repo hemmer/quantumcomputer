@@ -1,9 +1,9 @@
 /**
- * @(#)qComp.java
- *
+ * <strong>qComp.java</strong>
+ * <br />
  * qComp application
  *
- * @author 
+ * @author Ewan Hemingway
  * @version 1.00 2009/1/31
  */
  
@@ -12,22 +12,30 @@ public class QuComp {
     
     public static void main(String[] args) {
     	
-    	QuReg q = new QuReg(2, false);
+    	QuReg q = new QuReg(2, true);
     	q.setGroundState();
     	System.out.println(q);
     	
-		//DenseGate.applyHadamard(q,1);
-    	System.out.println("\n" + q);
+    	DenseGate hadamard = new DenseGate("hadamard",1,0,0);
+    	//DenseGate not = new DenseGate("not",1,0,0);
+    	DenseGate cnot = new DenseGate("cnot", 1, 0, 0);
+    	//cnot.applyGate(q);
+        //System.out.println("\n" + q);
     	
-    	//DenseGate.applyHadamard(q,2);
-    	System.out.println("\n" + q);
+    	// create hadamard gate object
+    	// and apply to each register separately
+    	for(int i = 1; i <= q.getNumQubits(); i++){
+    		hadamard.setBit(i);
+    		hadamard.applyGate(q);
+        	System.out.println("\n" + q);
+
+    	}
     	
-    	//DenseGate.applyHadamard(q,3);
-    	System.out.println("\n" + q);
     	
-    	
-    	// applying Hadamard resets to ground state :)
-    	DenseGate.applyHadamard(q);
+    	 	
+    	// applying Hadamard (tensor p'ed with itself n times)
+    	// should reset to ground state 
+    	DenseGate.applyPrepare(q);
     	System.out.println("\n" + q);
     }
 }

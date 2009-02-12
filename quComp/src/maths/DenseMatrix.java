@@ -18,7 +18,11 @@ public class DenseMatrix extends Matrix {
 		}else if(type.toLowerCase() == "zero"){
 			initZero();	
 		}else if(type.toLowerCase() == "identity"){
-			initIdentity();	
+			initIdentity();
+		}else if(type.toLowerCase() == "not"){
+			initNot();
+		}else if(type.toLowerCase() == "cnot"){
+			initCNot();
 		}else{
 			initZero();	
 		}
@@ -36,20 +40,20 @@ public class DenseMatrix extends Matrix {
 	
 	// creates 2x2 hadamard gate
 	public void initHadamard(){
-		if(numCols != 2 || numRows != 2){
-			System.out.println("hadamard must be 2x2 in size");
-		}else{
-			matrix = new ComplexNum[numRows][numCols];
-			ComplexNum entry = new ComplexNum(1/Math.sqrt(2));
-		
-			// initialise to hadamard gate
-			for(int i = 0; i < numRows; i++){
-				for(int j = 0; j < numCols; j++){
-					matrix[i][j] = entry;
-				}
+		numCols = 2;
+		numRows = 2;  // force hadamard to be 2x2
+
+		matrix = new ComplexNum[numRows][numCols];
+		ComplexNum entry = new ComplexNum(1/Math.sqrt(2));
+	
+		// initialise to hadamard gate
+		for(int i = 0; i < numRows; i++){
+			for(int j = 0; j < numCols; j++){
+				matrix[i][j] = entry;
 			}
-			matrix[1][1] = matrix[1][1].multiply(new ComplexNum(-1.0));  // negate last entry (defn of hadamard)
 		}
+			matrix[1][1] = matrix[1][1].multiply(new ComplexNum(-1.0));  // negate last entry (defn of hadamard)
+		
 	}
 	
 	// creates zero filled matrix
@@ -65,7 +69,7 @@ public class DenseMatrix extends Matrix {
 		}
 	}
 	
-	// initialises an indentity matrix
+	// initialises an identity matrix
 	public void initIdentity(){
 		
 		initZero();   // create zero-filled matrix
@@ -73,6 +77,29 @@ public class DenseMatrix extends Matrix {
 		for(int i = 0; i < numRows; i++){
 			matrix[i][i] = new ComplexNum(1.0);   // set diagonal equal to 1
 		}
+	}
+	
+	public void initNot(){
+		numCols = 2;
+		numRows = 2;  // force 2x2
+		
+		initZero();
+		matrix[0][1] = new ComplexNum(1.0);
+		matrix[1][0] = new ComplexNum(1.0);
+
+	}
+	
+	public void initCNot(){
+		numCols = 4;
+		numRows = 4;  // force 4x4
+		
+		initZero();
+		matrix[0][0] = new ComplexNum(1.0);
+		matrix[1][1] = new ComplexNum(1.0);
+		matrix[2][3] = new ComplexNum(1.0);
+		matrix[3][2] = new ComplexNum(1.0);
+
+	
 	}
 	
 	public static DenseMatrix multiply(DenseMatrix matrix1, DenseMatrix matrix2){

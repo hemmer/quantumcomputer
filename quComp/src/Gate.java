@@ -1,5 +1,4 @@
-
-public class Gate implements GateInterface{
+public abstract class Gate implements GateInterface{	
 
 	String name;
 	int targetBit;
@@ -8,7 +7,12 @@ public class Gate implements GateInterface{
 	
 	Gate nextGate;
 	
-	
+	/**
+	 * @param name name of the gate
+	 * @param target
+	 * @param ctrl1
+	 * @param ctrl2
+	 */
 	public Gate(String name, int target, int ctrl1, int ctrl2){
 		this.name = name;
 		this.targetBit = target;
@@ -17,9 +21,7 @@ public class Gate implements GateInterface{
 	}
 	
 	
-	public void applyGate(QuReg q) {
-				
-	}
+	public abstract void applyGate(QuReg q);
 
 	public int getCtrl1() {
 		return ctrl1;
