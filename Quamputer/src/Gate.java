@@ -1,5 +1,5 @@
 
-public abstract class Gate extends DenseMatrix implements GateInterface{
+public abstract class Gate implements GateInterface{
 
 	protected Gate nextGate;
 	protected String name;
@@ -8,8 +8,7 @@ public abstract class Gate extends DenseMatrix implements GateInterface{
 	protected int ctrl2;
 	
 	
-	public Gate(double[][] i,int targetBit, int ctrl1, int ctrl2) {
-		super(i);
+	public Gate(int targetBit, int ctrl1, int ctrl2) {
 		this.targetBit = targetBit;
 		this.ctrl1 = ctrl1;
 		this.ctrl2 = ctrl2;
@@ -56,6 +55,8 @@ public abstract class Gate extends DenseMatrix implements GateInterface{
 		}
 	
 	}
+	
+	public abstract void apply(Register a);
 
 	
 	

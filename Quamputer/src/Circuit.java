@@ -36,8 +36,14 @@ public class Circuit implements CircuitInterface {
 			System.out.println("No more gates in cirucit");
 		}
 		else{
-			System.out.println("Applying " + nextGate.getName() + " to quibt "+nextGate.getTarget());
-			reg.apply(nextGate);
+			System.out.print("Applying " + nextGate.getName() + " to quibt "+nextGate.getTarget());
+			if (nextGate.getCtrl1()!=0){
+				System.out.println(" with " + nextGate.getCtrl1()+ " as the control bit");
+			}
+			else{
+				System.out.println("");
+			}
+			nextGate.apply(reg);
 			nextGate = nextGate.getNextGate();
 			current++;
 		}

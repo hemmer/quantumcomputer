@@ -1,22 +1,57 @@
 
-public class Register extends DenseMatrix{
+public class Register{
 
+	double[] values;
+	int size;
+	int cubits;
 	
+
+
+	public double[] getValues() {
+		return values;
+	}
+
+	public void setValues(double[] values) {
+		this.values = values;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	public int getCubits() {
+		return cubits;
+	}
+
+	public void setCubits(int cubits) {
+		this.cubits = cubits;
+	}
+
 	public Register(int n) {
 		
-		super(new double[][] {{1},{0}});
-		DenseMatrix one = new DenseMatrix(new double[][]{{1},{0}});
-		for (int i=1;i<n;i++){
-			tensor(one);	
+		cubits=n;
+		size=1;
+		for (int i=0;i<n;i++){
+			
+			size=size*2;
+			
 		}
-		normalise();
+		values = new double[size];
+		values[0]=1;
+		for (int i=1;i<n;i++){
+				values[i]=0;
+		}
 	}
 	
 	public String toString(){
 		
 			String s = "";
-			for (int i=0;i<n;i++){
-					s = s+"|"+i+"> = "+e[i][0]+"\n";
+			for (int i=0;i<size;i++){
+					s = s+"|"+i+"> = "+values[i]+"\n";
 			}
 			s = s.substring(0,s.length()-1);
 			return (s);
@@ -25,15 +60,18 @@ public class Register extends DenseMatrix{
 	public void normalise(){
 		
 		double sum = 0;
-		for (int i=0;i<getN();i++){
-			sum=sum+(e[i][0]*e[i][0]);
+		for (int i=0;i<size;i++){
+			sum=sum+(values[i]*values[i]);
 		}
 		sum = Math.sqrt(sum);
-		multiply(1.0/sum);
+		for (int i=0;i<size;i++){
+			values[i]=values[i]*sum;
+		}
 		
 		
 		
 		
 	}
+
 
 }
