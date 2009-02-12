@@ -4,6 +4,7 @@ http://code.google.com/p/qdd/
 
 http://arxiv.org/abs/quant-ph/0301079
 
+http://iaks-www.ira.uka.de/QIV/QuaSi/applet.html
 
 ==Using Google Code with Eclipse==
 
