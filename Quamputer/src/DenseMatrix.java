@@ -20,7 +20,6 @@ public class DenseMatrix extends Matrix {
 	
 	public void multiply(Matrix a) {
 		/*
-		This function doesn't work because vokes is rubbish
 		if(this.n==a.getM()){
 			double[][] C = new double[n][m];
 			for (int i = 0; i < n; i++){
@@ -35,7 +34,7 @@ public class DenseMatrix extends Matrix {
 		else{
 			System.out.println("Matrices are not compatable");
 		}
-		*/
+	*/	
 	}
 	
 	public void multiply(double a) {
