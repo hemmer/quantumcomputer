@@ -6,7 +6,7 @@ http://arxiv.org/abs/quant-ph/0301079
 
 ==Applets==
 
-http://iaks-www.ira.uka.de/QIV/QuaSi/applet.html (best found so far)
+http://iaks-www.ira.uka.de/QIV/QuaSi/applet.html - best found so far
 http://jquantum.sourceforge.net/jQuantumApplet.html
 
 ==Eclipse==
