@@ -1,12 +1,16 @@
 #summary Just a place to chuck useful links we come across
 
-==Papers==
+=Links=
 
-http://arxiv.org/abs/quant-ph/0301079
+==Websites/Papers==
+
+http://arxiv.org/abs/quant-ph/0301079 - introductory paper
+http://www.quantiki.org/wiki/index.php/Category:Handbook_of_Quantum_Information - large wiki of general information
 
 ==Applets==
 
 http://iaks-www.ira.uka.de/QIV/QuaSi/applet.html - best found so far
+
 http://jquantum.sourceforge.net/jQuantumApplet.html
 
 ==Eclipse==
