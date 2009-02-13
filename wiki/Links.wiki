@@ -1,18 +1,18 @@
 #summary Just a place to chuck useful links we come across
 
-http://code.google.com/p/qdd/
+==Papers==
 
 http://arxiv.org/abs/quant-ph/0301079
 
-==Applets (for checking program results etc)==
+==Applets==
 
-http://iaks-www.ira.uka.de/QIV/QuaSi/applet.html
+http://iaks-www.ira.uka.de/QIV/QuaSi/applet.html (best found so far)
 http://jquantum.sourceforge.net/jQuantumApplet.html
 
 ==Eclipse==
 
 ===UML===
-http://www.slimeuml.de/
+http://www.slimeuml.de/ - generates UML in eclipse
 
 ===SVN===
-http://blog.msbbc.co.uk/2007/06/using-googles-free-svn-repository-with.html
+http://blog.msbbc.co.uk/2007/06/using-googles-free-svn-repository-with.html - google code with svn
