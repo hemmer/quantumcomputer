@@ -42,6 +42,10 @@ public abstract class Gate implements GateInterface{
 	public int getTarget() {
 		return targetBit;
 	}
+	
+	public void setTarget(int newTargetBit){
+		this.targetBit = newTargetBit;
+	}
 
 	public void setNextGate(Gate a) {
 		this.setNextGate(a);

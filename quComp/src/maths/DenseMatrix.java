@@ -1,18 +1,46 @@
 package maths;
 
-import maths.Matrix;
-
+/**
+ * Dense representation of a matrix, includes methods for basic matrix algebra
+ * @author Ewan Hemingway
+ *
+ */
 public class DenseMatrix extends Matrix {
 	
 	int numRows;
 	int numCols;
     ComplexNum[][] matrix;
 	
-	// construct rxc matrix of type specify by string
+	/**
+	 * Create a matrix of dimensions r x c
+	 * @param r number of rows
+	 * @param c number of columns
+	 * @param type type of matrix to be generated, possibles are 'hadamard', 'identity', 'zero', 'not'. 
+	 * Default case is zero-filled matrix
+	 */
 	public DenseMatrix(int r, int c, String type){
 		numRows = r;
 		numCols = c;
 
+		initMatrixType(type);	
+	}
+	
+	/**
+	 * Creates an n x n square matrix of specified type.
+	 * @param n
+	 * @param type
+	 */
+	public DenseMatrix(int n, String type){
+		numRows = n;
+		numCols = n;
+		initMatrixType(type);
+	}
+	
+	/**
+	 * Initialises the matrix to the specified type
+	 * @param type which matrix to generate, default is zero-filled
+	 */
+	public void initMatrixType(String type){
 		if(type.toLowerCase() == "hadamard"){
 			initHadamard();
 		}else if(type.toLowerCase() == "zero"){
@@ -21,91 +49,84 @@ public class DenseMatrix extends Matrix {
 			initIdentity();
 		}else if(type.toLowerCase() == "not"){
 			initNot();
-		}else if(type.toLowerCase() == "cnot"){
-			initCNot();
 		}else{
 			initZero();	
 		}
-		
 	}
 	
-	// if no type specified, create zero filled matrix
-	public DenseMatrix(int r, int c){
-		
+	/**
+	 * Creates r x c zero-filled matrix  
+	 * @param r number of rows
+	 * @param c number of columns
+	 */
+	public DenseMatrix(int r, int c){	
 		numRows = r;
 		numCols = c;
-
 		initZero();	
 	}
-	
-	// creates 2x2 hadamard gate
-	public void initHadamard(){
-		numCols = 2;
-		numRows = 2;  // force hadamard to be 2x2
+		
+	/**
+	 * Initialises a 2x2 hadamard matrix
+	 */
+	public void initHadamard() throws IllegalArgumentException {
+		if(numCols != 2 || numRows != 2) throw new IllegalArgumentException("Hadamard can only be generated for a 2x2 matrix.");
 
 		matrix = new ComplexNum[numRows][numCols];
 		ComplexNum entry = new ComplexNum(1/Math.sqrt(2));
 	
-		// initialise to hadamard gate
-		for(int i = 0; i < numRows; i++){
-			for(int j = 0; j < numCols; j++){
+		for(int i = 0; i < numRows; i++)
+			for(int j = 0; j < numCols; j++)
 				matrix[i][j] = entry;
-			}
-		}
-			matrix[1][1] = matrix[1][1].multiply(new ComplexNum(-1.0));  // negate last entry (defn of hadamard)
+			
+		
+		matrix[1][1] = matrix[1][1].multiply(new ComplexNum(-1.0));  // negate last entry (defn of hadamard)
 		
 	}
 	
-	// creates zero filled matrix
+	/**
+	 * Initialises a zero-filled matrix 
+	 */
 	public void initZero(){
 		
 		matrix = new ComplexNum[numRows][numCols];
 
-		// initialise every entry to 0
-		for(int i = 0; i < numRows; i++){
-			for(int j = 0; j < numCols; j++){
-				matrix[i][j] = new ComplexNum(0.0);
-			}
-		}
+		for(int i = 0; i < numRows; i++)
+			for(int j = 0; j < numCols; j++)
+				matrix[i][j] = new ComplexNum(0.0);	
 	}
 	
-	// initialises an identity matrix
-	public void initIdentity(){
-		
+	/**
+	 * Creates identity matrix. Must be a square matrix.
+	 * 
+	 */
+	public void initIdentity() throws IllegalArgumentException{
+		if(numCols != numRows) throw new IllegalArgumentException("Identity can only be generated for a square matrix.");
 		initZero();   // create zero-filled matrix
 		
-		for(int i = 0; i < numRows; i++){
-			matrix[i][i] = new ComplexNum(1.0);   // set diagonal equal to 1
-		}
+		for(int i = 0; i < numRows; i++) matrix[i][i] = new ComplexNum(1.0);   // set diagonal equal to 1
 	}
 	
 	public void initNot(){
-		numCols = 2;
-		numRows = 2;  // force 2x2
-		
+		// must be square!!! 
 		initZero();
-		matrix[0][1] = new ComplexNum(1.0);
-		matrix[1][0] = new ComplexNum(1.0);
+		for(int i = 0; i < numRows; i++){
+			matrix[i][numRows-i-1] = new ComplexNum(1.0);   // set diagonal equal to 1
+		}
 
 	}
 	
-	public void initCNot(){
-		numCols = 4;
-		numRows = 4;  // force 4x4
+	/**
+	 * Multiplies two matrices together.
+	 * @param matrix1
+	 * @param matrix2
+	 * @return product of two matrices	  
+	 */
+	public static DenseMatrix multiply(DenseMatrix matrix1, DenseMatrix matrix2) throws IllegalArgumentException {
 		
-		initZero();
-		matrix[0][0] = new ComplexNum(1.0);
-		matrix[1][1] = new ComplexNum(1.0);
-		matrix[2][3] = new ComplexNum(1.0);
-		matrix[3][2] = new ComplexNum(1.0);
-
-	
-	}
-	
-	public static DenseMatrix multiply(DenseMatrix matrix1, DenseMatrix matrix2){
+		if(matrix1.getNumCols() != matrix2.getNumRows()) throw new IllegalArgumentException("Matrices can't be multiplied, wrong dimensions.");
 		
-		// if matrix1 is axb, and matrix2 is cxd
-		// resulting matrix is axd
+		// if matrix1 is a x b, and matrix2 is c x d
+		// resulting matrix is a x d only if b=c
 		DenseMatrix tempMatrix = new DenseMatrix(matrix1.getNumRows(), matrix2.getNumCols());
 		
 		for (int i=0; i<matrix1.getNumRows(); i++){
@@ -125,9 +146,11 @@ public class DenseMatrix extends Matrix {
 	}
 	
 	/**
-	Finds the tensor product of two matrices
-	
-	*/
+	 * Finds the tensor product of two matrices.	
+	 * @param matrix1
+	 * @param matrix2
+	 * @return tensor product of two matrices
+	 */
 	public static DenseMatrix tensorProduct(DenseMatrix matrix1, DenseMatrix matrix2){
 
 		int newRowSize = matrix1.getNumRows()*matrix2.getNumRows();   // find new dimensions
@@ -149,40 +172,102 @@ public class DenseMatrix extends Matrix {
 	}
 	
 	/**
-	Find the tensor product of an array of matrices
+	 * Transposes a matrix, in particular used for finding outer product of basis states
+	 * @param matrix1 
+	 * @return transposed matrix 
+	 */
+	public static DenseMatrix tranpose(DenseMatrix matrix){
+		DenseMatrix tempMatrix = new DenseMatrix(matrix.getNumCols(), matrix.getNumRows()); // swap rows/cols
+		for(int i = 0; i < tempMatrix.getNumRows(); i++)
+			for(int j = 0; j < tempMatrix.getNumCols(); j++)
+				tempMatrix.setElem(i, j, matrix.getElem(j, i));
+		return tempMatrix;
+	}
 	
-	*/
+	/**
+	 * Finds the outer product of two vectors, only really useful for 1D matrices
+	 * @param matrix
+	 * @return Outer product of two vectors
+	 */
+	public static DenseMatrix outerProduct(DenseMatrix matrix){
+		return DenseMatrix.tensorProduct(matrix, DenseMatrix.tranpose(matrix));		
+	}
+	
+	/**
+	 * Tensor products each element in an array of matrices with the next.
+	 * In particular used to generate matrix for n-qubit register.  
+	 * @param matrixArray
+	 * @return tensor product of the array
+	 */
 	public static DenseMatrix tensorProductArray(DenseMatrix[] matrixArray){
 		
 		// start with first entry
 		DenseMatrix tempMatrix = (DenseMatrix) matrixArray[0];
 		
-		// for each matrix in array, tensor product onto the previous ones
+		// for each matrix in array, tensor product into the previous ones
 		for(int i = 1; i < matrixArray.length; i++){
 			tempMatrix = DenseMatrix.tensorProduct(tempMatrix, matrixArray[i]);
 		}
 		
 		return tempMatrix;
-	} 
+	}
+	
+	/**
+	 * Adds two matrices
+	 * @param matrix1
+	 * @param matrix2
+	 * @return Sum of the matrices
+	 */
+	public static DenseMatrix add(DenseMatrix matrix1, DenseMatrix matrix2){
+		//catch exception
+		DenseMatrix tempMatrix = new DenseMatrix(matrix1.getNumRows(), matrix1.getNumCols());
+		for(int r = 0; r < tempMatrix.getNumRows(); r++)
+			for(int c = 0; c < tempMatrix.getNumCols(); c++)
+				tempMatrix.setElem(r, c, matrix1.getElem(r, c).add(matrix2.getElem(r, c)));
+		return tempMatrix;
+	}
 
 	/**
-	Scales every element in a matrix by a factor of type Num
-
-	*/
-	public static DenseMatrix scale(ComplexNum factor, DenseMatrix m){
+	 * Scales a matrix by a constant factor.
+	 * @param factor
+	 * @param matrix
+	 * @return scaled matrix
+	 */
+	public static DenseMatrix scale(ComplexNum factor, DenseMatrix matrix){
 		
-		DenseMatrix tempMatrix = new DenseMatrix(m.getNumRows(), m.getNumCols());
+		DenseMatrix tempMatrix = new DenseMatrix(matrix.getNumRows(), matrix.getNumCols());
 		
-		for(int i = 0; i < m.getNumRows(); i++){
-			for(int j = 0; j < m.getNumCols(); j++){
-				ComplexNum value = m.getElem(i,j).multiply(factor);
+		for(int i = 0; i < matrix.getNumRows(); i++){
+			for(int j = 0; j < matrix.getNumCols(); j++){
+				ComplexNum value = matrix.getElem(i,j).multiply(factor);
 				tempMatrix.setElem(i, j, value);
 			}
 		}
 		return tempMatrix;
 	}
 	
-	// getter/setters
+	/**
+	 * Swaps two rows of the matrix
+	 * @param rowA
+	 * @param rowB
+	 * @throws IllegalArgumentException must be within range of matrix
+	 */
+	public void swapRows(int rowA, int rowB) throws IllegalArgumentException{
+		if(rowA > matrix.length || rowA < 0 || rowB > matrix[0].length || rowB < 0)
+			throw new IllegalArgumentException("Invalid row choice, must be in range of matrix.");
+		
+		int rowLength = matrix[0].length;
+		
+		// manually copy matrix  into temporary array to avoid usual pointer issues
+		ComplexNum[] tempA = new ComplexNum[rowLength];
+		for(int i = 0; i < rowLength; i++) tempA[i] = matrix[rowA][i];
+				
+		for(int i = 0; i < rowLength; i++){
+			matrix[rowA][i] = matrix[rowB][i];
+			matrix[rowB][i] = tempA[i];
+		}
+	}
+	
 	public int getNumCols(){
 		return numCols;
 	}
@@ -199,19 +284,17 @@ public class DenseMatrix extends Matrix {
 		return matrix[rowIndex][colIndex];
 	}
 	
-	// display matrix in text format
+	/**
+	 * Overrides toString method to display matrix as string
+	 */
 	public String toString(){
 		String string = "";
 		
         for(int i = 0; i < numRows ; i++){
         	string += "[";
-        	for(int j = 0; j < numCols; j++){
-        		string += matrix[i][j] + " ";
-        	}
+        	for(int j = 0; j < numCols; j++) string += matrix[i][j] + " ";
         	string += "]\n";
         }
         return string;
-
 	}
-	
 }

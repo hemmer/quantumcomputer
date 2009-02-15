@@ -26,15 +26,18 @@ public class StateVector extends DenseMatrix {
 	
 	public String toString(){
 		
-		String s = ""; 
+		String s = "";
 		
 		if(decimal){
 			for(int i = 0; i < this.getNumRows(); i++){
 				s += "|" + i + "> = " + matrix[i][0] + "\n";
 			}
 		}else{
+			
+			// infer number of qubits, then complete string
+			int numQubits = (int)( Math.log(this.getNumRows())/Math.log(2));  
 			for(int i = 0; i < this.getNumRows(); i++){
-				s += "|" + Integer.toBinaryString(i) + "> = " + matrix[i][0] + "\n";
+				s += "|" + toBinary(numQubits, i) + "> = " + matrix[i][0] + "\n";
 			}
 		}
 
@@ -45,5 +48,18 @@ public class StateVector extends DenseMatrix {
 		ComplexNum c = (ComplexNum) matrix[index][0];
 		return new ComplexNum(c.getReal(), c.getImag());
 	}
+	
+
+	// used to properly format binary numbers
+    public static String toBinary(int numQubits, int number){
+    	
+    	String binString = Integer.toBinaryString(number);
+
+    	// pack string with zeros
+    	while(binString.length() < numQubits){
+    		binString = '0' + binString;
+    	}
+    	return binString;
+    }
 	
 }
