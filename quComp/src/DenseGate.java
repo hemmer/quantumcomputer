@@ -38,7 +38,7 @@ public class DenseGate extends Gate{
 	 */
 	public void initGate(){
 		if(this.name == "hadamard"){
-			initHadamard(); // call hadamard 
+			initHadamard(); 
 		}else if(this.name == "not"){
 			initNot();
 		}else if(this.name == "prepare"){
@@ -68,7 +68,7 @@ public class DenseGate extends Gate{
 		DenseMatrix[] elements = new DenseMatrix[regSize];
 		
 		for(int i = 0; i < elements.length; i++){
-			if(i == this.targetBit){        // 1 is first bit
+			if(i == this.targetBit){        
 				elements[i] = new DenseMatrix(2,2,"hadamard");
 			}else{
 				elements[i] = new DenseMatrix(2,2,"identity");
@@ -88,7 +88,7 @@ public class DenseGate extends Gate{
 		DenseMatrix[] elements = new DenseMatrix[regSize];
 		
 		for(int i = 0; i < elements.length; i++){
-			if(i == this.targetBit){        // 1 is first bit
+			if(i == this.targetBit){        
 				elements[i] = new DenseMatrix(2,2,"not");
 			}else{
 				elements[i] = new DenseMatrix(2,2,"identity");
