@@ -35,8 +35,7 @@ public class Matrix{
 	
 	
 	public void multiply(Matrix a) {
-		/*
-		This function doesn't work because vokes is rubbish
+
 		if(this.n==a.getM()){
 			double[][] C = new double[n][m];
 			for (int i = 0; i < n; i++){
@@ -50,8 +49,8 @@ public class Matrix{
 		}
 		else{
 			System.out.println("Matrices are not compatable");
+			System.out.println("A.m is "+getM()+ " B.n is "+a.getN());
 		}
-		*/
 	}
 	
 	public void multiply(double a) {

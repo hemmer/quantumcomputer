@@ -6,13 +6,15 @@ public abstract class Gate implements GateInterface{
 	protected int targetBit;
 	protected int ctrl1;
 	protected int ctrl2;
+	protected int n;
 	
 	
-	public Gate(int targetBit, int ctrl1, int ctrl2) {
+	public Gate(int n,int targetBit, int ctrl1, int ctrl2) {
 		this.targetBit = targetBit;
 		this.ctrl1 = ctrl1;
 		this.ctrl2 = ctrl2;
 		nextGate = null;
+		this.n = n;
 	}
 	
 

@@ -4,9 +4,13 @@ public abstract class DenseGate extends Gate{
 	Matrix m;
 	
 	
-	public DenseGate(Matrix m,int targetBit, int ctrl1, int ctrl2) {
-		super(targetBit,ctrl1,ctrl2);
+	public DenseGate(int n,Matrix m,int targetBit, int ctrl1, int ctrl2) {
+		super(n,targetBit,ctrl1,ctrl2);
 		this.m = m;
+	}
+	
+	public void setM(Matrix m){
+		this.m=m;
 	}
 	
 	public void apply(Register a){

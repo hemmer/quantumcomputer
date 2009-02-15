@@ -16,13 +16,20 @@ public class MainTest {
 		    
 			Register reg = new Register(n);
 			Circuit circuit = new Circuit(reg);
+			/*
 			for (int i = 1;i<=n;i++){
 				circuit.addGate(new Had(n,i,0,0));
 			}
 			new Graphics(circuit);
-		    
-		    
-
+		    */
+			
+			/* Test CNot
+			circuit.addGate(new Had(n,1,0,0));
+		    circuit.addGate(new CNot(n,2,1,0));
+		    circuit.applyAll();
+			System.out.println();
+			System.out.println(circuit.getRegister());
+			*/
 			
 			
 		}
