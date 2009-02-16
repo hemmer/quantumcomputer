@@ -153,9 +153,9 @@ public class DenseGate extends Gate{
 	   	
 		for(int i = 0; i < controlElements.length; i++){
 			if(i == this.targetBit){        
-				controlElements[i] = outProdB0;
-			}else{
 				controlElements[i] = new DenseMatrix(2,"identity");
+			}else{
+				controlElements[i] = outProdB0;
 			}
 		}
 		
@@ -169,9 +169,9 @@ public class DenseGate extends Gate{
 	   	
 		for(int i = 0; i < shiftElements.length; i++){
 			if(i == this.targetBit){        
-				shiftElements[i] = outProdB1;
-			}else if(i == this.ctrl[0]){
 				shiftElements[i] = new DenseMatrix(2,"not");
+			}else if(i == this.ctrl[0]){
+				shiftElements[i] = outProdB1;
 			}else{
 				shiftElements[i] = new DenseMatrix(2,"identity");
 			}
@@ -183,7 +183,7 @@ public class DenseGate extends Gate{
 		// and sum to find total contribution
 		gate = DenseMatrix.add(gate1, gate2);
 		
-		//System.out.println("\n" + gate);
+		System.out.println("\n" + gate);
 	}
 	
 	/**
