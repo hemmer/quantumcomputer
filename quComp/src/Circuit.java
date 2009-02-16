@@ -1,3 +1,5 @@
+import maths.DenseMatrix;
+
 
 public class Circuit implements CircuitInterface {
 
@@ -6,6 +8,7 @@ public class Circuit implements CircuitInterface {
 	Register reg;
 	int total;
 	int current;
+	Gate overallGate;
 	
 	public Circuit(Register reg){
 		
@@ -46,10 +49,8 @@ public class Circuit implements CircuitInterface {
 	//apply all the gates in order
 	public void applyAll(){
 	
-		while(nextGate!=null){
-			this.apply();
-			
-		}
+		setOverallMatrix();
+		overallGate.applyGate(reg);
 	}
 	
 	public Gate getNextGate(){
@@ -70,6 +71,28 @@ public class Circuit implements CircuitInterface {
 	public int getCurrent(){
 		
 		return current;
+		
+	}
+	
+	public Gate getGate(int n){
+		
+		Gate requiredGate;
+
+			requiredGate = firstGate;
+			for (int i=1;i<n;i++){
+				requiredGate = requiredGate.getNextGate();
+			}
+			return requiredGate;
+	}
+	
+	public void setOverallMatrix(){
+		
+		
+		DenseMatrix overallMatrix = ((DenseGate)getGate(total)).gate;
+		for (int i=total-1;i>=1;i--){
+			overallMatrix = DenseMatrix.multiply(overallMatrix,((DenseGate)getGate(i)).gate);
+		}
+		overallGate = new Gate(overallMatrix);
 		
 	}
 
