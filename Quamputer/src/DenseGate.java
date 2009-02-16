@@ -15,6 +15,7 @@ public abstract class DenseGate extends Gate{
 	
 	public void apply(Register a){
 		
+	
 		double sum;
 		double[] newValues = new double[a.getSize()];
 		for (int i=0;i<a.getSize();i++){

@@ -1,7 +1,7 @@
 
-public class Had extends DenseGate {
+public class Not extends DenseGate {
 
-	public Had(int n,int target,int a,int b) {
+	public Not(int n,int target,int a,int b) {
 			
 
 		super(n,new Matrix (new double[][] {{1}}),target,0,0);
@@ -9,12 +9,12 @@ public class Had extends DenseGate {
 			throw new IllegalArgumentException();
 		}
 		
-		name = "Hadamard";
+		name = "Not";
 		Matrix ident = Matrix.getIdentity(2);
-		Matrix one = new Matrix(new double[][] {{1, 1}, {1, -1}});
+		Matrix not = new Matrix(new double[][] {{0, 1}, {1, 0}});
 		for (int i=1;i<=n;i++){
 			if (i==target){
-				m.tensor(one);
+				m.tensor(not);
 			}
 			else{
 				m.tensor(ident);

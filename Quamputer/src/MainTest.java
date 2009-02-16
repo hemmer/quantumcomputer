@@ -23,13 +23,13 @@ public class MainTest {
 			new Graphics(circuit);
 		    */
 			
-			/* Test CNot
 			circuit.addGate(new Had(n,1,0,0));
 		    circuit.addGate(new CNot(n,2,1,0));
 		    circuit.applyAll();
 			System.out.println();
 			System.out.println(circuit.getRegister());
-			*/
+			
+			
 			
 			
 		}
