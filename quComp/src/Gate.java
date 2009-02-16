@@ -17,6 +17,8 @@ public abstract class Gate implements GateInterface{
 		this.name = name;
 		this.targetBit = target;
 		this.searchedElem = searchedElem;
+		this.ctrl = ctrl;
+		nextGate = null;
 	}
 	
 	
@@ -25,7 +27,6 @@ public abstract class Gate implements GateInterface{
 	public int[] getCtrl() {
 		return ctrl;
 	}
-
 	public int getSearchedElem() {
 		return searchedElem;
 	}
@@ -38,7 +39,7 @@ public abstract class Gate implements GateInterface{
 		return nextGate;
 	}
 
-	public int getTarget() {
+	public int getTargetBit() {
 		return targetBit;
 	}
 	
@@ -47,7 +48,7 @@ public abstract class Gate implements GateInterface{
 	}
 
 	public void setNextGate(Gate a) {
-		this.setNextGate(a);
+		this.nextGate = a;
 	}
 
 	public void addToEnd(Gate a){

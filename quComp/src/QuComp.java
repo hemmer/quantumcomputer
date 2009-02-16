@@ -11,10 +11,17 @@ public class QuComp {
     
     public static void main(String[] args) {
     	
-    	int numQubits = 5;
+    	System.out.println("   _                      _                     ");
+		System.out.println("  / /   _  _ _/_   _ _   / `_  _ _  _    _/__  _");
+		System.out.println(" /_\\/_//_|/ // /_// / / /_,/_// / //_//_// /_'/");                                          
+		System.out.println("----------------------------------/-------------");  
+	    System.out.println();
+    	
+    	int numQubits = 3;
     	
     	Register q = new Register(numQubits, false);
     	q.setGroundState();
+    	
     	System.out.println(q);
     	
     	Gate hadamard = new DenseGate("hadamard",2, null, 0, numQubits);
@@ -49,8 +56,20 @@ public class QuComp {
     	// should reset to ground state 
     	//Gate prepare = new DenseGate("prepare",numQubits);
     	//prepare.applyGate(q);
-    	
+    
     	//System.out.println("\n" + q);
     	
+    	/* circuit testings
+    	Circuit test = new Circuit(q);
+    	test.addGate(new DenseGate("hadamard",0, null, 0, numQubits));
+    	test.addGate(new DenseGate("cnot",0, new int[] {2}, 0, numQubits));
+    	test.addGate(new DenseGate("hadamard",1, null, 0, numQubits));
+    	test.apply();
+    	System.out.println(q);
+    	test.apply();
+    	System.out.println(q);
+    	test.apply();
+    	System.out.println(q);
+    	*/
     }
 }

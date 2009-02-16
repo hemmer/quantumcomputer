@@ -12,6 +12,6 @@ public interface GateInterface{
 	public int getSearchedElem();
 
 	public String getName();
-	public int getTarget();
+	public int getTargetBit();
 
 }

@@ -17,8 +17,8 @@ public class DenseGate extends Gate{
 	 * 
 	 * @param name Name of the gate (used to generate correct matrix)
 	 * @param target The qubit to which the gate is applied to
-	 * @param ctrl1 First control bit (used for CNOT)
-	 * @param ctrl2 Second control bit (used for Toffoli)
+	 * @param ctrl[] Array of control bits (used for CNOT Toffoli etc)
+	 * @param searchedElem searched element
 	 * @param regSize Number of bits that gate is to be applied to 
 	 */
 	public DenseGate(String name, int target, int[] ctrl, int searchedElem, int regSize) {
@@ -83,7 +83,7 @@ public class DenseGate extends Gate{
 	 */
 	public void applyGate(Register q){
 		
-		System.out.println("Applying " + this.name + " gate to bit " + targetBit + "...");
+		//System.out.println("Applying " + this.name + " gate to bit " + targetBit + "...");
 		q.updateStateVector(DenseMatrix.multiply(gate, q.getStateVector()) );
 	}
 	
@@ -183,7 +183,7 @@ public class DenseGate extends Gate{
 		// and sum to find total contribution
 		gate = DenseMatrix.add(gate1, gate2);
 		
-		System.out.println("\n" + gate);
+		//System.out.println("\n" + gate);
 	}
 	
 	/**
