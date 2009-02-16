@@ -6,12 +6,14 @@ public class Circuit implements CircuitInterface {
 	Register reg;
 	int total;
 	int current;
+	Matrix overallMatrix;
 	
 	public Circuit(Register reg){
 		
 		this.reg = reg;
 		nextGate = null;
 		current = 0;
+		overallMatrix = null;
 		
 	}
 	
@@ -50,12 +52,23 @@ public class Circuit implements CircuitInterface {
 	}
 	
 	//apply all the gates in order
+	//overwrite overAll matrix if true
 	public void applyAll(){
 	
-		while(nextGate!=null){
-			this.apply();
-			
+
+		
+	}
+	
+	public void setOverallMatrix(){
+	
+		DenseGate current;
+		current= ((DenseGate)getGate(total));
+		overallMatrix = current.getM();
+		for (int i=total-1;i>=1;i--){
+			current = (DenseGate)getGate(i);
+			overallMatrix.multiply(current.getM());
 		}
+		
 	}
 	
 	public Gate getNextGate(){
@@ -73,11 +86,20 @@ public class Circuit implements CircuitInterface {
 	public Register getRegister(){
 		return reg;
 	}
+	public Gate getGate(int n){
+		
+		Gate requiredGate;
+
+			requiredGate = firstGate;
+			for (int i=1;i<n;i++){
+				requiredGate = requiredGate.getNextGate();
+			}
+			return requiredGate;
+	}
+	
 	public int getCurrent(){
 		
 		return current;
-		
 	}
-
 
 }

@@ -8,6 +8,9 @@ public abstract class DenseGate extends Gate{
 		super(n,targetBit,ctrl1,ctrl2);
 		this.m = m;
 	}
+	public Matrix getM(){
+		return m;
+	}
 	
 	public void setM(Matrix m){
 		this.m=m;

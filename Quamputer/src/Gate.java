@@ -16,7 +16,6 @@ public abstract class Gate implements GateInterface{
 		nextGate = null;
 		this.n = n;
 	}
-	
 
 
 	public int getCtrl1() {
