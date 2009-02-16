@@ -1,0 +1,3 @@
+#summary Things we'd like to do if we have the time.
+
+  * Generalise CNOT to work for arbitrary number of control bits. Gate object would need a slight change to accept an array of control bits.
