@@ -21,8 +21,8 @@ public class DenseGate extends Gate{
 	 * @param ctrl2 Second control bit (used for Toffoli)
 	 * @param regSize Number of bits that gate is to be applied to 
 	 */
-	public DenseGate(String name, int target, int ctrl1, int ctrl2, int regSize) {
-		super(name, target, ctrl1, ctrl2);
+	public DenseGate(String name, int target, int[] ctrl, int searchedElem, int regSize) {
+		super(name, target, ctrl, searchedElem);
 		this.regSize = regSize;
 				
 		if(targetBit > regSize){
@@ -33,6 +33,33 @@ public class DenseGate extends Gate{
 		initGate();  // create correct gate object
 	}
 
+	/**
+	 * Constructor for Grovers (so far)
+	 * @param name
+	 * @param searchedElem
+	 * @param regSize
+	 */
+	public DenseGate(String name, int searchedElem, int regSize){
+		super(name, 0, null, searchedElem);
+		this.regSize = regSize;
+		
+		initGate();  // create correct gate object
+
+	}
+	
+	/**
+	 * Contructor for gates which act on whole register and dont require additional information
+	 * @param name
+	 * @param regSize
+	 */
+	public DenseGate(String name, int regSize){
+		super(name, 0, new int[0], 0);
+		this.regSize = regSize;
+		
+		initGate();  // create correct gate object
+
+	}
+	
 	/**
 	 * Initialises the correct gate based on name
 	 */
@@ -45,6 +72,8 @@ public class DenseGate extends Gate{
 			initPrepare();
 		}else if(this.name == "cnot"){
 			initCNot();
+		}else if(this.name == "grovers"){
+			initGrovers();
 		}
 	}
 	
@@ -69,9 +98,9 @@ public class DenseGate extends Gate{
 		
 		for(int i = 0; i < elements.length; i++){
 			if(i == this.targetBit){        
-				elements[i] = new DenseMatrix(2,2,"hadamard");
+				elements[i] = new DenseMatrix(2,"hadamard");
 			}else{
-				elements[i] = new DenseMatrix(2,2,"identity");
+				elements[i] = new DenseMatrix(2,"identity");
 			}
 		}
 
@@ -89,9 +118,9 @@ public class DenseGate extends Gate{
 		
 		for(int i = 0; i < elements.length; i++){
 			if(i == this.targetBit){        
-				elements[i] = new DenseMatrix(2,2,"not");
+				elements[i] = new DenseMatrix(2,"not");
 			}else{
-				elements[i] = new DenseMatrix(2,2,"identity");
+				elements[i] = new DenseMatrix(2,"identity");
 			}
 		}
 		
@@ -101,7 +130,7 @@ public class DenseGate extends Gate{
 	
 	/**
 	 * This generates the matrix representation of the CNOT gate. It works by first calculating which
-	 * bits are unchanged by cnot operator by taking the tensor product of the inner product |0><0|
+	 * bits are unchanged by CNOT operator by taking the tensor product of the inner product |0><0|
 	 * of the state basis vector with the identity matrix, in the appropriate order. 
 	 * Then we find the bit swap elements of the matrix by taking the tensor product of a list of matrices, 
 	 * with the outer product of state |1> (i.e. |1><1|) in the position of target bit, NOT gate in the 
@@ -126,7 +155,7 @@ public class DenseGate extends Gate{
 			if(i == this.targetBit){        
 				controlElements[i] = outProdB0;
 			}else{
-				controlElements[i] = new DenseMatrix(2,2,"identity");
+				controlElements[i] = new DenseMatrix(2,"identity");
 			}
 		}
 		
@@ -141,10 +170,10 @@ public class DenseGate extends Gate{
 		for(int i = 0; i < shiftElements.length; i++){
 			if(i == this.targetBit){        
 				shiftElements[i] = outProdB1;
-			}else if(i == this.ctrl1){
-				shiftElements[i] = new DenseMatrix(2,2,"not");
+			}else if(i == this.ctrl[0]){
+				shiftElements[i] = new DenseMatrix(2,"not");
 			}else{
-				shiftElements[i] = new DenseMatrix(2,2,"identity");
+				shiftElements[i] = new DenseMatrix(2,"identity");
 			}
 		}
 		
@@ -171,6 +200,29 @@ public class DenseGate extends Gate{
 		// create gate of Hadamard tensor producted with itself n times (n number of bits)
 		gate = DenseMatrix.tensorProductArray(elements);
 	}
+	
+	public void initGrovers(){
+		
+		int matrixSize = (int) Math.pow(2, regSize);
+
+		DenseMatrix invert = new DenseMatrix(matrixSize,"identity");
+		invert.setElem(searchedElem, searchedElem, new ComplexNum(-1.0,0.0));
+		
+		DenseMatrix average = new DenseMatrix(matrixSize, matrixSize);
+		ComplexNum entry = new ComplexNum((2.0/matrixSize), 0.0);
+		
+		for(int i = 0; i < matrixSize; i++){
+			for(int j = 0; j < matrixSize; j++){
+				average.setElem(i, j, entry);
+				if(i == j) average.setElem(i, j, entry.add(new ComplexNum(-1.0,0.0))); 
+			}
+		}
+		
+		gate = DenseMatrix.multiply(average, invert);
+		System.out.println(invert + "\n" + average + "\n" + gate);
+		
+	}
+	
 	
 	/**
 	 * Overrides abstract Gate class as we need to recalculate matrix for new bit

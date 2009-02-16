@@ -2,8 +2,8 @@ public abstract class Gate implements GateInterface{
 
 	String name;
 	int targetBit;
-	int ctrl1;
-	int ctrl2;
+	int[] ctrl;
+	int searchedElem;
 	
 	Gate nextGate;
 	
@@ -13,24 +13,23 @@ public abstract class Gate implements GateInterface{
 	 * @param ctrl1
 	 * @param ctrl2
 	 */
-	public Gate(String name, int target, int ctrl1, int ctrl2){
+	public Gate(String name, int target, int[] ctrl, int searchedElem){
 		this.name = name;
 		this.targetBit = target;
-		this.ctrl1 = ctrl1;
-		this.ctrl2 = ctrl2;
+		this.searchedElem = searchedElem;
 	}
 	
 	
 	public abstract void applyGate(Register q);
 
-	public int getCtrl1() {
-		return ctrl1;
+	public int[] getCtrl() {
+		return ctrl;
 	}
 
-	public int getCtrl2() {
-		return ctrl2;
+	public int getSearchedElem() {
+		return searchedElem;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
