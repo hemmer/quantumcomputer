@@ -46,12 +46,6 @@ public class Circuit implements CircuitInterface {
 		}
 	}
 	
-	//apply all the gates in order
-	public void applyAll(){
-	
-		setOverallMatrix();
-		overallGate.applyGate(reg);
-	}
 	
 	public Gate getNextGate(){
 		return nextGate;
@@ -84,6 +78,16 @@ public class Circuit implements CircuitInterface {
 			}
 			return requiredGate;
 	}
+	//apply all the gates with one matrix
+	public void applyAll(){
+	
+		if (overallGate==null){
+			System.out.println("Please run setOverallGate() to create a matrix to represent the circuit");
+		}
+		else{
+			overallGate.applyGate(reg);
+		}
+	}
 	
 	public void setOverallMatrix(){
 		
@@ -92,7 +96,7 @@ public class Circuit implements CircuitInterface {
 		for (int i=total-1;i>=1;i--){
 			overallMatrix = DenseMatrix.multiply(overallMatrix,((DenseGate)getGate(i)).gate);
 		}
-		overallGate = new Gate(overallMatrix);
+		overallGate = new DenseGate("Overall Matrix",overallMatrix,reg.size);
 		
 	}
 

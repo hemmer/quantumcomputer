@@ -50,7 +50,7 @@ public class QuComp {
 
     	grovers.applyGate(q);
     	System.out.println("\n" + q);
-    	*/
+    	
     	
     	// applying Hadamard (tensor p'ed with itself n times)
     	// should reset to ground state 
@@ -58,18 +58,19 @@ public class QuComp {
     	//prepare.applyGate(q);
     
     	//System.out.println("\n" + q);
-    	
-    	/* circuit testings
-    	Circuit test = new Circuit(q);
+ 
+    	/*
+    	Circuit test = new Circuit(q); //create a new circuit
+    	//add three gates to the circuit
     	test.addGate(new DenseGate("hadamard",0, null, 0, numQubits));
-    	test.addGate(new DenseGate("cnot",0, new int[] {2}, 0, numQubits));
+    	test.addGate(new DenseGate("cnot",2, new int[] {0}, 0, numQubits));
     	test.addGate(new DenseGate("hadamard",1, null, 0, numQubits));
-    	test.apply();
-    	System.out.println(q);
-    	test.apply();
-    	System.out.println(q);
-    	test.apply();
-    	System.out.println(q);
-    	*/
+    	//generate a matrix to represent the circuit
+    	test.setOverallMatrix();
+    	//apply the matrix to the register
+    	test.applyAll();
+    	//print reg
+    	System.out.println("\n" + q);
+    	 */
     }
 }

@@ -39,6 +39,7 @@ public class DenseGate extends Gate{
 	 * @param searchedElem
 	 * @param regSize
 	 */
+	
 	public DenseGate(String name, int searchedElem, int regSize){
 		super(name, 0, null, searchedElem);
 		this.regSize = regSize;
@@ -57,6 +58,19 @@ public class DenseGate extends Gate{
 		this.regSize = regSize;
 		
 		initGate();  // create correct gate object
+
+	}
+	/**
+	 * Constructor to turn a matrix into a gate
+	 * @param name
+	 * @param matrix
+	 * @param regSize
+	 */
+	
+	public DenseGate(String name,DenseMatrix matrix, int regSize){
+		super(name, 0, null, 0);
+		this.regSize = regSize;
+		gate = matrix;
 
 	}
 	
@@ -183,7 +197,7 @@ public class DenseGate extends Gate{
 		// and sum to find total contribution
 		gate = DenseMatrix.add(gate1, gate2);
 		
-		System.out.println("\n" + gate);
+		//System.out.println("\n" + gate);
 	}
 	
 	/**
