@@ -8,6 +8,8 @@ http://arxiv.org/abs/quant-ph/0301079 - introductory paper
 
 http://www.quantiki.org/wiki/index.php/Category:Handbook_of_Quantum_Information - large wiki of general information
 
+http://alumni.imsa.edu/~matth/quant/473/473proj/473proj.html - detailed explanation of grovers
+
 ==Applets==
 
 http://iaks-www.ira.uka.de/QIV/QuaSi/applet.html - best found so far
