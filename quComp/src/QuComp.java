@@ -17,7 +17,7 @@ public class QuComp {
 		System.out.println("----------------------------------/-------------");  
 	    System.out.println();
     	
-    	int numQubits = 3;
+    	int numQubits = 4;
     	
     	Register q = new Register(numQubits, false);
     	q.setGroundState();
@@ -25,8 +25,8 @@ public class QuComp {
     	System.out.println(q);
     	
     	Gate hadamard = new DenseGate("hadamard",2, null, 0, numQubits);
-    	Gate cnot = new DenseGate("cnot", 0, new int[]{2}, 0, numQubits);
-    	//Gate grovers = new DenseGate("grovers", 4, numQubits);
+    	//Gate cnot = new DenseGate("cnot", 0, new int[]{2}, 0, numQubits);
+    	Gate grovers = new DenseGate("grovers", 4, numQubits);
     	
     	// create hadamard gate object
     	// and apply to each register separately
@@ -35,11 +35,11 @@ public class QuComp {
     		hadamard.applyGate(q);
         	System.out.println("\n" + q);
         	
-        	cnot.applyGate(q);
-        	System.out.println("\n" + q);
+        	//cnot.applyGate(q);
+        	//System.out.println("\n" + q);
     	}
     	
-    	/*grovers.applyGate(q);
+    	grovers.applyGate(q);
     	System.out.println("\n" + q);
     	
     	grovers.applyGate(q);
@@ -48,18 +48,16 @@ public class QuComp {
     	grovers.applyGate(q);
     	System.out.println("\n" + q);
 
-    	grovers.applyGate(q);
-    	System.out.println("\n" + q);
     	
-    	
+    	/*
     	// applying Hadamard (tensor p'ed with itself n times)
     	// should reset to ground state 
     	//Gate prepare = new DenseGate("prepare",numQubits);
     	//prepare.applyGate(q);
     
     	//System.out.println("\n" + q);
- 
-    	/*
+ 		
+    	
     	Circuit test = new Circuit(q); //create a new circuit
     	//add three gates to the circuit
     	test.addGate(new DenseGate("hadamard",0, null, 0, numQubits));
@@ -71,6 +69,6 @@ public class QuComp {
     	test.applyAll();
     	//print reg
     	System.out.println("\n" + q);
-    	 */
+    	*/
     }
 }

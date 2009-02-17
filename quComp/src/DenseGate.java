@@ -215,26 +215,45 @@ public class DenseGate extends Gate{
 		gate = DenseMatrix.tensorProductArray(elements);
 	}
 	
+	/**
+	 * Grover Operator <br/>
+	 * Generates matrix representation of Grovers Algorithm.
+	 * First the algorithm inverts the state of the searched element. Then it applies the
+	 * outer product of the normalised register, minus the identity matrix (|s >< s| - I). This part is
+	 * the "inversion about average" operator. It is defined so that it takes the amplitude
+	 * of each state, and increases or decreases it so that it is as much above or below 
+	 * the average as it was below or above the average before the operation.  
+	 * 
+	 * For more information, see Grover's original paper: http://arxiv.org/pdf/quant-ph/9706033
+	 */
 	public void initGrovers(){
 		
 		int matrixSize = (int) Math.pow(2, regSize);
 
 		DenseMatrix invert = new DenseMatrix(matrixSize,"identity");
-		invert.setElem(searchedElem, searchedElem, new ComplexNum(-1.0,0.0));
-		
-		DenseMatrix average = new DenseMatrix(matrixSize, matrixSize);
+		for(int i = 0; i < invert.getNumCols(); i++) invert.setElem(i, searchedElem, new ComplexNum(-1.0,0.0));
+
+		gate = new DenseMatrix(matrixSize, matrixSize);
 		ComplexNum entry = new ComplexNum((2.0/matrixSize), 0.0);
 		
+		// first generate the inversion about average operator
+		// for i != j, gate[i][j] = 2/N
+		//     i == j, gate[i][i] = 2/N - 1
 		for(int i = 0; i < matrixSize; i++){
 			for(int j = 0; j < matrixSize; j++){
-				average.setElem(i, j, entry);
-				if(i == j) average.setElem(i, j, entry.add(new ComplexNum(-1.0,0.0))); 
+				gate.setElem(i, j, entry);
+				if(i == j) gate.setElem(i, j, entry.add(new ComplexNum(-1.0,0.0)));
 			}
 		}
+
+		// invert searched element column, performed second as matrix multiplication
+		// must be performed in reverse order
+		for(int i = 0; i < invert.getNumCols(); i++){
+			gate.setElem(i, searchedElem, gate.getElem(i, searchedElem).multiply(new ComplexNum(-1.0,0.0)));	
+		}
 		
-		gate = DenseMatrix.multiply(average, invert);
-		System.out.println(invert + "\n" + average + "\n" + gate);
 		
+		System.out.println("\n"  + gate);
 	}
 	
 	
