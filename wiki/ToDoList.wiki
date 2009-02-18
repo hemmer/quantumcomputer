@@ -4,19 +4,37 @@
 *Implementing Shor's Algorithm
 
 
+
+
+
 *Re-writing gate code to make them more functional
+
+
+
 
 
 *Creating a graphical representation of Grover's Algorithm that updates with each iteration
 
 
+
+
+
 *Writing Javadoc/Commenting Code
+
+
+
 
 
 *Exception Handling
 
 
+
+
+
 *GUI of Circuit Class
+
+
+
 
 
 Ideas on write up and presentation:
