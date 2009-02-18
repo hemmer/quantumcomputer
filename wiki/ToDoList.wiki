@@ -1,37 +1,37 @@
 #labels Featured
 #To Do List
 
-*Implementing Shor's Algorithm
+* Implementing Shor's Algorithm
 
 
 
 
 
-*Re-writing gate code to make them more functional
+* Re-writing gate code to make them more functional
 
 
 
 
 
-*Creating a graphical representation of Grover's Algorithm that updates with each iteration
+* Creating a graphical representation of Grover's Algorithm that updates with each iteration
 
 
 
 
 
-*Writing Javadoc/Commenting Code
+* Writing Javadoc/Commenting Code
 
 
 
 
 
-*Exception Handling
+* Exception Handling
 
 
 
 
 
-*GUI of Circuit Class
+* GUI of Circuit Class
 
 
 
