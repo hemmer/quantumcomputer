@@ -44,10 +44,12 @@ public class QuComp {
     	
     	grovers.applyGate(q);
     	System.out.println("\n" + q);
-
+    	
     	grovers.applyGate(q);
     	System.out.println("\n" + q);
 
+    	
+    	System.out.println("\n" + q);
     	
     	/*
     	// applying Hadamard (tensor p'ed with itself n times)
@@ -70,5 +72,17 @@ public class QuComp {
     	//print reg
     	System.out.println("\n" + q);
     	*/
+    	
+    	//Test Measurement Gate
+    	Gate measurement = new Measurement("Measure",0, null, 0);
+    	hadamard.setTarget(0);
+    	q.setGroundState();
+		hadamard.applyGate(q);
+		System.out.println("\n" + q);
+    	measurement.applyGate(q);
+    	System.out.println("\n" + q);
+    	
+    	
+    	
     }
 }

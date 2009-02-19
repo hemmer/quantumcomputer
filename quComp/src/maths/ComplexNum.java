@@ -55,4 +55,9 @@ public class ComplexNum{
 	public void setImag(double i){
 		imag = i;
 	}
+
+	public double getMagnitude() {
+		
+		return Math.sqrt(Math.pow(real, 2)+Math.pow(imag, 2));
+	}
 }
