@@ -3,7 +3,7 @@
 
  * Implementing Shor's Algorithm
 
- * Re-writing gate code to make them more functional
+ * Adding functional gates. If we keep the old gates working we can use java's inbuilt timer object to compare the speed of each implementation and discuss in the report.
 
  * Creating a graphical representation of Grover's Algorithm that updates with each iteration
 
