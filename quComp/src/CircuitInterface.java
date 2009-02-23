@@ -11,7 +11,7 @@ public interface CircuitInterface {
 	public void apply();
 	
 	//apply all the gates in order
-	public void applyAll();
+	public void runOverallMatrix();
 	
 	//return the nextGate
 	public Gate getNextGate();
