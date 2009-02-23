@@ -37,6 +37,35 @@ public class DenseMatrix extends Matrix {
 	}
 	
 	/**
+	 * Creates an n x n identity matrix.
+	 * @param n
+	 */
+	public DenseMatrix(int n){
+		numRows = n;
+		numCols = n;
+		initIdentity();
+	}
+	
+	/**
+	 * Creates a matrix with the specified values.
+	 * @param n
+	 */
+	public DenseMatrix(double[][] values){
+		
+		this.numRows=values.length;
+		this.numCols=values[0].length;
+		
+		ComplexNum[][] complex = new ComplexNum[numRows][numCols];
+		for(int a=0;a<numCols;a++){
+			for(int b=0;b<numRows;b++){
+				complex[a][b]=new ComplexNum(values[a][b]);
+			}
+		}
+		this.matrix=complex;
+		
+	}
+	
+	/**
 	 * Initialises the matrix to the specified type
 	 * @param type which matrix to generate, default is zero-filled
 	 */

@@ -21,69 +21,12 @@ public class QuComp {
     	
     	Register q = new Register(numQubits, false);
     	q.setGroundState();
-    	
-    	System.out.println(q);
-    	
-    	Gate hadamard = new DenseGate("hadamard",2, null, 0, numQubits);
-    	//Gate cnot = new DenseGate("cnot", 0, new int[]{2}, 0, numQubits);
-    	Gate grovers = new DenseGate("grovers", 4, numQubits);
-    	
-    	// create hadamard gate object
-    	// and apply to each register separately
-    	for(int i = 0; i < q.getNumQubits(); i++){
-    		hadamard.setTarget(i);
-    		hadamard.applyGate(q);
-        	System.out.println("\n" + q);
-        	
-        	//cnot.applyGate(q);
-        	//System.out.println("\n" + q);
-    	}
-    	
-    	grovers.applyGate(q);
-    	System.out.println("\n" + q);
-    	
-    	grovers.applyGate(q);
-    	System.out.println("\n" + q);
-    	
-    	grovers.applyGate(q);
-    	System.out.println("\n" + q);
-    	
-    	Gate measurement = new Measurement("Measure",0, null, 0);
-    	measurement.applyGate(q);
-    	System.out.println("\n" + q);
-    	
-    	
-    	/*
-    	// applying Hadamard (tensor p'ed with itself n times)
-    	// should reset to ground state 
-    	//Gate prepare = new DenseGate("prepare",numQubits);
-    	//prepare.applyGate(q);
-    
-    	//System.out.println("\n" + q);
- 		
-    	
-    	Circuit test = new Circuit(q); //create a new circuit
-    	//add three gates to the circuit
-    	test.addGate(new DenseGate("hadamard",0, null, 0, numQubits));
-    	test.addGate(new DenseGate("cnot",2, new int[] {0}, 0, numQubits));
-    	test.addGate(new DenseGate("hadamard",1, null, 0, numQubits));
-    	//generate a matrix to represent the circuit
-    	test.setOverallMatrix();
-    	//apply the matrix to the register
-    	test.applyAll();
-    	//print reg
-    	System.out.println("\n" + q);
-    	*/
-    	
-    	//Test Measurement Gate
-    	hadamard.setTarget(0);
-    	q.setGroundState();
     	Circuit test = new Circuit(q);
-    	test.addGate(hadamard);
-    	test.addGate(measurement);
+    	test.addGate(new Had(4,1));
+    	test.addGate(new Had(4,2));
+    	test.addGate(new Had(4,3));
+    	test.addGate(new Had(4,4));
     	test.applyAll();
-    	System.out.println("\n" + q);
-    	
-    	
+    	System.out.println(q);   	
     }
 }

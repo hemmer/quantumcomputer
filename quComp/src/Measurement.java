@@ -3,9 +3,9 @@ import maths.*;
 
 public class Measurement extends Gate {
 
-	public Measurement(String name, int target, int[] ctrl, int searchedElem) {
-		super(name, target, ctrl, searchedElem);
-		name = "Measurement";
+
+	public Measurement() {
+		super(0,0,(new int[] {0}),0);
 	}
 
 	public void applyGate(Register q) {
@@ -16,7 +16,7 @@ public class Measurement extends Gate {
 		double[] mag = new double[q.size];
 		StateVector v = q.getStateVector();
 		for (int i=0;i<q.size;i++){
-			//get the magnitude^2 of each elemnt of the register
+			//get the magnitude^2 of each element of the register
 			mag[i] = v.getElem(i, 0).getMagnitude();
 			mag[i] = mag[i]*mag[i];
 			//sum the total probability

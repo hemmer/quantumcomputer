@@ -1,6 +1,7 @@
 public abstract class Gate implements GateInterface{	
 
 	String name;
+	int n;
 	int targetBit;
 	int[] ctrl;
 	int searchedElem;
@@ -8,13 +9,14 @@ public abstract class Gate implements GateInterface{
 	Gate nextGate;
 	
 	/**
-	 * @param name name of the gate
+	 * @param name Name of Gate
+	 * @param n Size of register
 	 * @param target
 	 * @param ctrl1
 	 * @param ctrl2
 	 */
-	public Gate(String name, int target, int[] ctrl, int searchedElem){
-		this.name = name;
+	public Gate(int n, int target, int[] ctrl, int searchedElem){
+		this.n = n;
 		this.targetBit = target;
 		this.searchedElem = searchedElem;
 		this.ctrl = ctrl;
@@ -60,5 +62,6 @@ public abstract class Gate implements GateInterface{
                 nextGate.addToEnd(a);
         }
 	}
+	
 	
 }

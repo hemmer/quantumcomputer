@@ -295,4 +295,10 @@ public class DenseGate extends Gate{
 	public void setRegSize(int regSize) {
 		this.regSize = regSize;
 	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -39,7 +39,7 @@ public class Circuit implements CircuitInterface {
 			System.out.println("No more gates in cirucit");
 		}
 		else{
-			System.out.println("Applying " + nextGate.getName() + " to quibt "+nextGate.getTargetBit());
+			System.out.println("Applying " + nextGate.getName() + " to qubit "+nextGate.getTargetBit());
 			nextGate.applyGate(reg);
 			nextGate = nextGate.getNextGate();
 			current++;
