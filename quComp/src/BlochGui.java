@@ -1,6 +1,8 @@
 
 	import java.awt.*;
-	import javax.swing.*;
+import javax.swing.*;
+
+import maths.ComplexNum;
 
 	class BlochGui extends JFrame {
 
@@ -20,15 +22,17 @@
 					//add to the content pane
 					getContentPane().add(graphics, BorderLayout.CENTER);
 					setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					setSize(size+30,size+35);//
+					setSize(size+30,size+65);//
 					setVisible(true);
 				
 
 	       }
 				
-				public void update(double angle){
+
+				
+				public void update(ComplexNum z){
 					
-					graphics.update(angle);
+					graphics.update(z);
 					
 				}
 		   

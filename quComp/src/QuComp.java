@@ -1,3 +1,5 @@
+import maths.ComplexNum;
+
 /**
  * <h1>QuComp</h1>
  * 
@@ -26,6 +28,8 @@ public class QuComp {
     	test.addGate(new Had(2));
     	//test.addGate(new Had(3));
     	//test.addGate(new Had(4));
+    	BlochGui tester = new BlochGui(500);
+    	tester.update(new ComplexNum(0.707,0.707));
     	test.applyAll();
     	System.out.println(q);   	
     }
