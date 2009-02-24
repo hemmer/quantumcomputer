@@ -1,5 +1,5 @@
 
-public class Had extends DenseGate {
+public class Had extends DenseGate2 {
 
 	public Had(int n,int target,int a,int b) {
 			

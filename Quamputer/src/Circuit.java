@@ -61,11 +61,11 @@ public class Circuit implements CircuitInterface {
 	
 	public void setOverallMatrix(){
 	
-		DenseGate current;
-		current= ((DenseGate)getGate(total));
+		DenseGate2 current;
+		current= ((DenseGate2)getGate(total));
 		overallMatrix = current.getM();
 		for (int i=total-1;i>=1;i--){
-			current = (DenseGate)getGate(i);
+			current = (DenseGate2)getGate(i);
 			overallMatrix.multiply(current.getM());
 		}
 		

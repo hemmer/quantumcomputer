@@ -1,5 +1,5 @@
 
-public class CNot extends DenseGate{
+public class CNot extends DenseGate2{
 
 
 	

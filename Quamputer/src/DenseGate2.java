@@ -1,10 +1,10 @@
 
-public abstract class DenseGate extends Gate{
+public abstract class DenseGate2 extends Gate{
 
 	Matrix m;
 	
 	
-	public DenseGate(int n,Matrix m,int targetBit, int ctrl1, int ctrl2) {
+	public DenseGate2(int n,Matrix m,int targetBit, int ctrl1, int ctrl2) {
 		super(n,targetBit,ctrl1,ctrl2);
 		this.m = m;
 	}

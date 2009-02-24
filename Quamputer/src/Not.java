@@ -1,5 +1,5 @@
 
-public class Not extends DenseGate {
+public class Not extends DenseGate2 {
 
 	public Not(int n,int target,int a,int b) {
 			
