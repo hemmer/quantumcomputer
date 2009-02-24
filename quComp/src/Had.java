@@ -2,14 +2,23 @@ import maths.*;
 
 public class Had extends DenseGate2 {
 
-	public Had(int n,int target) {
-			
+	public Had(int target){
+		super(1,new DenseMatrix(1),target,(new int[] {0}),0);
+	}
+	
+	public Had(int n,int target) {			
 		super(n,new DenseMatrix(1),target,(new int[] {0}),0);
 		if ((target)<1||target>n){
 			throw new IllegalArgumentException();
 		}
-		
-		
+		setM(n,target);
+	}
+
+	public String getName() {
+		return "Hadamard";
+	}
+	
+	public void setM(int n, int target){
 		DenseMatrix ident = new DenseMatrix(2);
 		DenseMatrix one = new DenseMatrix(new double[][] {{1, 1}, {1, -1}});
 		for (int i=1;i<=n;i++){
@@ -21,14 +30,10 @@ public class Had extends DenseGate2 {
 			}
 		}
 	}
-
-	/*public void applyGate(Register q) {
-		System.out.println("Hopefully, it should never get this far down");
-		
-	}*/
-
-	public String getName() {
-		return "Hadamard";
+	
+	public void setN(int N){
+		this.n=N;
+		setM(n,targetBit);
 	}
 
 		

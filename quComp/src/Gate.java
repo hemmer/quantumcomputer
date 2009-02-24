@@ -25,6 +25,8 @@ public abstract class Gate implements GateInterface{
 	
 	
 	public abstract void applyGate(Register q);
+	
+	public abstract void setN(int n);
 
 	public int[] getCtrl() {
 		return ctrl;
@@ -62,6 +64,8 @@ public abstract class Gate implements GateInterface{
                 nextGate.addToEnd(a);
         }
 	}
+	
+	
 	
 	
 }

@@ -26,6 +26,7 @@ public class Circuit implements CircuitInterface {
 			current = 1;
 			firstGate = gate;
 			nextGate = gate;
+			gate.setN(reg.numQubits);
 		}
 		else{
 			nextGate.addToEnd(gate);

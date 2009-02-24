@@ -24,6 +24,7 @@ public abstract class DenseGate2 extends Gate{
 	public String toString(){
 		return m.toString();
 	}
+
 	
 	
 

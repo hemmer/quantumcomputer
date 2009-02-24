@@ -22,10 +22,10 @@ public class QuComp {
     	Register q = new Register(numQubits, false);
     	q.setGroundState();
     	Circuit test = new Circuit(q);
-    	test.addGate(new Had(4,1));
-    	test.addGate(new Had(4,2));
-    	test.addGate(new Had(4,3));
-    	test.addGate(new Had(4,4));
+    	test.addGate(new Had(1));
+    	test.addGate(new Had(2));
+    	//test.addGate(new Had(3));
+    	//test.addGate(new Had(4));
     	test.applyAll();
     	System.out.println(q);   	
     }
