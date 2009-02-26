@@ -1,7 +1,7 @@
 public abstract class Gate implements GateInterface{	
 
 	String name;
-	int n;
+	int numQubits;
 	int targetBit;
 	int[] ctrl;
 	int searchedElem;
@@ -16,7 +16,7 @@ public abstract class Gate implements GateInterface{
 	 * @param ctrl2
 	 */
 	public Gate(int n, int target, int[] ctrl, int searchedElem){
-		this.n = n;
+		this.numQubits = n;
 		this.targetBit = target;
 		this.searchedElem = searchedElem;
 		this.ctrl = ctrl;
@@ -26,7 +26,7 @@ public abstract class Gate implements GateInterface{
 	
 	public abstract void applyGate(Register q);
 	
-	public abstract void setN(int n);
+	public abstract void setNumQubits(int n);
 
 	public int[] getCtrl() {
 		return ctrl;

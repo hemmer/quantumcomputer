@@ -6,6 +6,7 @@ public class Measurement extends Gate {
 
 	public Measurement() {
 		super(0,0,(new int[] {0}),0);
+		name = "Measurement";
 	}
 
 	public void applyGate(Register q) {
@@ -32,12 +33,15 @@ public class Measurement extends Gate {
 			i++;
 			sum=sum+mag[i];
 		}
-		//foce the register into that state
+		//force the register into that state
 		q.v.initZero();
 		q.v.setElem(i, 0, new ComplexNum(1,0));
 		
 		
 		
+	}
+
+	public void setNumQubits(int n) {		
 	}
 
 	

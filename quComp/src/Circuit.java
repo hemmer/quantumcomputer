@@ -22,11 +22,11 @@ public class Circuit implements CircuitInterface {
 	public void addGate(Gate gate){
 		
 		total++;
+		gate.setNumQubits(reg.numQubits);
 		if (nextGate==null){
 			current = 1;
 			firstGate = gate;
 			nextGate = gate;
-			gate.setN(reg.numQubits);
 		}
 		else{
 			nextGate.addToEnd(gate);

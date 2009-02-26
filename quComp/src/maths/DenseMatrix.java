@@ -48,7 +48,7 @@ public class DenseMatrix extends Matrix {
 	
 	/**
 	 * Creates a matrix with the specified values.
-	 * @param n
+	 * @param numQubits
 	 */
 	public DenseMatrix(double[][] values){
 		
