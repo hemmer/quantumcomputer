@@ -22,7 +22,7 @@ public class Not extends DenseGate2 {
 	
 	public void setNumQubits(int N){
 		this.numQubits=N;
-		setM(numQubits,targetBit);
+		setM(numQubits,getTargetBit());
 	}
 
 	public String getName() {

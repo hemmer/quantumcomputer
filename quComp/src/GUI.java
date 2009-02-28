@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class GUI extends JPanel{
 	
-	CircuitInterface C;
+	private CircuitInterface C;
 	
 	public GUI(CircuitInterface C){
 		this.C=C;

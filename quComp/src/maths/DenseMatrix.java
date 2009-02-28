@@ -48,7 +48,7 @@ public class DenseMatrix extends Matrix {
 	
 	/**
 	 * Creates a matrix with the specified values.
-	 * @param numQubits
+	 * @param values
 	 */
 	public DenseMatrix(double[][] values){
 		
@@ -220,7 +220,7 @@ public class DenseMatrix extends Matrix {
 	
 	/**
 	 * Transposes a matrix, in particular used for finding outer product of basis states
-	 * @param matrix1 
+	 * @param matrix 
 	 * @return transposed matrix 
 	 */
 	public static DenseMatrix tranpose(DenseMatrix matrix){

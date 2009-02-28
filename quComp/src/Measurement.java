@@ -6,7 +6,6 @@ public class Measurement extends Gate {
 
 	public Measurement() {
 		super(0,0,(new int[] {0}),0);
-		name = "Measurement";
 	}
 
 	public void applyGate(Register q) {
@@ -14,9 +13,9 @@ public class Measurement extends Gate {
 		//generate a random number between 0 and 1
 		double rand = Math.random();
 		double sum = 0;
-		double[] mag = new double[q.size];
+		double[] mag = new double[q.getSize()];
 		StateVector v = q.getStateVector();
-		for (int i=0;i<q.size;i++){
+		for (int i=0;i<q.getSize();i++){
 			//get the magnitude^2 of each element of the register
 			mag[i] = v.getElem(i, 0).getMagnitude();
 			mag[i] = mag[i]*mag[i];
@@ -34,14 +33,18 @@ public class Measurement extends Gate {
 			sum=sum+mag[i];
 		}
 		//force the register into that state
-		q.v.initZero();
-		q.v.setElem(i, 0, new ComplexNum(1,0));
+		q.getStateVector().initZero();
+		q.getStateVector().setElem(i, 0, new ComplexNum(1,0));
 		
 		
 		
 	}
 
 	public void setNumQubits(int n) {		
+	}
+
+	public String getName() {
+		return "Measurement";
 	}
 
 	

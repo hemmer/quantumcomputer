@@ -3,53 +3,90 @@ import maths.DenseMatrix;
 
 public class Circuit implements CircuitInterface {
 
-	Gate nextGate;
-	Gate firstGate;
-	Register reg;
-	int total;
-	int current;
-	Gate overallGate;
+	private Gate nextGate;
+	private Gate firstGate;
+	private Register reg;
+	private int total;
+	private int current;
+	private Gate overallGate;
 	
+
+	void setTotal(int total) {
+		this.total = total;
+	}
+
+	void setReg(Register reg) {
+		this.reg = reg;
+	}
+
+	Register getReg() {
+		return reg;
+	}
+
+	void setOverallGate(Gate overallGate) {
+		this.overallGate = overallGate;
+	}
+
+	Gate getOverallGate() {
+		return overallGate;
+	}
+
+	void setNextGate(Gate nextGate) {
+		this.nextGate = nextGate;
+	}
+
+	void setFirstGate(Gate firstGate) {
+		this.firstGate = firstGate;
+	}
+
+	Gate getFirstGate() {
+		return firstGate;
+	}
+	
+	void setCurrent(int current) {
+		this.current = current;
+	}
+
 	public Circuit(Register reg){
 		
-		this.reg = reg;
-		nextGate = null;
-		current = 0;
+		this.setReg(reg);
+		setNextGate(null);
+		setCurrent(0);
 		
 	}
 	
 	//add a gate to end of the list
 	public void addGate(Gate gate){
 		
-		total++;
-		gate.setNumQubits(reg.numQubits);
-		if (nextGate==null){
-			current = 1;
-			firstGate = gate;
-			nextGate = gate;
+		setTotal(getTotal() + 1);
+		gate.setNumQubits(getReg().getNumQubits());
+		if (getNextGate()==null){
+			setCurrent(1);
+			setFirstGate(gate);
+			setNextGate(gate);
 		}
 		else{
-			nextGate.addToEnd(gate);
+			getNextGate().addToEnd(gate);
 		}
 	}
 	
 	//apply the gate and go to the next one in the list
 	public void apply(){
 		
-		if (nextGate==null){
+		if (getNextGate()==null){
 			System.out.println("No more gates in cirucit");
 		}
 		else{
-			System.out.println("Applying " + nextGate.getName() + " to qubit "+nextGate.getTargetBit());
-			nextGate.applyGate(reg);
-			nextGate = nextGate.getNextGate();
-			current++;
+			System.out.println("Applying " + getNextGate().getName() + " to qubit "+getNextGate().getTargetBit());
+			getNextGate().applyGate(getReg());
+			setNextGate(getNextGate().getNextGate());
+			setCurrent(getCurrent() + 1);
 		}
 	}
 	
 	public void applyAll(){
 		
-		while (nextGate != null){
+		while (getNextGate() != null){
 			apply();
 		}
 		
@@ -67,10 +104,10 @@ public class Circuit implements CircuitInterface {
 	}
 	
 	public void reset(){
-		nextGate = firstGate;
+		setNextGate(getFirstGate());
 	}
 	public Register getRegister(){
-		return reg;
+		return getReg();
 	}
 	public int getCurrent(){
 		
@@ -82,7 +119,7 @@ public class Circuit implements CircuitInterface {
 		
 		Gate requiredGate;
 
-			requiredGate = firstGate;
+			requiredGate = getFirstGate();
 			for (int i=1;i<n;i++){
 				requiredGate = requiredGate.getNextGate();
 			}
@@ -91,28 +128,29 @@ public class Circuit implements CircuitInterface {
 	//apply all the gates with one matrix
 	public void runOverallMatrix(){
 	
-		if (overallGate==null){
+		if (getOverallGate()==null){
 			System.out.println("Please run setOverallGate() to create a matrix to represent the circuit");
 		}
 		else{
-			overallGate.applyGate(reg);
+			getOverallGate().applyGate(getReg());
 		}
 	}
 	
 	public void setOverallMatrix(){
 		
 		try{
-			DenseMatrix overallMatrix = ((DenseGate)getGate(total)).gate;
-			for (int i=total-1;i>=1;i--){
+			DenseMatrix overallMatrix = ((DenseGate)getGate(getTotal())).gate;
+			for (int i=getTotal()-1;i>=1;i--){
 				overallMatrix = DenseMatrix.multiply(overallMatrix,((DenseGate)getGate(i)).gate);
 			}
-			overallGate = new DenseGate("Overall Matrix",overallMatrix,reg.size);
+			setOverallGate(new DenseGate("Overall Matrix",overallMatrix,getReg().getSize()));
 		}
 		catch (ClassCastException e) {
 	        System.out.println("Overall matrix only works with dense matrices");
 	    }
 
 	}
+
 
 
 }

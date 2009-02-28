@@ -33,6 +33,6 @@ public class Had extends DenseGate2 {
 	
 	public void setNumQubits(int N){
 		this.numQubits=N;
-		setM(numQubits,targetBit);
+		setM(numQubits,getTargetBit());
 	}
 }

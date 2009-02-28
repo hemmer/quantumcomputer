@@ -1,26 +1,44 @@
 public abstract class Gate implements GateInterface{	
 
-	String name;
-	int numQubits;
-	int targetBit;
-	int[] ctrl;
-	int searchedElem;
+	protected int numQubits;
+	private int targetBit;
+	private int[] ctrl;
+	private int searchedElem;
 	
-	Gate nextGate;
-	
+	private Gate nextGate;
+
+	void setTargetBit(int targetBit) {
+		this.targetBit = targetBit;
+	}
+
+
+	void setSearchedElem(int searchedElem) {
+		this.searchedElem = searchedElem;
+	}
+
+
+	int getNumQubits() {
+		return numQubits;
+	}
+
+
+	void setCtrl(int[] ctrl) {
+		this.ctrl = ctrl;
+	}
+
+
 	/**
-	 * @param name Name of Gate
 	 * @param n Size of register
-	 * @param target
-	 * @param ctrl1
-	 * @param ctrl2
+	 * @param target target bit
+	 * @param ctrl array for control bits
+	 * @param searchedElem the searched element
 	 */
 	public Gate(int n, int target, int[] ctrl, int searchedElem){
-		this.numQubits = n;
-		this.targetBit = target;
+		numQubits =n;
+		targetBit = target;
 		this.searchedElem = searchedElem;
-		this.ctrl = ctrl;
-		nextGate = null;
+		this.ctrl=ctrl;
+		setNextGate(null);
 	}
 	
 	
@@ -46,7 +64,7 @@ public abstract class Gate implements GateInterface{
 	}
 	
 	public void setTarget(int newTargetBit){
-		this.targetBit = newTargetBit;
+		this.setTargetBit(newTargetBit);
 	}
 
 	public void setNextGate(Gate a) {
@@ -55,11 +73,11 @@ public abstract class Gate implements GateInterface{
 
 	public void addToEnd(Gate a){
 		   
-        if (nextGate==null){
+        if (getNextGate()==null){
                 setNextGate(a);
         }
         else{
-                nextGate.addToEnd(a);
+                getNextGate().addToEnd(a);
         }
 	}
 	

@@ -4,29 +4,54 @@ import maths.*;
 public class Register {
 	
 	//public ComplexNum[] amplitudes;
-	public StateVector v;
-	int numQubits;
-	public int size;
-	boolean decimal;   // print out in decimal or binary
+	private StateVector stateVector;
+	private int numQubits;
+	private int size;
+	public boolean decimal;   // print out in decimal or binary
 		
+
+	private void setStateVector(StateVector x) {
+		stateVector = x;
+	}
+	
+	public StateVector getStateVector(){
+		return stateVector;
+	}
+	
+	public int getNumQubits(){
+		return numQubits;
+	}
+
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+
+	public int getSize() {
+		return size;
+	}
+
+
 	public Register(int inNumQubits, boolean dec){
 		
 		numQubits = inNumQubits;
-		size = (int) Math.pow(2, numQubits);
+		setSize((int) Math.pow(2, getNumQubits()));
 		decimal = dec;
-		v = new StateVector(size, decimal);  // set array to 2^numQubits
-		v.setGroundState();
+		setStateVector(new StateVector(getSize(), decimal));  // set array to 2^numQubits
+		getStateVector().setGroundState();
 	}
 	
-	
+
+
 	public String toString(){
 
-		return v.toString();
+		return getStateVector().toString();
 	}
 	
 	public void setGroundState(){
 		System.out.println("Initialising Register to ground state...");
-		v.setGroundState();
+		getStateVector().setGroundState();
 	}
 	
 	public void updateStateVector(DenseMatrix m){
@@ -35,14 +60,8 @@ public class Register {
 		for(int i = 0; i < m.getNumRows(); i++){
 			updated.setElem(i, 0, m.getElem(i,0));
 		}
-		this.v = updated;
+		this.setStateVector(updated);
 	}
 	
-	public StateVector getStateVector(){
-		return v;
-	}
-	
-	public int getNumQubits(){
-		return numQubits;
-	}
+
 }

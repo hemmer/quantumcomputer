@@ -17,7 +17,7 @@ public class DenseGate extends Gate{
 	 * 
 	 * @param name Name of the gate (used to generate correct matrix)
 	 * @param target The qubit to which the gate is applied to
-	 * @param ctrl[] Array of control bits (used for CNOT Toffoli etc)
+	 * @param ctrl Array of control bits (used for CNOT Toffoli etc)
 	 * @param searchedElem searched element
 	 * @param regSize Number of bits that gate is to be applied to 
 	 */
@@ -25,8 +25,8 @@ public class DenseGate extends Gate{
 		super(name, target, ctrl, searchedElem);
 		this.regSize = regSize;
 				
-		if(targetBit > regSize){
-			System.out.println("Invalid gate operation: target bit (" + targetBit + ") larger than register size (" + regSize + ").");
+		if(getTargetBit() > regSize){
+			System.out.println("Invalid gate operation: target bit (" + getTargetBit() + ") larger than register size (" + regSize + ").");
 			return;
 		}
 		
@@ -78,15 +78,15 @@ public class DenseGate extends Gate{
 	 * Initialises the correct gate based on name
 	 */
 	public void initGate(){
-		if(this.name == "hadamard"){
+		if(this.getName() == "hadamard"){
 			initHadamard(); 
-		}else if(this.name == "not"){
+		}else if(this.getName() == "not"){
 			initNot();
-		}else if(this.name == "prepare"){
+		}else if(this.getName() == "prepare"){
 			initPrepare();
-		}else if(this.name == "cnot"){
+		}else if(this.getName() == "cnot"){
 			initCNot();
-		}else if(this.name == "grovers"){
+		}else if(this.getName() == "grovers"){
 			initGrovers();
 		}
 	}
@@ -103,7 +103,6 @@ public class DenseGate extends Gate{
 	
 	/**
 	 * Generate a matrix representation of the Hadamard gate
-	 * @param targetBit Bit to which gate is to be applied
 	 */
 	public void initHadamard(){
 				
@@ -111,7 +110,7 @@ public class DenseGate extends Gate{
 		DenseMatrix[] elements = new DenseMatrix[regSize];
 		
 		for(int i = 0; i < elements.length; i++){
-			if(i == this.targetBit){        
+			if(i == this.getTargetBit()){        
 				elements[i] = new DenseMatrix(2,"hadamard");
 			}else{
 				elements[i] = new DenseMatrix(2,"identity");
@@ -124,14 +123,13 @@ public class DenseGate extends Gate{
 	
 	/**
 	 * Generate a matrix representation of the Not gate
-	 * @param targetBit 
 	 */
 	public void initNot(){
 		
 		DenseMatrix[] elements = new DenseMatrix[regSize];
 		
 		for(int i = 0; i < elements.length; i++){
-			if(i == this.targetBit){        
+			if(i == this.getTargetBit()){        
 				elements[i] = new DenseMatrix(2,"not");
 			}else{
 				elements[i] = new DenseMatrix(2,"identity");
@@ -166,7 +164,7 @@ public class DenseGate extends Gate{
 	   	DenseMatrix outProdB0 = DenseMatrix.outerProduct(b0);  // find outer product of |0> basis vector
 	   	
 		for(int i = 0; i < controlElements.length; i++){
-			if(i == this.targetBit){        
+			if(i == this.getTargetBit()){        
 				controlElements[i] = new DenseMatrix(2,"identity");
 			}else{
 				controlElements[i] = outProdB0;
@@ -182,9 +180,9 @@ public class DenseGate extends Gate{
 	   	DenseMatrix outProdB1 = DenseMatrix.outerProduct(b1); // find outer product of |1> basis vector
 	   	
 		for(int i = 0; i < shiftElements.length; i++){
-			if(i == this.targetBit){        
+			if(i == this.getTargetBit()){        
 				shiftElements[i] = new DenseMatrix(2,"not");
-			}else if(i == this.ctrl[0]){
+			}else if(i == this.getCtrl()[0]){
 				shiftElements[i] = outProdB1;
 			}else{
 				shiftElements[i] = new DenseMatrix(2,"identity");
@@ -231,7 +229,7 @@ public class DenseGate extends Gate{
 		int matrixSize = (int) Math.pow(2, regSize);
 
 		DenseMatrix invert = new DenseMatrix(matrixSize,"identity");
-		for(int i = 0; i < invert.getNumCols(); i++) invert.setElem(i, searchedElem, new ComplexNum(-1.0,0.0));
+		for(int i = 0; i < invert.getNumCols(); i++) invert.setElem(i, getSearchedElem(), new ComplexNum(-1.0,0.0));
 
 		gate = new DenseMatrix(matrixSize, matrixSize);
 		ComplexNum entry = new ComplexNum((2.0/matrixSize), 0.0);
@@ -249,7 +247,7 @@ public class DenseGate extends Gate{
 		// invert searched element column, performed second as matrix multiplication
 		// must be performed in reverse order
 		for(int i = 0; i < invert.getNumCols(); i++){
-			gate.setElem(i, searchedElem, gate.getElem(i, searchedElem).multiply(new ComplexNum(-1.0,0.0)));	
+			gate.setElem(i, getSearchedElem(), gate.getElem(i, getSearchedElem()).multiply(new ComplexNum(-1.0,0.0)));	
 		}
 		
 		
@@ -263,7 +261,7 @@ public class DenseGate extends Gate{
 	 * @param newTargetBit The new bit to which the gate should be applied
 	 */
 	public void setTarget(int newTargetBit){
-		this.targetBit = newTargetBit;
+		this.setTargetBit(newTargetBit);
 		initGate();
 	}
 	
