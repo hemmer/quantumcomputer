@@ -19,20 +19,13 @@ public class QuComp {
 		System.out.println("----------------------------------/-------------");  
 	    System.out.println();
     	
-    	int numQubits = 4;
+    	int numQubits = 3;
     	
     	Register q = new Register(numQubits, false);
     	q.setGroundState();
     	Circuit test = new Circuit(q);
-    	DenseGate2 test2 = new Had(1);
-    	DenseGate2 test3 = new Had(2);
-    	test.addGate(test2);
-    	test.addGate(test3);
-    	test.addGate(new Had(3));
-    	test.addGate(new Had(4));
-    	test.addGate(new Measurement());
-    	//BlochGui tester = new BlochGui(500);
-    	//tester.update(new ComplexNum(0.707,0.707));
+    	System.out.println(q);
+    	test.addGate(new Not(1));
     	test.applyAll();
     	System.out.println(q);
     	

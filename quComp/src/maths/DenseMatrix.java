@@ -124,6 +124,15 @@ public class DenseMatrix extends Matrix {
 				matrix[i][j] = new ComplexNum(0.0);	
 	}
 	
+	public void initZero(int n){
+		
+		matrix = new ComplexNum[n][n];
+
+		for(int i = 0; i < n; i++)
+			for(int j = 0; j < n; j++)
+				matrix[i][j] = new ComplexNum(0.0);	
+	}
+	
 	/**
 	 * Creates identity matrix. Must be a square matrix.
 	 * 
@@ -138,6 +147,15 @@ public class DenseMatrix extends Matrix {
 	public void initNot(){
 		// must be square!!! 
 		initZero();
+		for(int i = 0; i < numRows; i++){
+			matrix[i][numRows-i-1] = new ComplexNum(1.0);   // set diagonal equal to 1
+		}
+
+	}
+	
+	public void initNot(int n){
+		// must be square!!! 
+		initZero(n);
 		for(int i = 0; i < numRows; i++){
 			matrix[i][numRows-i-1] = new ComplexNum(1.0);   // set diagonal equal to 1
 		}

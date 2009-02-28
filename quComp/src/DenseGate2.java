@@ -5,9 +5,9 @@ public abstract class DenseGate2 extends Gate{
 	DenseMatrix m;
 	
 	
-	public DenseGate2(int n,DenseMatrix m,int targetBit, int[] ctrl, int searchedElem) {
+	public DenseGate2(int n,int targetBit, int[] ctrl, int searchedElem) {
 		super(n,targetBit,ctrl,searchedElem);
-		this.m = m;
+		m=new DenseMatrix(1);
 	}
 	public DenseMatrix getM(){
 		return m;
@@ -24,12 +24,6 @@ public abstract class DenseGate2 extends Gate{
 	public String toString(){
 		return m.toString();
 	}
-
-	
-	
-
-
-	
 	
 	
 	

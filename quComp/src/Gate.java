@@ -27,16 +27,14 @@ public abstract class Gate implements GateInterface{
 	public abstract void applyGate(Register q);
 	
 	public abstract void setNumQubits(int n);
+	
+	public abstract String getName();
 
 	public int[] getCtrl() {
 		return ctrl;
 	}
 	public int getSearchedElem() {
 		return searchedElem;
-	}
-	
-	public String getName() {
-		return name;
 	}
 
 	public Gate getNextGate() {

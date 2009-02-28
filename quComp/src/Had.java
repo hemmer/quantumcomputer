@@ -3,11 +3,11 @@ import maths.*;
 public class Had extends DenseGate2 {
 
 	public Had(int target){
-		super(1,new DenseMatrix(1),target,(new int[] {0}),0);
+		super(1,target,(new int[] {0}),0);
 	}
 	
 	public Had(int n,int target) {			
-		super(n,new DenseMatrix(1),target,(new int[] {0}),0);
+		super(n,target,(new int[] {0}),0);
 		if ((target)<1||target>n){
 			throw new IllegalArgumentException();
 		}
@@ -35,10 +35,4 @@ public class Had extends DenseGate2 {
 		this.numQubits=N;
 		setM(numQubits,targetBit);
 	}
-
-		
-	
-	
-	
-
 }
