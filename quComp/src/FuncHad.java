@@ -36,6 +36,8 @@ public class FuncHad extends Gate {
 		int totalShift = (int) Math.pow(2, reg.getNumQubits() - this.getTargetBit() - 1);
 		int diff = reg.getNumQubits() - this.getTargetBit();
 		
+		// for each |xx0xx> and each |xx1xx> where x can be 1 or 0,
+		// take sum and difference of both
 		for(int i = 0; i < targetShift; i++){
 			for(int j = 0; j < totalShift; j++){
 				
@@ -46,7 +48,7 @@ public class FuncHad extends Gate {
 				ComplexNum amp1 = reg.getStateVector().getAmp(bit1);
 				ComplexNum amp2 = reg.getStateVector().getAmp(bit2);
 		
-				// find the sum and difference of them
+				// find the sum and difference of the amplitudes
 				ComplexNum sum = amp1.add(amp2);
 				ComplexNum difference = amp1.add(amp2.multiply(new ComplexNum(-1.0, 0.0)));
 		
