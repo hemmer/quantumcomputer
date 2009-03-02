@@ -17,19 +17,42 @@ public class QuComp {
 		System.out.println("----------------------------------/-------------");  
 	    System.out.println();
     	
-    	int numQubits = 2;
+    	int numQubits = 3;
     	
     	Register q = new Register(numQubits, false);
     	q.setGroundState();
     	Circuit test = new Circuit(q);
     	test.addGate(new Randomiser());
     	test.apply();
-    	System.out.println(q);
-    	test.addGate(new CNot(1,0));
-    	//test.addGate(new Had(2));
-    	//test.addGate(new Had(3));
-    	//test.addGate(new Had(4));
+    	System.out.println(q);   	
+
+    	test.addGate(new Had(0));
     	test.apply();
     	System.out.println(q);   	
+
+    	test.addGate(new Had(1));
+    	test.apply();
+    	System.out.println(q);   	
+
+    	test.addGate(new Had(2));
+    	test.apply();
+    	System.out.println(q);
+    	
+
+    	
+    	q.setGroundState();
+    	Circuit test2 = new Circuit(q);
+    	test2.addGate(new FuncHad(0));
+    	test2.apply();
+    	System.out.println(q);   	
+
+    	test2.addGate(new FuncHad(1));
+    	test2.apply();
+    	System.out.println(q);   	
+
+    	test2.addGate(new FuncHad(2));
+    	test2.apply();
+    	System.out.println(q);   
+ 
     }
 }
