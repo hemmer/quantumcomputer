@@ -9,6 +9,7 @@ public abstract class DenseGate2 extends Gate{
 		super(n,targetBit,ctrl,searchedElem);
 		setM(new DenseMatrix(1));
 	}
+	
 	public DenseMatrix getM(){
 		return m;
 	}

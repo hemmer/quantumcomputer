@@ -10,7 +10,7 @@ public class Register {
 	public boolean decimal;   // print out in decimal or binary
 		
 
-	private void setStateVector(StateVector x) {
+	public void setStateVector(StateVector x) {
 		stateVector = x;
 	}
 	

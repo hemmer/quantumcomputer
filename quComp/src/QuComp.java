@@ -1,5 +1,3 @@
-import maths.ComplexNum;
-
 /**
  * <h1>QuComp</h1>
  * 
@@ -19,15 +17,19 @@ public class QuComp {
 		System.out.println("----------------------------------/-------------");  
 	    System.out.println();
     	
-    	int numQubits = 3;
+    	int numQubits = 2;
     	
     	Register q = new Register(numQubits, false);
     	q.setGroundState();
     	Circuit test = new Circuit(q);
+    	test.addGate(new Randomiser());
+    	test.apply();
     	System.out.println(q);
-    	test.addGate(new Not(1));
-    	test.applyAll();
-    	System.out.println(q);
-    	
+    	test.addGate(new CNot(1,0));
+    	//test.addGate(new Had(2));
+    	//test.addGate(new Had(3));
+    	//test.addGate(new Had(4));
+    	test.apply();
+    	System.out.println(q);   	
     }
 }
