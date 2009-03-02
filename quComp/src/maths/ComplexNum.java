@@ -57,7 +57,6 @@ public class ComplexNum{
 	}
 
 	public double getMagnitude() {
-		
 		return Math.sqrt(Math.pow(real, 2)+Math.pow(imag, 2));
 	}
 }

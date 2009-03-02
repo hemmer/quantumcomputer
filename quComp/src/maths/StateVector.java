@@ -21,9 +21,7 @@ public class StateVector extends DenseMatrix {
 		
 		matrix[0][0] = one;
 	}
-	
 
-	
 	public String toString(){
 		
 		String s = "";
@@ -49,6 +47,10 @@ public class StateVector extends DenseMatrix {
 		return new ComplexNum(c.getReal(), c.getImag());
 	}
 	
+	public void setAmp(ComplexNum amp, int index){
+		matrix[index][0].setReal(amp.getReal());
+		matrix[index][0].setImag(amp.getImag());
+	}
 
 	// used to properly format binary numbers
     public static String toBinary(int numQubits, int number){

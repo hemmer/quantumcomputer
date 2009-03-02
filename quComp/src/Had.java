@@ -15,20 +15,24 @@ public class Had extends DenseGate2 {
 	}
 
 	public String getName() {
-		return "Hadamard";
+		return "hadamard";
 	}
 	
 	public void setM(int n, int target){
-		DenseMatrix ident = new DenseMatrix(2);
-		DenseMatrix one = new DenseMatrix(new double[][] {{1, 1}, {1, -1}});
-		for (int i=1;i<=n;i++){
-			if (i==target){
-				m=DenseMatrix.tensorProduct(m,one);
-			}
-			else{
-				m=DenseMatrix.tensorProduct(m,ident);
+		
+		DenseMatrix had = new DenseMatrix(2,"hadamard");
+		
+		// if target bit is -1, apply to whole register
+		if(target == -1){
+			for (int i=1;i<=n;i++) m=DenseMatrix.tensorProduct(m,had);
+		}else{
+			DenseMatrix ident = new DenseMatrix(2);
+			for (int i=1;i<=n;i++){
+				if (i==target) m = DenseMatrix.tensorProduct(m,had);
+				else m = DenseMatrix.tensorProduct(m,ident);
 			}
 		}
+		System.out.println(m);
 	}
 	
 	public void setNumQubits(int N){
