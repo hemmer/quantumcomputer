@@ -12,14 +12,10 @@ public class StateVector extends DenseMatrix {
 	
 	public void setGroundState(){
 		
-		ComplexNum zero = new ComplexNum();
-		ComplexNum one = new ComplexNum(1.0, 0.0);
-		
-		for(int i = 0; i < this.getNumRows(); i++){
-			matrix[i][0] = zero; // initialise all states to 0.0 amplitude
-		}
-		
-		matrix[0][0] = one;
+		 // initialise all states to 0.0 amplitude
+		for(int i = 0; i < this.getNumRows(); i++) matrix[i][0] = new ComplexNum();
+		// except the first element
+		matrix[0][0] = new ComplexNum(1.0, 0.0);
 	}
 
 	public String toString(){
