@@ -22,10 +22,6 @@ public class QuComp {
     	Register q = new Register(numQubits, false);
     	q.setGroundState();
     	Circuit test = new Circuit(q);
-    	test.addGate(new Randomiser());
-    	test.apply();
-    	System.out.println(q);   	
-
     	test.addGate(new Had(0));
     	test.apply();
     	System.out.println(q);   	
@@ -40,7 +36,7 @@ public class QuComp {
     	
 
     	
-    	q.setGroundState();
+    	/*q.setGroundState();
     	Circuit test2 = new Circuit(q);
     	test2.addGate(new FuncHad(0));
     	test2.apply();
@@ -53,6 +49,6 @@ public class QuComp {
     	test2.addGate(new FuncHad(2));
     	test2.apply();
     	System.out.println(q);   
- 
+ */
     }
 }

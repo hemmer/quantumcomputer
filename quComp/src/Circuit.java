@@ -1,3 +1,5 @@
+import javax.swing.JFrame;
+
 import maths.DenseMatrix;
 
 
@@ -9,8 +11,8 @@ public class Circuit implements CircuitInterface {
 	private int total;
 	private int current;
 	private Gate overallGate;
+	Window frame;
 	
-
 	void setTotal(int total) {
 		this.total = total;
 	}
@@ -47,12 +49,11 @@ public class Circuit implements CircuitInterface {
 		this.current = current;
 	}
 
-	public Circuit(Register reg){
-		
+	public Circuit(Register reg){		
 		this.setReg(reg);
 		setNextGate(null);
 		setCurrent(0);
-		
+		frame=new Window();
 	}
 	
 	//add a gate to end of the list
@@ -72,7 +73,6 @@ public class Circuit implements CircuitInterface {
 	
 	//apply the gate and go to the next one in the list
 	public void apply(){
-		
 		if (getNextGate()==null){
 			System.out.println("No more gates in cirucit");
 		}
@@ -81,6 +81,14 @@ public class Circuit implements CircuitInterface {
 			getNextGate().applyGate(getReg());
 			setNextGate(getNextGate().getNextGate());
 			setCurrent(getCurrent() + 1);
+			
+			frame.update(reg);
+			try {
+				Thread.currentThread().sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
