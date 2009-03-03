@@ -53,7 +53,7 @@ public class Toffoli extends DenseGate2 {
 		// and sum to find total contribution
 		m = DenseMatrix.add(gate1, gate2);
 		
-		//System.out.println("\n" + m);
+		System.out.println("\n" + m);
 	}
 	
 	
@@ -62,7 +62,7 @@ public class Toffoli extends DenseGate2 {
 	}
 
 	public void setNumQubits(int n) {
-		this.numQubits=n;
+		numQubits=n;
 		setM(numQubits,getTargetBit(),getCtrl());
 	}
 	
