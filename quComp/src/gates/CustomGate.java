@@ -3,7 +3,7 @@ import maths.*;
 
 public class CustomGate extends DenseGate {
 
-	public CustomGate(DenseMatrix m){
+	public CustomGate(Matrix m){
 		super(m.getNumCols(),0,(new int[] {0}),0);
 		setM(m);
 	}

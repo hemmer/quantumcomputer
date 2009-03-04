@@ -1,6 +1,6 @@
 package maths;
 
-public class StateVector extends DenseMatrix {
+public class StateVector extends Matrix {
 	
 	boolean decimal; 
 		

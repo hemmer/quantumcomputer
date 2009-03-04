@@ -1,5 +1,5 @@
 package gates;
-import maths.DenseMatrix;
+import maths.Matrix;
 
 
 public class Not extends DenseGate {
@@ -10,13 +10,13 @@ public class Not extends DenseGate {
 
 	public void setM(int n, int target){
 		
-		DenseMatrix not = new DenseMatrix(new double[][] {{0, 1}, {1, 0}});
+		Matrix not = new Matrix(new double[][] {{0, 1}, {1, 0}});
 		
 		for(int i = 0; i < n; i++){
 			if(i == target){        
-				m= DenseMatrix.tensorProduct(m,not);
+				m= Matrix.tensorProduct(m,not);
 			}else{
-				m= DenseMatrix.tensorProduct(m,new DenseMatrix(2));
+				m= Matrix.tensorProduct(m,new Matrix(2));
 			}
 		}
 	}

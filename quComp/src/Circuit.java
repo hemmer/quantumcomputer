@@ -2,7 +2,7 @@ import gates.CustomGate;
 import gates.DenseGate;
 import gates.Gate;
 import gates.Register;
-import maths.DenseMatrix;
+import maths.Matrix;
 
 
 public class Circuit implements CircuitInterface {
@@ -150,9 +150,9 @@ public class Circuit implements CircuitInterface {
 	public void setOverallMatrix(){
 		
 		try{
-			DenseMatrix overallMatrix = ((DenseGate)(getGate(getTotal()))).getM();
+			Matrix overallMatrix = ((DenseGate)(getGate(getTotal()))).getM();
 			for (int i=getTotal()-1;i>=1;i--){
-				overallMatrix = DenseMatrix.multiply(overallMatrix,((DenseGate)getGate(i)).getM());
+				overallMatrix = Matrix.multiply(overallMatrix,((DenseGate)getGate(i)).getM());
 			}
 			setOverallGate(new CustomGate(overallMatrix));
 		}

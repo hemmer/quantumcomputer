@@ -25,17 +25,17 @@ public class Had extends DenseGate {
 	
 	public void setM(int n, int target){
 		
-		DenseMatrix had = new DenseMatrix(new double[][]{{1.0, 1.0}, {1.0,-1.0}});
-		had = DenseMatrix.scale(new ComplexNum(1.0/Math.sqrt(2.0), 0.0), had);
+		Matrix had = new Matrix(new double[][]{{1.0, 1.0}, {1.0,-1.0}});
+		had = Matrix.scale(new ComplexNum(1.0/Math.sqrt(2.0), 0.0), had);
 		
 		// if target bit is -1, apply to whole register
 		if(target == -1){
-			for (int i=1;i<=n;i++) m=DenseMatrix.tensorProduct(m,had);
+			for (int i=1;i<=n;i++) m=Matrix.tensorProduct(m,had);
 		}else{
-			DenseMatrix ident = new DenseMatrix(2);
+			Matrix ident = new Matrix(2);
 			for (int i=0;i<n;i++){
-				if (i==target) m = DenseMatrix.tensorProduct(m,had);
-				else m = DenseMatrix.tensorProduct(m,ident);
+				if (i==target) m = Matrix.tensorProduct(m,had);
+				else m = Matrix.tensorProduct(m,ident);
 			}
 		}
 	}

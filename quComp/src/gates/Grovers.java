@@ -1,6 +1,6 @@
 package gates;
 import maths.ComplexNum;
-import maths.DenseMatrix;
+import maths.Matrix;
 
 
 public class Grovers extends DenseGate {
@@ -13,10 +13,10 @@ public class Grovers extends DenseGate {
 		
 		int matrixSize = (int) Math.pow(2, n);
 
-		DenseMatrix invert = new DenseMatrix(matrixSize);
+		Matrix invert = new Matrix(matrixSize);
 		for(int i = 0; i < invert.getNumCols(); i++) invert.setElem(i, getSearchedElem(), new ComplexNum(-1.0,0.0));
 
-		DenseMatrix gate = new DenseMatrix(matrixSize, matrixSize);
+		Matrix gate = new Matrix(matrixSize, matrixSize);
 		ComplexNum entry = new ComplexNum((2.0/matrixSize), 0.0);
 		
 		// first generate the inversion about average operator

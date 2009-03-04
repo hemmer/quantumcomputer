@@ -1,6 +1,6 @@
 package gates;
 import maths.ComplexNum;
-import maths.DenseMatrix;
+import maths.Matrix;
 
 
 public class CNot extends DenseGate {
@@ -14,44 +14,44 @@ public class CNot extends DenseGate {
 	
 	public void setM(int n, int targetBit, int ctrl){
 		// Step 1. Fix control elements
-		DenseMatrix[] controlElements = new DenseMatrix[n];
+		Matrix[] controlElements = new Matrix[n];
 		
-    	DenseMatrix b0 = new DenseMatrix(2,1);     // create the basis vector for |0>
+    	Matrix b0 = new Matrix(2,1);     // create the basis vector for |0>
     	b0.setElem(0, 0, new ComplexNum(1.0,0.0));  // i.e. (1, 0)^T
     	
-	   	DenseMatrix outProdB0 = DenseMatrix.outerProduct(b0);  // find outer product of |0> basis vector
+	   	Matrix outProdB0 = Matrix.outerProduct(b0);  // find outer product of |0> basis vector
 	   	
 		for(int i = 0; i < controlElements.length; i++){
 			if(i == this.getTargetBit()){        
-				controlElements[i] = new DenseMatrix(2,"identity");
+				controlElements[i] = new Matrix(2,"identity");
 			}else{
 				controlElements[i] = outProdB0;
 			}
 		}
 		
 		// Step 2. Calculate correct bit shift entries for matrix
-		DenseMatrix[] shiftElements = new DenseMatrix[n];
+		Matrix[] shiftElements = new Matrix[n];
 		
-    	DenseMatrix b1 = new DenseMatrix(2,1);    // create the basis vector for |1>
+    	Matrix b1 = new Matrix(2,1);    // create the basis vector for |1>
     	b1.setElem(1, 0, new ComplexNum(1.0,0.0));  // i.e. (0, 1)^T
     	
-	   	DenseMatrix outProdB1 = DenseMatrix.outerProduct(b1); // find outer product of |1> basis vector
+	   	Matrix outProdB1 = Matrix.outerProduct(b1); // find outer product of |1> basis vector
 	   	
 		for(int i = 0; i < shiftElements.length; i++){
 			if(i == this.getTargetBit()){        
-				shiftElements[i] = new DenseMatrix(2,"not");
+				shiftElements[i] = new Matrix(2,"not");
 			}else if(i == this.getCtrl()[0]){
 				shiftElements[i] = outProdB1;
 			}else{
-				shiftElements[i] = new DenseMatrix(2,"identity");
+				shiftElements[i] = new Matrix(2,"identity");
 			}
 		}
 		
 		// tensor product our two arrays
-		DenseMatrix gate1 = DenseMatrix.tensorProductArray(controlElements);
-		DenseMatrix gate2 = DenseMatrix.tensorProductArray(shiftElements);
+		Matrix gate1 = Matrix.tensorProductArray(controlElements);
+		Matrix gate2 = Matrix.tensorProductArray(shiftElements);
 		// and sum to find total contribution
-		m = DenseMatrix.add(gate1, gate2);
+		m = Matrix.add(gate1, gate2);
 		
 		System.out.println("\n" + m);
 	}

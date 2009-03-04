@@ -3,23 +3,23 @@ import maths.*;
 
 public abstract class DenseGate extends Gate{
 
-	protected DenseMatrix m;
+	protected Matrix m;
 
 	public DenseGate(int n,int targetBit, int[] ctrl, int searchedElem) {
 		super(n,targetBit,ctrl,searchedElem);
-		setM(new DenseMatrix(1));
+		setM(new Matrix(1));
 	}
 	
-	public DenseMatrix getM(){
+	public Matrix getM(){
 		return m;
 	}
 	
-	public void setM(DenseMatrix m){
+	public void setM(Matrix m){
 		this.m=m;
 	}
 	
 	public void applyGate(Register a){
-		a.updateStateVector(DenseMatrix.multiply(getM(), a.getStateVector()) );
+		a.updateStateVector(Matrix.multiply(getM(), a.getStateVector()) );
 	}
 	
 	public String toString(){

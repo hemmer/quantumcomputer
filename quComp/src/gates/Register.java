@@ -56,7 +56,7 @@ public class Register {
 		getStateVector().setGroundState();
 	}
 	
-	public void updateStateVector(DenseMatrix m){
+	public void updateStateVector(Matrix m){
 		
 		StateVector updated = new StateVector(m.getNumRows(), decimal);
 		for(int i = 0; i < m.getNumRows(); i++){
