@@ -1,5 +1,5 @@
 #labels Featured
-To Do List
+#To Do List
 
   *UI
   *Sphere, Probability
@@ -10,11 +10,11 @@ To Do List
 
 
 
-Report
+#Report
 
-*Abstract
-*Theory/History
-*Structure
-*Limitations of program
-*demonstration/example slides
-*Conclusions
+  *Abstract
+  *Theory/History
+  *Structure
+  *Limitations of program
+  *demonstration/example slides
+  *Conclusions
