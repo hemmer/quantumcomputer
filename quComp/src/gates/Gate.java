@@ -1,5 +1,8 @@
 package gates;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 public abstract class Gate implements GateInterface{	
 
 	/**
@@ -86,6 +89,10 @@ public abstract class Gate implements GateInterface{
         else{
                 getNextGate().addToEnd(a);
         }
+	}
+	
+	public Image getImage(){
+		return Toolkit.getDefaultToolkit().getImage("src/default.GIF");
 	}
 	
 	

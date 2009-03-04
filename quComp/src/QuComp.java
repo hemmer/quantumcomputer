@@ -22,14 +22,16 @@ public class QuComp {
     	Register q = new Register(numQubits, false);
     	q.setGroundState();
     	Circuit test = new Circuit(q);
-    	test.addGate(new Had(-1));  	
-//    	test.addGate(new Had(1)); 	
-//    	test.addGate(new Had(2));
+    	test.addGate(new Had(0));  	
+    	test.addGate(new Had(1)); 	
+    	test.addGate(new Had(2));
+    	test.addGate(new CNot(2,0));
+    	new CircuitGui(test);
     	
 //    	test.setOverallMatrix();
 //    	test.runOverallMatrix();
 //    	System.out.println(q);
-
+/*
     	test.addGate(new Grovers(5));
     	test.addGate(new Grovers(5));
     	test.addGate(new Grovers(5));
@@ -39,7 +41,7 @@ public class QuComp {
     	test.addGate(new Measurement());
     	test.applyAll();
     	System.out.println(q);
-    	
+    	*/
     	/*q.setGroundState();
     	Circuit test2 = new Circuit(q);
     	test2.addGate(new FuncHad(0));

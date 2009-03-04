@@ -1,4 +1,7 @@
 package gates;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import maths.ComplexNum;
 import maths.Matrix;
 
@@ -52,8 +55,6 @@ public class CNot extends DenseGate {
 		Matrix gate2 = Matrix.tensorProductArray(shiftElements);
 		// and sum to find total contribution
 		m = Matrix.add(gate1, gate2);
-		
-		System.out.println("\n" + m);
 	}
 	
 	
@@ -66,6 +67,9 @@ public class CNot extends DenseGate {
 		setM(numQubits,getTargetBit(),getCtrl(0));
 	}
 
+	public Image getImage(){
+		return Toolkit.getDefaultToolkit().getImage("src/cnot.GIF");
+	}
 
 
 }

@@ -1,14 +1,15 @@
 package gates;
 import maths.*;
+import java.awt.*;
 
 public class Had extends DenseGate {
 
 	public Had(int target){
-		super(1,target,(new int[] {0}),0);
+		super(1,target,(new int[] {-1}),0);
 	}
 	
 	public Had(){
-		super(1,-1,(new int[] {0}),0);
+		super(1,-1,(new int[] {-1}),0);
 	}
 	
 	public Had(int n,int target) {			
@@ -44,4 +45,9 @@ public class Had extends DenseGate {
 		this.numQubits=N;
 		setM(numQubits,getTargetBit());
 	}
+	
+	public Image getImage(){
+		return Toolkit.getDefaultToolkit().getImage("src/hadamard.GIF");
+	}
+	
 }
