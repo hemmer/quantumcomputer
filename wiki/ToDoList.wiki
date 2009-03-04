@@ -1,16 +1,16 @@
 #labels Featured
-#To Do List
+To Do List
 
-*UI
-*Sphere, Probability
-*Exceptions
-*Javadoc
-*Tofolli
-*Phase shift
+  *UI
+  *Sphere, Probability
+  *Exceptions
+  *Javadoc
+  *Tofolli
+  *Phase shift
 
 
 
-#Report
+Report
 
 *Abstract
 *Theory/History
