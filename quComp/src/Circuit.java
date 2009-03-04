@@ -52,6 +52,7 @@ public class Circuit implements CircuitInterface {
 	}
 
 	public Circuit(Register reg){		
+		reg.setGroundState();
 		this.setReg(reg);
 		setNextGate(null);
 		setCurrent(0);
@@ -114,7 +115,10 @@ public class Circuit implements CircuitInterface {
 	}
 	
 	public void reset(){
+		current=1;
 		setNextGate(getFirstGate());
+		frame.update(reg);
+		getReg().setGroundState();
 	}
 	public Register getRegister(){
 		return getReg();
@@ -164,12 +168,12 @@ public class Circuit implements CircuitInterface {
 
 	public void updatePanel(){
 		frame.update(reg);
-		try {
+		/*try {
 			Thread.currentThread().sleep(500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 

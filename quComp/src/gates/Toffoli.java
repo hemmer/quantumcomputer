@@ -1,4 +1,7 @@
 package gates;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import maths.ComplexNum;
 import maths.Matrix;
 
@@ -41,7 +44,6 @@ public class Toffoli extends DenseGate {
 			if(i == this.getTargetBit()){        
 				shiftElements[i] = new Matrix(2,"not");
 			}else if(isCtrlBit(i)){
-				System.out.println(i);
 				shiftElements[i] = outProdB1;
 			}else{
 				shiftElements[i] = new Matrix(2,"identity");
@@ -53,8 +55,6 @@ public class Toffoli extends DenseGate {
 		Matrix gate2 = Matrix.tensorProductArray(shiftElements);
 		// and sum to find total contribution
 		m = Matrix.add(gate1, gate2);
-		
-		System.out.println("\n" + m);
 	}
 	
 	
@@ -74,6 +74,10 @@ public class Toffoli extends DenseGate {
 			if (getCtrl()[i]==n){return true;}
 		}
 		return false;
+	}
+	
+	public Image getImage(){
+		return Toolkit.getDefaultToolkit().getImage("src/tof.GIF");
 	}
 
 }

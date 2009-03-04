@@ -1,11 +1,13 @@
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.*;
 import gates.*;
 
 
-	class CircuitPanel extends JPanel{
+	class CircuitPanel extends JPanel implements MouseListener{
 
 		Circuit circuit;
 		int width;
@@ -28,19 +30,20 @@ import gates.*;
 			setBackground(Color.DARK_GRAY);
 			this.width = width;
 			this.height = height;
-			ctrlImage = Toolkit.getDefaultToolkit().getImage("src/ctrl.GIF");
+			ctrlImage = Toolkit.getDefaultToolkit().getImage("src/ctrl.PNG");
+			addMouseListener(this);
 		}
 
 		public void paintComponent(Graphics g){
 
 			super.paintComponent(g);
+			g.setColor(Color.red);
+			g.drawLine(xoffset + circuit.getCurrent()*betweengates-betweengates+halfimagesize, 0, xoffset + circuit.getCurrent()*betweengates-betweengates+halfimagesize, height);
 			g.setColor(Color.black);
 			//draw the lines
 			for (int i=0;i<circuit.getRegister().getNumQubits();i++){
 				g.drawLine(0, yoffset+betweenlines*i, width, yoffset+betweenlines*i);
 			}
-			
-			
 			//draw the gates
 			int ctrlBit;
 			for (int i=1;i<=circuit.getTotal();i++){
@@ -51,11 +54,14 @@ import gates.*;
 				//draw ctrl bit
 				ctrlBit = next.getCtrl(0);
 				if (ctrlBit>=0){
-					g.drawLine(xoffset + i*betweengates-betweengates+halfimagesize, yoffset+betweenlines*next.getTargetBit()-halfimagesize
-							,xoffset + i*betweengates-betweengates+halfimagesize, yoffset+betweenlines*next.getCtrl(0));
-					g.drawImage(ctrlImage, xoffset + i*betweengates-betweengates+sizediff/2, yoffset+betweenlines*ctrlBit-halfctrlsize, this);
+					for (int j=0;j<next.getCtrl().length;j++){
+						g.drawLine(xoffset + i*betweengates-betweengates+halfimagesize, yoffset+betweenlines*next.getTargetBit()-halfimagesize
+							,xoffset + i*betweengates-betweengates+halfimagesize, yoffset+betweenlines*next.getCtrl(j));
+						g.drawImage(ctrlImage, xoffset + i*betweengates-betweengates+sizediff/2, yoffset+betweenlines*next.getCtrl(j)-halfctrlsize, this);
+				
+					}
 				}
-
+				//draw gate
 				g.drawImage(gateimg, xoffset + i*betweengates-betweengates, yoffset+betweenlines*next.getTargetBit()-halfimagesize, this);
 			}
 			
@@ -73,6 +79,45 @@ import gates.*;
 		public int round(double x){
 			return (int)Math.rint(x);
 		}
+		
+		public void mouseClicked(MouseEvent e){
+		    
+			if (e.getButton() == MouseEvent.BUTTON1)// left mouse click
+		    {
+		        circuit.apply();
+		        repaint();
+		    }
+		    if (e.getButton() == MouseEvent.BUTTON3){
+		        
+		    	circuit.getReg().setGroundState();
+		    	circuit.reset();
+		    	repaint();
+			}
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		} 
 
 
 	}

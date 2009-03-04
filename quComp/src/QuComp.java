@@ -20,12 +20,15 @@ public class QuComp {
     	int numQubits = 3;
     	
     	Register q = new Register(numQubits, false);
-    	q.setGroundState();
     	Circuit test = new Circuit(q);
     	test.addGate(new Had(0));  	
+    	test.addGate(new Had(1));
+    	test.addGate(new CNot(1,0));
+    	test.addGate(new Had(2));
     	test.addGate(new Had(1)); 	
     	test.addGate(new Had(2));
     	test.addGate(new CNot(2,0));
+    	test.addGate(new Toffoli(0,new int[] {1,2}));
     	new CircuitGui(test);
     	
 //    	test.setOverallMatrix();
