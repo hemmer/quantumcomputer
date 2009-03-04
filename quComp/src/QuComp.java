@@ -22,19 +22,18 @@ public class QuComp {
     	Register q = new Register(numQubits, false);
     	q.setGroundState();
     	Circuit test = new Circuit(q);
-    	test.addGate(new Had(0));
-    	test.apply();
-    	System.out.println(q);   	
-
-    	test.addGate(new Had(1));
-    	test.apply();
-    	System.out.println(q);   	
-
+    	test.addGate(new Had(0));  	
+    	test.addGate(new Had(1)); 	
     	test.addGate(new Had(2));
-    	test.apply();
-    	System.out.println(q);
     	
-
+    	test.addGate(new Grovers(5));
+    	test.addGate(new Grovers(5));
+    	test.addGate(new Grovers(5));
+    	test.addGate(new Grovers(5));
+    	test.addGate(new Grovers(5));
+    	test.addGate(new Grovers(5));
+    	test.applyAll();
+    	System.out.println(q);
     	
     	/*q.setGroundState();
     	Circuit test2 = new Circuit(q);

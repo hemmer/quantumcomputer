@@ -29,6 +29,9 @@ public class ProbPanel extends JPanel {
 		amps = new double[n];
 		double sum =0;
 		
+		double a = 0;
+		double b = 1;
+		
 		for(int i=0;i<n;i++){
 			double squared = vector.getAmp(i).getMagnitude()*vector.getAmp(i).getMagnitude();
 			amps[i]=squared;
@@ -36,7 +39,7 @@ public class ProbPanel extends JPanel {
 		}
 		for(int i=0;i<n;i++){
 			amps[i]/=sum;
-			g.setColor(Color.getHSBColor(0.3f,1f, new Double(amps[i]).floatValue()));
+			g.setColor(Color.getHSBColor(0.5f,1f, new Double(amps[i]*(b-a)+a).floatValue()));
 			g.fillRect(size*i,0,size*(i+1),Y);
 		}
 		for(int i=0;i<n-1;i++){
