@@ -2,19 +2,27 @@
 To Do List
 
   * UI
-  * Sphere, Probability
   * Exceptions
-  * Javadoc
-  * Tofolli
-  * Phase shift
-
+  * Javadoc                          everyone/taha
+  * Tofolli/CNOT(funct)              ewan
+  * Phase shift                      vokes
+  * draw circuit                     ian
+  * salt                             charles
 
 
 Report
 
-  * Abstract
-  * Theory/History
-  * Structure
-  * Limitations of program
-  * demonstration/example slides
+  * Abstract                         charles
+  * Theory/History                   charles
+  * Structure                        ian
+  * timing/functional/matrix         ewan
+  * demonstration/example slides     vokes?
   * Conclusions
+
+
+
+
+
+other
+
+bloch sphere
