@@ -1,3 +1,6 @@
+import gates.Gate;
+import gates.Register;
+
 
 public interface CircuitInterface {
 

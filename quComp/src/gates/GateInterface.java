@@ -1,3 +1,5 @@
+package gates;
+
 
 public interface GateInterface{
 	

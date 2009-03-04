@@ -1,3 +1,5 @@
+import gates.Register;
+
 import java.awt.Dimension;
 import javax.swing.JFrame;
 

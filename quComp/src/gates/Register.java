@@ -1,3 +1,5 @@
+package gates;
+
 import maths.*;
 
 

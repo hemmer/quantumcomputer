@@ -1,10 +1,10 @@
+import gates.*;
+
 /**
  * <h1>QuComp</h1>
  * 
  * Quantum Computer Simulation
  *
- * @author Ewan Hemingway
- * @version 1.00 2009/1/31
  */
  
 public class QuComp {
@@ -22,24 +22,24 @@ public class QuComp {
     	Register q = new Register(numQubits, false);
     	q.setGroundState();
     	Circuit test = new Circuit(q);
-    	test.addGate(new Had(0));  	
-    	test.addGate(new Had(1)); 	
-    	test.addGate(new Had(2));
+    	test.addGate(new Had(-1));  	
+//    	test.addGate(new Had(1)); 	
+//    	test.addGate(new Had(2));
     	
-    	test.setOverallMatrix();
-    	test.runOverallMatrix();
-    	System.out.println(q);
-    	
-    	/*
+//    	test.setOverallMatrix();
+//    	test.runOverallMatrix();
+//    	System.out.println(q);
+
     	test.addGate(new Grovers(5));
     	test.addGate(new Grovers(5));
     	test.addGate(new Grovers(5));
     	test.addGate(new Grovers(5));
     	test.addGate(new Grovers(5));
     	test.addGate(new Grovers(5));
+    	test.addGate(new Measurement());
     	test.applyAll();
     	System.out.println(q);
-    	*/
+    	
     	/*q.setGroundState();
     	Circuit test2 = new Circuit(q);
     	test2.addGate(new FuncHad(0));

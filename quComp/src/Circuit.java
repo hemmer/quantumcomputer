@@ -1,3 +1,7 @@
+import gates.CustomGate;
+import gates.DenseGate;
+import gates.Gate;
+import gates.Register;
 import maths.DenseMatrix;
 
 
@@ -75,7 +79,13 @@ public class Circuit implements CircuitInterface {
 			System.out.println("No more gates in cirucit");
 		}
 		else{
-			System.out.println("Applying " + getNextGate().getName() + " to qubit "+getNextGate().getTargetBit());
+			String msg = "Applying " + getNextGate().getName();
+			if(getNextGate().getTargetBit() == -1){
+				msg += " to whole register.";
+			}else{
+				msg += " to qubit " + getNextGate().getTargetBit() + ".";
+			}
+			System.out.println(msg);
 			getNextGate().applyGate(getReg());
 			setNextGate(getNextGate().getNextGate());
 			setCurrent(getCurrent() + 1);
@@ -140,9 +150,9 @@ public class Circuit implements CircuitInterface {
 	public void setOverallMatrix(){
 		
 		try{
-			DenseMatrix overallMatrix = ((DenseGate2)(getGate(getTotal()))).getM();
+			DenseMatrix overallMatrix = ((DenseGate)(getGate(getTotal()))).getM();
 			for (int i=getTotal()-1;i>=1;i--){
-				overallMatrix = DenseMatrix.multiply(overallMatrix,((DenseGate2)getGate(i)).getM());
+				overallMatrix = DenseMatrix.multiply(overallMatrix,((DenseGate)getGate(i)).getM());
 			}
 			setOverallGate(new CustomGate(overallMatrix));
 		}

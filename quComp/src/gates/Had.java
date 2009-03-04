@@ -1,6 +1,7 @@
+package gates;
 import maths.*;
 
-public class Had extends DenseGate2 {
+public class Had extends DenseGate {
 
 	public Had(int target){
 		super(1,target,(new int[] {0}),0);
@@ -24,8 +25,9 @@ public class Had extends DenseGate2 {
 	
 	public void setM(int n, int target){
 		
-		DenseMatrix had = new DenseMatrix(2,"hadamard");
-
+		DenseMatrix had = new DenseMatrix(new double[][]{{1.0, 1.0}, {1.0,-1.0}});
+		had = DenseMatrix.scale(new ComplexNum(1.0/Math.sqrt(2.0), 0.0), had);
+		
 		// if target bit is -1, apply to whole register
 		if(target == -1){
 			for (int i=1;i<=n;i++) m=DenseMatrix.tensorProduct(m,had);

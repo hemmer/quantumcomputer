@@ -1,7 +1,8 @@
+package gates;
 import maths.DenseMatrix;
 
 
-public class Not extends DenseGate2 {
+public class Not extends DenseGate {
 
 	public Not(int targetBit) {
 		super(1,targetBit,(new int[] {0}),0);

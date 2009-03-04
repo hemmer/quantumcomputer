@@ -1,8 +1,9 @@
+package gates;
 import maths.ComplexNum;
 import maths.DenseMatrix;
 
 
-public class Grovers extends DenseGate2 {
+public class Grovers extends DenseGate {
 
 	public Grovers(int SearchedElem) {
 		super(1,-1,(new int[] {0}),SearchedElem);

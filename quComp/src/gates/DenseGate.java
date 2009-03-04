@@ -1,11 +1,11 @@
+package gates;
 import maths.*;
 
-public abstract class DenseGate2 extends Gate{
+public abstract class DenseGate extends Gate{
 
 	protected DenseMatrix m;
-	
-	
-	public DenseGate2(int n,int targetBit, int[] ctrl, int searchedElem) {
+
+	public DenseGate(int n,int targetBit, int[] ctrl, int searchedElem) {
 		super(n,targetBit,ctrl,searchedElem);
 		setM(new DenseMatrix(1));
 	}

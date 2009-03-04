@@ -1,17 +1,18 @@
+package gates;
 import maths.ComplexNum;
 import maths.DenseMatrix;
 
 
-public class CNot extends DenseGate2 {
+public class Toffoli extends DenseGate {
 
-	public CNot(int targetBit, int ctrl) {
-		super(1,targetBit,(new int[] {ctrl}),0);
+	public Toffoli(int targetBit, int[] ctrl) {
+		super(1,targetBit,ctrl,0);
 		// TODO Auto-generated constructor stub
 	}
 
 	
 	
-	public void setM(int n, int targetBit, int ctrl){
+	public void setM(int n, int targetBit, int[] ctrl){
 		// Step 1. Fix control elements
 		DenseMatrix[] controlElements = new DenseMatrix[n];
 		
@@ -39,7 +40,8 @@ public class CNot extends DenseGate2 {
 		for(int i = 0; i < shiftElements.length; i++){
 			if(i == this.getTargetBit()){        
 				shiftElements[i] = new DenseMatrix(2,"not");
-			}else if(i == this.getCtrl()[0]){
+			}else if(isCtrlBit(i)){
+				System.out.println(i);
 				shiftElements[i] = outProdB1;
 			}else{
 				shiftElements[i] = new DenseMatrix(2,"identity");
@@ -57,14 +59,21 @@ public class CNot extends DenseGate2 {
 	
 	
 	public String getName() {
-		return "CNot";
+		return "Toffoli";
 	}
 
 	public void setNumQubits(int n) {
-		this.numQubits=n;
-		setM(numQubits,getTargetBit(),getCtrl(0));
+		numQubits=n;
+		setM(numQubits,getTargetBit(),getCtrl());
 	}
+	
+	//searches the array of ctrl bits
+	public boolean isCtrlBit(int n){
 
-
+		for (int i=0;i<getCtrl().length;i++){
+			if (getCtrl()[i]==n){return true;}
+		}
+		return false;
+	}
 
 }

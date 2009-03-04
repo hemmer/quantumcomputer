@@ -1,6 +1,7 @@
+package gates;
 import maths.*;
 
-public class CustomGate extends DenseGate2 {
+public class CustomGate extends DenseGate {
 
 	public CustomGate(DenseMatrix m){
 		super(m.getNumCols(),0,(new int[] {0}),0);

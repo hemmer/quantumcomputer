@@ -1,7 +1,9 @@
+package gates;
+
 public abstract class Gate implements GateInterface{	
 
 	/**
-	 * @param n Size of register
+	 * @param numQubits Size of register
 	 * @param target target bit
 	 * @param ctrl array for control bits
 	 * @param searchedElem the searched element
@@ -11,9 +13,17 @@ public abstract class Gate implements GateInterface{
 	private int targetBit;
 	private int[] ctrl;
 	private int searchedElem;
-	
 	private Gate nextGate;
 
+	public Gate(int n, int target, int[] ctrl, int searchedElem){
+		numQubits =n;
+		targetBit = target;
+		this.searchedElem = searchedElem;
+		this.ctrl=ctrl;
+		setNextGate(null);
+	}
+	
+	
 	void setTargetBit(int targetBit) {
 		this.targetBit = targetBit;
 	}
@@ -31,14 +41,6 @@ public abstract class Gate implements GateInterface{
 
 	void setCtrl(int[] ctrl) {
 		this.ctrl = ctrl;
-	}
-
-	public Gate(int n, int target, int[] ctrl, int searchedElem){
-		numQubits =n;
-		targetBit = target;
-		this.searchedElem = searchedElem;
-		this.ctrl=ctrl;
-		setNextGate(null);
 	}
 	
 	
