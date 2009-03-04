@@ -1,20 +1,20 @@
 #labels Featured
 #To Do List
 
- * Implementing Shor's Algorithm
-
- * Adding functional gates. If we keep the old gates working we can use java's inbuilt timer object to compare the speed of each implementation and discuss in the report. (Ewan todo).
-
- * Creating a graphical representation of Grover's Algorithm that updates with each iteration (Ian!)
-
- * Writing Javadoc/Commenting Code
-
- * Exception Handling
-
- * GUI of Circuit Class
+*UI
+*Sphere, Probability
+*Exceptions
+*Javadoc
+*Tofolli
+*Phase shift
 
 
 
+#Report
 
-
-Ideas on write up and presentation:
+*Abstract
+*Theory/History
+*Structure
+*Limitations of program
+*demonstration/example slides
+*Conclusions
