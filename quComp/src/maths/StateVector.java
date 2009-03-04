@@ -39,7 +39,7 @@ public class StateVector extends DenseMatrix {
 	}
 	
 	public ComplexNum getAmp(int index){
-		ComplexNum c = (ComplexNum) matrix[index][0];
+		ComplexNum c = matrix[index][0];
 		return new ComplexNum(c.getReal(), c.getImag());
 	}
 	

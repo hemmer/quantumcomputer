@@ -1,5 +1,3 @@
-import javax.swing.JFrame;
-
 import maths.DenseMatrix;
 
 
@@ -53,7 +51,7 @@ public class Circuit implements CircuitInterface {
 		this.setReg(reg);
 		setNextGate(null);
 		setCurrent(0);
-		frame=new Window();
+		frame=new Window(reg);
 	}
 	
 	//add a gate to end of the list
@@ -82,13 +80,7 @@ public class Circuit implements CircuitInterface {
 			setNextGate(getNextGate().getNextGate());
 			setCurrent(getCurrent() + 1);
 			
-			frame.update(reg);
-			try {
-				Thread.currentThread().sleep(500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			updatePanel();
 		}
 	}
 	
@@ -141,17 +133,18 @@ public class Circuit implements CircuitInterface {
 		}
 		else{
 			getOverallGate().applyGate(getReg());
+			updatePanel();
 		}
 	}
 	
 	public void setOverallMatrix(){
 		
 		try{
-			DenseMatrix overallMatrix = ((DenseGate)getGate(getTotal())).gate;
+			DenseMatrix overallMatrix = ((DenseGate2)(getGate(getTotal()))).getM();
 			for (int i=getTotal()-1;i>=1;i--){
-				overallMatrix = DenseMatrix.multiply(overallMatrix,((DenseGate)getGate(i)).gate);
+				overallMatrix = DenseMatrix.multiply(overallMatrix,((DenseGate2)getGate(i)).getM());
 			}
-			setOverallGate(new DenseGate("Overall Matrix",overallMatrix,getReg().getSize()));
+			setOverallGate(new CustomGate(overallMatrix));
 		}
 		catch (ClassCastException e) {
 	        System.out.println("Overall matrix only works with dense matrices");
@@ -159,6 +152,15 @@ public class Circuit implements CircuitInterface {
 
 	}
 
+	public void updatePanel(){
+		frame.update(reg);
+		try {
+			Thread.currentThread().sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 
 }

@@ -249,7 +249,7 @@ public class DenseMatrix extends Matrix {
 	public static DenseMatrix tensorProductArray(DenseMatrix[] matrixArray){
 		
 		// start with first entry
-		DenseMatrix tempMatrix = (DenseMatrix) matrixArray[0];
+		DenseMatrix tempMatrix = matrixArray[0];
 		
 		// for each matrix in array, tensor product into the previous ones
 		for(int i = 1; i < matrixArray.length; i++){

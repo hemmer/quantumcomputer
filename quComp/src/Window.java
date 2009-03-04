@@ -7,8 +7,9 @@ public class Window extends JFrame {
 	
 	ProbPanel panel;
 	
-	public Window(){
+	public Window(Register reg){
 		panel = new ProbPanel(500, 100);
+		panel.update(reg);
 		this.setSize(new Dimension(500,100));
 		setVisible(true);
 		this.add(panel);
