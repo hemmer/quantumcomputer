@@ -31,7 +31,7 @@ public class ProbPanel extends JPanel {
 		amps = new double[n];
 		double sum =0;
 		
-		double a = 0;
+		double a = 0.5;
 		double b = 1;
 		
 		for(int i=0;i<n;i++){
@@ -43,6 +43,8 @@ public class ProbPanel extends JPanel {
 			amps[i]/=sum;
 			g.setColor(Color.getHSBColor(0.5f,1f, new Double(amps[i]*(b-a)+a).floatValue()));
 			g.fillRect(size*i,0,size*(i+1),Y);
+			g.setColor(Color.black);
+			g.fillRect(size*i, 0, size*(i+1), (int)(Y*(1-amps[i])));
 		}
 		for(int i=0;i<n-1;i++){
 			g.setColor(Color.white);
