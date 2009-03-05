@@ -8,7 +8,6 @@ import maths.ComplexNum;
 		
 		CircuitPanel panel;
 		int width = 1000;
-		int height = 200;
 
 		public CircuitGui(Circuit circuit) {
 		
@@ -19,7 +18,8 @@ import maths.ComplexNum;
 				//fit the panel to the GUI
 				pack();
 				//add to the content pane
-				setBounds(0,100,width,height);
+				int height = circuit.getReg().getNumQubits()*40+70;
+				setBounds(0,125,width,height);
 				panel = new CircuitPanel(circuit,width,height);
 				
 				getContentPane().add(panel, BorderLayout.CENTER);

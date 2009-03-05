@@ -25,10 +25,11 @@ public class QuComp {
     	test.addGate(new Had(1));
     	test.addGate(new CNot(1,0));
     	test.addGate(new Had(2));
-    	test.addGate(new Had(1)); 	
+    	test.addGate(new Toffoli(0,new int[] {1,2}));
+    	test.addGate(new Had(-1)); 	
     	test.addGate(new Had(2));
     	test.addGate(new CNot(2,0));
-    	test.addGate(new Toffoli(0,new int[] {1,2}));
+    	test.addGate(new Measurement());
     	new CircuitGui(test);
     	
 //    	test.setOverallMatrix();

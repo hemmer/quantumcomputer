@@ -62,7 +62,14 @@ import gates.*;
 					}
 				}
 				//draw gate
-				g.drawImage(gateimg, xoffset + i*betweengates-betweengates, yoffset+betweenlines*next.getTargetBit()-halfimagesize, this);
+				if (next.getTargetBit()>=0){
+					g.drawImage(gateimg, xoffset + i*betweengates-betweengates, yoffset+betweenlines*next.getTargetBit()-halfimagesize, this);
+				}
+				else{
+					for (int j=0;j<circuit.getRegister().getNumQubits();j++){
+						g.drawImage(gateimg, xoffset + i*betweengates-betweengates, yoffset+betweenlines*j-halfimagesize, this);
+					}
+				}
 			}
 			
 			
@@ -89,7 +96,6 @@ import gates.*;
 		    }
 		    if (e.getButton() == MouseEvent.BUTTON3){
 		        
-		    	circuit.getReg().setGroundState();
 		    	circuit.reset();
 		    	repaint();
 			}

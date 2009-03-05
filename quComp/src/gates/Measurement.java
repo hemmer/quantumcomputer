@@ -1,4 +1,7 @@
 package gates;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import maths.*;
 
 
@@ -6,7 +9,7 @@ public class Measurement extends Gate {
 
 
 	public Measurement() {
-		super(0,0,(new int[] {0}),0);
+		super(0,-1,(new int[] {-1}),0);
 	}
 
 	public void applyGate(Register q) {
@@ -48,6 +51,9 @@ public class Measurement extends Gate {
 		return "Measurement";
 	}
 
+	public Image getImage(){
+		return Toolkit.getDefaultToolkit().getImage("src/measurement.png");
+	}
 	
 
 
