@@ -1,6 +1,5 @@
-#labels Featured
 To Do List
-
+  
   * UI
   * Exceptions
   * Javadoc                          everyone/taha
@@ -9,7 +8,9 @@ To Do List
 
 
 Report
-
+  * analysis - physical accuracy of system, optimum number of iterations, register
+     rotation (could be the phase shift mentioned below?)
+  * (forgive me if this is covered by the headings below)
   * Abstract                         charles
   * Theory/History                   charles
   * Structure                        ian
