@@ -38,7 +38,7 @@ import gates.*;
 
 			super.paintComponent(g);
 			g.setColor(Color.red);
-			g.drawLine(xoffset + circuit.getCurrent()*betweengates-betweengates+halfimagesize, 0, xoffset + circuit.getCurrent()*betweengates-betweengates+halfimagesize, height);
+			g.drawLine(xoffset + circuit.getCurrent()*betweengates-betweengates+halfimagesize-betweengates/2, 0, xoffset + circuit.getCurrent()*betweengates-betweengates+halfimagesize-betweengates/2, height);
 			g.setColor(Color.black);
 			//draw the lines
 			for (int i=0;i<circuit.getRegister().getNumQubits();i++){
