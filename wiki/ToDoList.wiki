@@ -1,6 +1,6 @@
 To Do List
   
-  * UI
+  * UI - in particular, some way of running several simulations and gathering data...
   * Exceptions
   * Javadoc                          everyone/taha
   * Tofolli/CNOT(funct)              ewan
