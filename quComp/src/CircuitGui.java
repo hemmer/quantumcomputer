@@ -11,11 +11,7 @@ import maths.ComplexNum;
 
 		public CircuitGui(Circuit circuit) {
 		
-				//set window title and stop the user from being able to resize the window
-				//setResizable(false);
 				setTitle("Circuit");
-				//create the table
-				//fit the panel to the GUI
 				pack();
 				//add to the content pane
 				int height = circuit.getReg().getNumQubits()*40+70;

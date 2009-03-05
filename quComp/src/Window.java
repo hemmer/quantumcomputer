@@ -13,6 +13,8 @@ public class Window extends JFrame {
 		panel = new ProbPanel(500, 100);
 		panel.update(reg);
 		this.setSize(new Dimension(500,100));
+		setTitle("Probabilities");
+		pack();
 		setVisible(true);
 		this.add(panel);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

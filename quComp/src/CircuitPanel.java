@@ -15,7 +15,7 @@ import gates.*;
 		int xoffset = 10;
 		int yoffset = 40;
 		int betweenlines = 40;
-		int betweengates = 40;
+		int betweengates = 50;
 		int imagesize = 32;
 		int halfimagesize = imagesize/2;
 		int ctrlsize = 20;
