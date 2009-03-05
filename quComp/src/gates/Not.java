@@ -5,7 +5,7 @@ import maths.Matrix;
 public class Not extends DenseGate {
 
 	public Not(int targetBit) {
-		super(1,targetBit,(new int[] {0}),0);
+		super(1,targetBit,(new int[] {-1}),0);
 	}
 
 	public void setM(int n, int target){

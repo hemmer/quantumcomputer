@@ -17,17 +17,14 @@ public class QuComp {
 		System.out.println("----------------------------------/-------------");  
 	    System.out.println();
     	
-    	int numQubits = 3;
+    	int numQubits = 5;
     	
     	Register q = new Register(numQubits, false);
     	Circuit test = new Circuit(q);
-    	test.addGate(new Had(0));
-    	test.addGate(new Had(1));  	
-    	test.addGate(new Had(2));  
-    	test.addGate(new Toffoli(0,new int[]{1,2}));
-    	test.addGate(new CNot(0,2));
-    	test.addGate(new Had(-1));  	
-    	test.addGate(new Had(2)); 
+    	test.addGate(new Had(-1));
+    	test.addGate(new Toffoli(3,new int[]{0,2}));
+    	test.addGate(new CNot(2,1));
+    	test.addGate(new CNot(3,1));
     	test.addGate(new Measurement()); 
     	new CircuitGui(test);
     	

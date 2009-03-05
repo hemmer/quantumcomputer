@@ -6,7 +6,7 @@ import maths.Matrix;
 public class Grovers extends DenseGate {
 
 	public Grovers(int SearchedElem) {
-		super(1,-1,(new int[] {0}),SearchedElem);
+		super(1,-1,(new int[] {-1}),SearchedElem);
 	}
 
 	public void setM(int n){
