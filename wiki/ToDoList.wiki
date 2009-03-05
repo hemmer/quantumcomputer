@@ -6,8 +6,6 @@ To Do List
   * Javadoc                          everyone/taha
   * Tofolli/CNOT(funct)              ewan
   * Phase shift                      vokes
-  * draw circuit                     ian
-  * salt                             charles
 
 
 Report
