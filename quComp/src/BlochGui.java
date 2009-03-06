@@ -6,7 +6,7 @@ import maths.ComplexNum;
 
 	class BlochGui extends JFrame {
 
-		private BlochPanel graphics;;
+		private BlochPanel graphics;
 			
 		void setGraphics(BlochPanel graphics) {
 			this.graphics = graphics;
