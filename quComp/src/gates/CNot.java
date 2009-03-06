@@ -72,4 +72,12 @@ public class CNot extends DenseGate {
 	}
 
 
+
+	@Override
+	public int getNumArguments() {
+		// TODO Auto-generated method stub
+		return 2;
+	}
+
+
 }

@@ -49,5 +49,11 @@ public class Had extends DenseGate {
 	public Image getImage(){
 		return Toolkit.getDefaultToolkit().getImage("src/hadamard.GIF");
 	}
+
+	@Override
+	public int getNumArguments() {
+		// TODO Auto-generated method stub
+		return 1;
+	}
 	
 }

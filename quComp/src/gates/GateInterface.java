@@ -15,5 +15,6 @@ public interface GateInterface{
 
 	public String getName();
 	public int getTargetBit();
+	public int getNumArguments();
 
 }

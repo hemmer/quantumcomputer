@@ -48,5 +48,11 @@ public class Grovers extends DenseGate {
 		return "Grovers";
 	}
 
+	@Override
+	public int getNumArguments() {
+		// searched elem only
+		return 1;
+	}
+
 }
 

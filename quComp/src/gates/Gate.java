@@ -95,7 +95,16 @@ public abstract class Gate implements GateInterface{
 		return Toolkit.getDefaultToolkit().getImage("src/default.GIF");
 	}
 	
-	
+	// checks input is within range
+	public boolean checkParams(){
+		boolean okay = true;
+		if(targetBit > numQubits - 1 || targetBit < -1) okay = false;
+		for(int i : ctrl){
+			if(i > numQubits - 1 || i < -1) okay = false;
+		}
+		if(searchedElem < 0 || searchedElem > (int) Math.pow(2, numQubits) - 1) okay = false;
+		return okay;
+	}
 	
 	
 }

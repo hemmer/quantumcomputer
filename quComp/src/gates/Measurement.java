@@ -54,6 +54,12 @@ public class Measurement extends Gate {
 	public Image getImage(){
 		return Toolkit.getDefaultToolkit().getImage("src/measurement.png");
 	}
+
+	@Override
+	public int getNumArguments() {
+		// doesnt need anything
+		return 0;
+	}
 	
 
 

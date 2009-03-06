@@ -30,4 +30,10 @@ public class Not extends DenseGate {
 		return "Not";
 	}
 
+	@Override
+	public int getNumArguments() {
+		// TODO Auto-generated method stub
+		return 1;
+	}
+
 }

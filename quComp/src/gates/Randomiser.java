@@ -35,4 +35,10 @@ public class Randomiser extends Gate {
 
 	}
 
+	@Override
+	public int getNumArguments() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

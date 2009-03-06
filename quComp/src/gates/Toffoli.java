@@ -10,10 +10,8 @@ public class Toffoli extends DenseGate {
 
 	public Toffoli(int targetBit, int[] ctrl) {
 		super(1,targetBit,ctrl,0);
-		// TODO Auto-generated constructor stub
 	}
 
-	
 	
 	public void setM(int n, int targetBit, int[] ctrl){
 		// Step 1. Fix control elements
@@ -79,5 +77,14 @@ public class Toffoli extends DenseGate {
 	public Image getImage(){
 		return Toolkit.getDefaultToolkit().getImage("src/tof.GIF");
 	}
+
+
+
+	@Override
+	public int getNumArguments() {
+		// can take array, min of 2 inputs
+		return -1;
+	}
+
 
 }

@@ -61,4 +61,10 @@ public class FuncHad extends Gate {
 
 	}
 
+	@Override
+	public int getNumArguments() {
+		// TODO Auto-generated method stub
+		return 1;
+	}
+
 }

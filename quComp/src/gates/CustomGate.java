@@ -17,5 +17,13 @@ public class CustomGate extends DenseGate {
 	public void setNumQubits(int N){
 		this.numQubits=N;
 	}
+
+
+	@Override
+	public int getNumArguments() {
+		// should never use this
+		return -1;
+	}
+
 	
 }
