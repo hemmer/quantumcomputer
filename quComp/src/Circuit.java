@@ -13,6 +13,7 @@ public class Circuit implements CircuitInterface {
 	private int total;
 	private int current;
 	private Gate overallGate;
+	private boolean display;
 	Window frame;
 	
 	void setTotal(int total) {
@@ -51,12 +52,13 @@ public class Circuit implements CircuitInterface {
 		this.current = current;
 	}
 
-	public Circuit(Register reg){		
+	public Circuit(Register reg, boolean display){		
 		reg.setGroundState();
 		this.setReg(reg);
 		setNextGate(null);
 		setCurrent(0);
-		frame=new Window(reg);
+		this.display = display;
+		if (display)frame=new Window(reg);
 	}
 	
 	//add a gate to end of the list
@@ -64,14 +66,17 @@ public class Circuit implements CircuitInterface {
 		
 		setTotal(getTotal() + 1);
 		gate.setNumQubits(getReg().getNumQubits());
-		if (getNextGate()==null){
-			setCurrent(1);
-			setFirstGate(gate);
-			setNextGate(gate);
+		if (gate.checkParams()){
+			if (getNextGate()==null){
+				setCurrent(1);
+				setFirstGate(gate);
+				setNextGate(gate);
+			}
+			else{
+				getNextGate().addToEnd(gate);
+			}
 		}
-		else{
-			getNextGate().addToEnd(gate);
-		}
+		else{System.out.println("Gate number " + (current+1)+ " has invalid arguments");}
 	}
 	
 	//apply the gate and go to the next one in the list
@@ -117,7 +122,7 @@ public class Circuit implements CircuitInterface {
 	public void reset(){
 		current=1;
 		setNextGate(getFirstGate());
-		frame.update(reg);
+		if (display)frame.update(reg);
 		getReg().setGroundState();
 	}
 	public Register getRegister(){
@@ -167,7 +172,7 @@ public class Circuit implements CircuitInterface {
 	}
 
 	public void updatePanel(){
-		frame.update(reg);
+		if (display)frame.update(reg);
 		/*try {
 			Thread.currentThread().sleep(500);
 		} catch (InterruptedException e) {

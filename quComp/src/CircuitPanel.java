@@ -99,6 +99,12 @@ import gates.*;
 		    	circuit.reset();
 		    	repaint();
 			}
+		    if (e.getButton() == MouseEvent.BUTTON2){
+		        
+		    	circuit.applyAll();
+		    	repaint();
+			}
+		    
 		}
 
 		@Override

@@ -1,3 +1,4 @@
+import maths.ComplexNum;
 import gates.*;
 
 /**
@@ -16,18 +17,29 @@ public class QuComp {
 		System.out.println(" /_\\/_//_|/ // /_// / / /_,/_// / //_//_// /_'/");                                          
 		System.out.println("----------------------------------/-------------");  
 	    System.out.println();
+	    
+    	int numQubits = 4;
+    	boolean displayGui = true;
     	
-    	int numQubits = 5;
-    	
+    	/*
+    	BlochGui thing = new BlochGui(500);
+    	thing.update(new ComplexNum(0.707,0.707));
+    	*/
     	Register q = new Register(numQubits, false);
-    	Circuit test = new Circuit(q);
+    	Circuit test = new Circuit(q,displayGui);
     	test.addGate(new Had(-1));
     	test.addGate(new Toffoli(3,new int[]{0,2}));
     	test.addGate(new CNot(2,1));
     	test.addGate(new CNot(3,1));
     	test.addGate(new Measurement()); 
-    	new CircuitGui(test);
-    	
+    	if (displayGui){
+    		new CircuitGui(test);
+    	}
+    	else{
+    		test.applyAll();
+    		System.out.println();
+    		System.out.println(q);
+    	}
 //    	test.setOverallMatrix();
 //    	test.runOverallMatrix();
 //    	System.out.println(q);
