@@ -18,8 +18,8 @@ public class QuComp {
 		System.out.println("----------------------------------/-------------");  
 	    System.out.println();
 	    
-    	int numQubits = 4;
-    	boolean displayGui = true;
+    	//int numQubits = 4;
+    	//boolean displayGui = true;
     	
     	/*
     	BlochGui thing = new BlochGui(500);
@@ -42,7 +42,7 @@ public class QuComp {
     		System.out.println(q);
     	}*/
     	
-    	DataIO data = new DataIO();
+    	DataIO data = new DataIO("input.properties");
     	data.readFromPropertiesFile();
     	
 //    	test.setOverallMatrix();

@@ -26,7 +26,7 @@ public class DataIO {
 			 	
 			 	// loads properties file
 			 	Properties properties = new Properties();
-		        properties.load(new FileInputStream(input));
+		        properties.load(new FileInputStream(this.input));
 		        int numberOfGates = Integer.parseInt(properties.getProperty("numberOfGates"));
 		        int numberOfQbits = Integer.parseInt(properties.getProperty("numberOfQbits"));
 		        //System.out.println(numberOfGates);
