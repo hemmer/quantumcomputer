@@ -1,4 +1,5 @@
 #summary Report Headings
+#labels Featured
 
  * Introduction - 1/2 Page
  * Theory - 2 Pages
@@ -7,3 +8,5 @@
  * Functional/Matrix Timings - 1/2 Pages
  * Graphics - 2 Pages
  * Conclusion - 1/2 Page
+
+The page estimations are pure text, with diagrams etc. these numbers will grow.
