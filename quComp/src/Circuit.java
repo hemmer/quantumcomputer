@@ -14,28 +14,21 @@ import maths.Matrix;
 public class Circuit implements CircuitInterface {
 
 	/**
-	 * Holds the next gate to be applied in the circuit.
+	 * @param nextGate Holds the next gate in the list.
+	 * @param firstGate Holds the first gate in the circuit.
+	 * @param reg Holds the register.
+	 * @param total Holds the total number of gates in the circuit.
+	 * @param current Holds the position of the current gate in the list. Numbering starts from 1.
+	 * @param overallGate Holds a gate that represents the whole circuit.
+	 * @param display this value is true if GUI's are to be displayed.
+	 * 
 	 */
+
 	private Gate nextGate;
-	/**
-	 * Holds the first gate in the circuit.
-	 */
 	private Gate firstGate;
-	/**
-	 * Holds the circuit register.
-	 */
 	private Register reg;
-	/**
-	 * Holds the total number of gates in the circuit.
-	 */
 	private int total;
-	/**
-	 * Holds the position of the current gate in the list. Numbering starts from 1.
-	 */
 	private int current;
-	/**
-	 * Holds a gate that represents the whole circuit
-	 */
 	private Gate overallGate;
 	private boolean display;
 	Window frame;
