@@ -18,8 +18,8 @@ import gates.*;
 		int betweengates = 50;
 		int imagesize = 32;
 		int halfimagesize = imagesize/2;
-		int ctrlsize = 20;
-		int halfctrlsize = 10;
+		int ctrlsize = 8;
+		int halfctrlsize = ctrlsize/2;
 		int sizediff = imagesize -ctrlsize;
 		Image ctrlImage;
 		
@@ -27,7 +27,7 @@ import gates.*;
 		public CircuitPanel(Circuit circuit,int width,int height){
 
 			this.circuit = circuit;
-			setBackground(Color.DARK_GRAY);
+			setBackground(Color.LIGHT_GRAY);
 			this.width = width;
 			this.height = height;
 			ctrlImage = Toolkit.getDefaultToolkit().getImage("src/ctrl.PNG");
@@ -57,8 +57,9 @@ import gates.*;
 					for (int j=0;j<next.getCtrl().length;j++){
 						g.drawLine(xoffset + i*betweengates-betweengates+halfimagesize, yoffset+betweenlines*next.getTargetBit()-halfimagesize
 							,xoffset + i*betweengates-betweengates+halfimagesize, yoffset+betweenlines*next.getCtrl(j));
-						g.drawImage(ctrlImage, xoffset + i*betweengates-betweengates+sizediff/2, yoffset+betweenlines*next.getCtrl(j)-halfctrlsize, this);
-				
+						//g.drawImage(ctrlImage, xoffset + i*betweengates-betweengates+sizediff/2, yoffset+betweenlines*next.getCtrl(j)-halfctrlsize, this);
+						g.fillOval(xoffset + i*betweengates-betweengates+-halfctrlsize+halfimagesize, yoffset+betweenlines*next.getCtrl(j)-halfctrlsize, ctrlsize, ctrlsize);
+						
 					}
 				}
 				//draw gate
