@@ -59,20 +59,23 @@ public class DataIO {
     	String[] name = currentGate.split(",");
     	
     	for(int i =0; i < name.length ; i++){
-    	
     	//System.out.println("entry no. " + i + name[i]);
-    	
-    	 
-    	
-    	}
-    	if(name[0].equals("Had")){
-    		//if(name.length > 2){System.out.println("Hadamard arguments out of range");return gate;}
-    		gate = new Had(n,Integer.parseInt(name[1])); return gate;}
-    	if(name[0].equals("CNot")){
-    		gate = new CNot(Integer.parseInt(name[1]),Integer.parseInt(name[2])); 
-    		gate.setNumQubits(n); 
-    		return gate;
     		}
+    	
+    	
+    	if(name[0].equals("CNot")){
+			if(name.length != 3){System.out.println("CNot arguments out of range");return gate;}
+		gate = new CNot(Integer.parseInt(name[1]),Integer.parseInt(name[2])); 
+		gate.setNumQubits(n); 
+		return gate;
+		}
+    	
+    	if(name[0].equals("Had")){
+    		if(name.length != 2){System.out.println("Hadamard arguments out of range");return gate;}
+    		gate = new Had(n,Integer.parseInt(name[1])); return gate;}
+    		
+    		
+    	
     	if(name[0].equals("Toffoli")){
 			int[] controls = new int[name.length - 2];
 
@@ -82,18 +85,23 @@ public class DataIO {
     		gate = new Toffoli(Integer.parseInt(name[1]),controls);
     		return gate;
     		}
+    	
     	if(name[0].equals("Measurement")){
+    		if(name.length != 1){System.out.println("Hadamard arguments out of range");return gate;}
     		gate = new Measurement();
     		gate.setNumQubits(n);
     		return gate;}
+    	
     	if (name[0].equals("Grovers")){
+    		if(name.length != 2){System.out.println("Hadamard arguments out of range");return gate;}
     		gate = new Grovers(Integer.parseInt(name[1]));
     		gate.setNumQubits(n);
     		return gate;
     	}
-		else{System.out.println("null gate");return gate;}
-
-    		
-    	
+		
+    	else{System.out.println("null gate" + name[0]);return gate;}
+	
     	}
-}
+    
+    
+    }
