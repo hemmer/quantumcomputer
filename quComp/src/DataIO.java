@@ -84,6 +84,11 @@ public class DataIO {
     		gate = new Measurement();
     		gate.setNumQubits(n);
     		return gate;}
+    	if (name[0].equals("Grovers")){
+    		gate = new Grovers(Integer.parseInt(name[1]));
+    		gate.setNumQubits(n);
+    		return gate;
+    	}
 		else{System.out.println("null gate");return gate;}
 
     		
