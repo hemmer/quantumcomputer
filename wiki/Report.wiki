@@ -1,9 +1,9 @@
 #summary Report Headings
 
-* Introduction - 1/2 Page
-* Theory - 2 Pages
-* Planning/Structure - 3 Quantum Computers - 2 Pages
-* Group Dynamics - 2 Pages
-* Functional/Matrix Timings - 1/2 Pages
-* Graphics - 2 Pages
-* Conclusion - 1/2 Page
+ * Introduction - 1/2 Page
+ * Theory - 2 Pages
+ * Planning/Structure - 3 Quantum Computers - 2 Pages
+ * Group Dynamics - 2 Pages
+ * Functional/Matrix Timings - 1/2 Pages
+ * Graphics - 2 Pages
+ * Conclusion - 1/2 Page
