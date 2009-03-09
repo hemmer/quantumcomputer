@@ -1,12 +1,12 @@
 #summary Report Headings
 #labels Featured
 
- * Introduction - 1/2 Page
+ * Introduction - 0.5 Page
  * Theory - 2 Pages
  * Planning/Structure - 3 Quantum Computers - 2 Pages
  * Group Dynamics - 2 Pages
  * Functional/Matrix Timings - 1/2 Pages
  * Graphics - 2 Pages
- * Conclusion - 1/2 Page
+ * Conclusion - 0.5 Page
 
 The page estimations are pure text, with diagrams etc. these numbers will grow.
