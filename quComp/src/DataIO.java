@@ -139,6 +139,14 @@ public class DataIO {
 	
     	}
     
-    
+ // Write results to properties file.
+    public void writeRegisterToFile(Register register, String output){
+    	Properties properties = new Properties();
+        try {
+            properties.store(new FileOutputStream(output), register.getStateVector().toString());
+        } catch (IOException e) {
+        }
+
+    }
     
     }

@@ -43,7 +43,8 @@ public class QuComp {
     	}*/
     	
     	DataIO data = new DataIO("input.properties");
-    	data.readFromPropertiesFile();
+    	Circuit circuit = data.readFromPropertiesFile();
+    	data.writeRegisterToFile(circuit.getRegister(), "output.properties");
     	
     	
 //    	test.setOverallMatrix();
