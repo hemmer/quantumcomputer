@@ -45,6 +45,7 @@ public class QuComp {
     	DataIO data = new DataIO("input.properties");
     	data.readFromPropertiesFile();
     	
+    	
 //    	test.setOverallMatrix();
 //    	test.runOverallMatrix();
 //    	System.out.println(q);
