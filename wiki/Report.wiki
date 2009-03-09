@@ -5,6 +5,7 @@
  * Theory - 2 Pages
  * Planning/Structure - 3 Quantum Computers - 2 Pages
  * Group Dynamics - 2 Pages
+ * Problems/Solutions - 2 Pages
  * Functional/Matrix Timings - 1/2 Pages
  * Graphics - 2 Pages
  * Conclusion - 0.5 Page
