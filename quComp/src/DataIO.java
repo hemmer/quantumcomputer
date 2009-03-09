@@ -7,8 +7,8 @@ import java.util.Properties;
 
 
 public class DataIO {
-	// this is very incomplete, but will read in Had, CNot, Measurement and Toffoli gates.
-	// was having problems until i discovered properties files :)
+	// this is very incomplete, but will read in Grovers, Had, CNot, Measurement and Toffoli gates.
+	
 	private File input = null;
 	private Circuit circuit;
 	private Register register = null;
@@ -26,7 +26,7 @@ public class DataIO {
 			 	
 			 	// loads properties file
 			 	Properties properties = new Properties();
-		        properties.load(new FileInputStream("input.properties"));
+		        properties.load(new FileInputStream(input));
 		        int numberOfGates = Integer.parseInt(properties.getProperty("numberOfGates"));
 		        int numberOfQbits = Integer.parseInt(properties.getProperty("numberOfQbits"));
 		        //System.out.println(numberOfGates);
@@ -65,7 +65,9 @@ public class DataIO {
     	 
     	
     	}
-    	if(name[0].equals("Had")){gate = new Had(n,Integer.parseInt(name[1])); return gate;}
+    	if(name[0].equals("Had")){
+    		//if(name.length > 2){System.out.println("Hadamard arguments out of range");return gate;}
+    		gate = new Had(n,Integer.parseInt(name[1])); return gate;}
     	if(name[0].equals("CNot")){
     		gate = new CNot(Integer.parseInt(name[1]),Integer.parseInt(name[2])); 
     		gate.setNumQubits(n); 

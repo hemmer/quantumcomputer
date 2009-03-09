@@ -25,6 +25,7 @@ public class QuComp {
     	BlochGui thing = new BlochGui(500);
     	thing.update(new ComplexNum(0.707,0.707));
     	*/
+    	/*
     	Register q = new Register(numQubits, false);
     	Circuit test = new Circuit(q,displayGui);
     	test.addGate(new Had(-1));
@@ -39,7 +40,11 @@ public class QuComp {
     		test.applyAll();
     		System.out.println();
     		System.out.println(q);
-    	}
+    	}*/
+    	
+    	DataIO data = new DataIO();
+    	data.readFromPropertiesFile();
+    	
 //    	test.setOverallMatrix();
 //    	test.runOverallMatrix();
 //    	System.out.println(q);
