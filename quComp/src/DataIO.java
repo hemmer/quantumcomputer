@@ -65,16 +65,61 @@ public class DataIO {
     	
     	if(name[0].equals("CNot")){
 			if(name.length != 3){System.out.println("CNot arguments out of range");return gate;}
-		gate = new CNot(Integer.parseInt(name[1]),Integer.parseInt(name[2])); 
-		gate.setNumQubits(n); 
-		return gate;
-		}
+			gate = new CNot(Integer.parseInt(name[1]),Integer.parseInt(name[2])); 
+			gate.setNumQubits(n); 
+			return gate;
+			}
+    	
+    	if(name[0].equals("FuncHad")){
+    		if(name.length != 2){System.out.println("Hadamard arguments out of range");return gate;}
+    		gate = new FuncHad(Integer.parseInt(name[1])); 
+    		gate.setNumQubits(n);
+    		return gate;
+    		}
+    	
+    	if (name[0].equals("Grovers")){
+    		if(name.length != 2){System.out.println("Grovers arguments out of range");return gate;}
+    		gate = new Grovers(Integer.parseInt(name[1]));
+    		gate.setNumQubits(n);
+    		return gate;
+    		}
     	
     	if(name[0].equals("Had")){
-    		if(name.length != 2){System.out.println("Hadamard arguments out of range");return gate;}
-    		gate = new Had(n,Integer.parseInt(name[1])); return gate;}
+    		if(name.length > 3){System.out.println("Hadamard arguments out of range");return gate;}
+    			if(name.length == 3){gate = new Had(n,Integer.parseInt(name[2]));}
+    			if(name.length == 2){
+    				gate = new Had(Integer.parseInt(name[1]));
+    				gate.setNumQubits(n);
+    				}
+    			else{gate = new Had(); gate.setNumQubits(n);}
+    		return gate;
+    		}
     		
-    		
+    	if(name[0].equals("Measurement")){
+    		if(name.length != 1){System.out.println("Measurement arguments out of range");return gate;}
+    		gate = new Measurement();
+    		gate.setNumQubits(n);
+    		return gate;}	
+    	
+    	if(name[0].equals("Not")){
+    		if(name.length != 2){System.out.println("Not arguments out of range");}
+    		gate = new Not(Integer.parseInt(name[1])); 
+    		gate.setNumQubits(n); 
+    		return gate;
+    		}
+    	
+    	if(name[0].equals("Randomiser")){
+    		if(name.length > 2){System.out.println("Randomiser arguments out of range");}
+    		if(name.length == 2){
+    			gate = new Randomiser(Integer.parseInt(name[1]));
+    			gate.setNumQubits(n);
+    			return gate;
+    			}
+    		else{
+    			gate = new Randomiser(); gate.setNumQubits(n);}
+    			gate.setNumQubits(n); 
+    			return gate;
+    		}
     	
     	if(name[0].equals("Toffoli")){
 			int[] controls = new int[name.length - 2];
@@ -86,18 +131,9 @@ public class DataIO {
     		return gate;
     		}
     	
-    	if(name[0].equals("Measurement")){
-    		if(name.length != 1){System.out.println("Hadamard arguments out of range");return gate;}
-    		gate = new Measurement();
-    		gate.setNumQubits(n);
-    		return gate;}
     	
-    	if (name[0].equals("Grovers")){
-    		if(name.length != 2){System.out.println("Hadamard arguments out of range");return gate;}
-    		gate = new Grovers(Integer.parseInt(name[1]));
-    		gate.setNumQubits(n);
-    		return gate;
-    	}
+    	
+    	
 		
     	else{System.out.println("null gate" + name[0]);return gate;}
 	
