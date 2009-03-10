@@ -6,6 +6,14 @@ import java.awt.event.MouseListener;
 import javax.swing.*;
 import gates.*;
 
+/**
+ * 
+ * Displays the quantum circuit
+ * 
+ * @author Ewan Hemmingway<br>Ian Sullivan<br>James Vokes
+ *
+ */
+
 
 	class CircuitPanel extends JPanel implements MouseListener{
 
@@ -87,7 +95,11 @@ import gates.*;
 		public int round(double x){
 			return (int)Math.rint(x);
 		}
-		
+		/**
+		 * Left click applies the next gate
+		 * Right click resets the circuit
+		 * Middle mouse button applies the rest of the gates
+		 */
 		public void mouseClicked(MouseEvent e){
 		    
 			if (e.getButton() == MouseEvent.BUTTON1)// left mouse click

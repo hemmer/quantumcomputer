@@ -4,10 +4,21 @@ import java.awt.Toolkit;
 
 import maths.*;
 
+/**
+ * The measurement gate forces a register into a single state.
+ * The probabilities (amplitude squared) are normalised. A random number between 0 and 1 is chosen.
+ * The probabilities of each state are  added together till the sum is greater than the chosen random number.
+ * The last state to be added is the chosen state
+ * 
+ * @author Ewan Hemmingway<br>Ian Sullivan<br>James Vokes
+ *
+ */
 
 public class Measurement extends Gate {
 
-
+	/**
+	 * Creates a measurement gate
+	 */
 	public Measurement() {
 		super(0,-1,(new int[] {-1}),0);
 	}

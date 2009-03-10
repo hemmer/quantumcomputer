@@ -2,13 +2,23 @@
 	import java.awt.*;
 import javax.swing.*;
 
-import maths.ComplexNum;
+/**
+ * 
+ * Displays the quantum circuit
+ * 
+ * @author Ewan Hemmingway<br>Ian Sullivan<br>James Vokes
+ *
+ */
 
 	class CircuitGui extends JFrame {
 		
 		CircuitPanel panel;
 		int width = 1000;
 
+		/**
+		 * Creates a window that displays a circuit object.
+		 * @param circuit the circuit that is to be displayed
+		 */
 		public CircuitGui(Circuit circuit) {
 		
 				setTitle("Circuit");
@@ -27,7 +37,9 @@ import maths.ComplexNum;
 	       }
 				
 
-				
+				/**
+				 * Updates the panel
+				 */
 				public void update(){
 					
 					panel.update();
