@@ -14,7 +14,7 @@ import maths.ComplexNum;
 				setTitle("Circuit");
 				pack();
 				//add to the content pane
-				int height = circuit.getReg().getNumQubits()*40+70;
+				int height = circuit.getRegister().getNumQubits()*40+70;
 				setBounds(0,125,width,height);
 				panel = new CircuitPanel(circuit,width,height);
 				

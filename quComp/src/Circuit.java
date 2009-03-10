@@ -7,77 +7,38 @@ import maths.Matrix;
 /**
  * The circuit class is an object that stores a register and points to a linked list of gates.
  * 
- * @author Ewan Hemmingway, Ian Sullivan, James Vokes
- * 
+ * @author Ewan Hemmingway<br>Ian Sullivan<br>James Vokes
  *
  */
 public class Circuit implements CircuitInterface {
 
+	
 	/**
-	 * @param nextGate Holds the next gate in the list.
-	 * @param firstGate Holds the first gate in the circuit.
-	 * @param reg Holds the register.
-	 * @param total Holds the total number of gates in the circuit.
-	 * @param current Holds the position of the current gate in the list. Numbering starts from 1.
-	 * @param overallGate Holds a gate that represents the whole circuit.
-	 * @param display this value is true if GUI's are to be displayed.
-	 * 
-	 */
-
+	 * Holds the next gate in the list.*/
 	private Gate nextGate;
+	/**
+	 * Holds the first gate in the circuit.*/
 	private Gate firstGate;
+	/**
+	 * Holds the register.*/
 	private Register reg;
+	/**
+	 * Holds the total number of gates in the circuit.*/
 	private int total;
+	/**
+	 * Holds the position of the current gate in the list. Numbering starts from 1.*/
 	private int current;
+	/**
+	 * Holds a gate that represents the whole circuit.*/
 	private Gate overallGate;
+	/**
+	 * circuit displays GUI if this is true*/
 	private boolean display;
+	/**
+	 * Holds the probability window*/
 	Window frame;
 	
-	void setTotal(int total) {
-		this.total = total;
-	}
 
-	void setReg(Register reg) {
-		this.reg = reg;
-	}
-
-	Register getReg() {
-		return reg;
-	}
-
-	void setNextGate(Gate nextGate) {
-		this.nextGate = nextGate;
-	}
-
-	void setFirstGate(Gate firstGate) {
-		this.firstGate = firstGate;
-	}
-
-	Gate getFirstGate() {
-		return firstGate;
-	}
-	
-	void setCurrent(int current) {
-		this.current = current;
-	}
-	
-	
-	public Gate getNextGate(){
-		return nextGate;
-	}
-	
-	public int getTotal(){
-		
-		return total;
-	}
-	public Register getRegister(){
-		return getReg();
-	}
-	public int getCurrent(){
-		
-		return current;
-		
-	}
 	/**
 	 * Creates a circuit object which stores a given register passed into it.
 	 * 
@@ -101,7 +62,7 @@ public class Circuit implements CircuitInterface {
 		public void addGate(Gate gate){
 		
 		setTotal(getTotal() + 1);
-		gate.setNumQubits(getReg().getNumQubits());
+		gate.setNumQubits(reg.getNumQubits());
 		if (gate.checkParams()){
 			if (getNextGate()==null){
 				setCurrent(1);
@@ -131,7 +92,7 @@ public class Circuit implements CircuitInterface {
 				msg += " to qubit " + getNextGate().getTargetBit() + ".";
 			}
 			System.out.println(msg);
-			getNextGate().applyGate(getReg());
+			getNextGate().applyGate(reg);
 			setNextGate(getNextGate().getNextGate());
 			setCurrent(getCurrent() + 1);
 			
@@ -158,7 +119,7 @@ public class Circuit implements CircuitInterface {
 		current=1;
 		setNextGate(getFirstGate());
 		if (display)frame.update(reg);
-		getReg().setGroundState();
+		reg.setGroundState();
 	}
 
 	/**
@@ -186,7 +147,7 @@ public class Circuit implements CircuitInterface {
 			System.out.println("Please run setOverallGate() to create a matrix to represent the circuit");
 		}
 		else{
-			overallGate.applyGate(getReg());
+			overallGate.applyGate(reg);
 			updatePanel();
 			current = total;
 		}
@@ -221,6 +182,45 @@ public class Circuit implements CircuitInterface {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
+	}
+	void setTotal(int total) {
+		this.total = total;
+	}
+
+	void setReg(Register reg) {
+		this.reg = reg;
+	}
+
+	void setNextGate(Gate nextGate) {
+		this.nextGate = nextGate;
+	}
+
+	void setFirstGate(Gate firstGate) {
+		this.firstGate = firstGate;
+	}
+
+	Gate getFirstGate() {
+		return firstGate;
+	}
+	
+	void setCurrent(int current) {
+		this.current = current;
+	}
+	public Gate getNextGate(){
+		return nextGate;
+	}
+	
+	public int getTotal(){
+		
+		return total;
+	}
+	public Register getRegister(){
+		return reg;
+	}
+	public int getCurrent(){
+		
+		return current;
+		
 	}
 
 
