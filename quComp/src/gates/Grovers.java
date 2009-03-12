@@ -79,7 +79,7 @@ public class Grovers extends DenseGate {
 	}
 	
 	public Image getImage(){
-		return Toolkit.getDefaultToolkit().getImage("src/grovers.GIF");
+		return Toolkit.getDefaultToolkit().getImage("src/grovers.png");
 	}
 }
 
