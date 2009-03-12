@@ -1,14 +1,25 @@
 package gates;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import maths.ComplexNum;
 import maths.Matrix;
 
 
 public class Grovers extends DenseGate {
 
+	boolean single;
+	
 	public Grovers(int SearchedElem) {
 		super(1,-1,(new int[] {-1}),SearchedElem);
+		single = false;
 	}
-
+	
+	public Grovers(int SearchedElem, boolean single) {
+		super(1,-1,(new int[] {-1}),SearchedElem);
+		this.single = single;
+	}
+	
 	public void setM(int n){
 		
 		int matrixSize = (int) Math.pow(2, n);
@@ -35,6 +46,19 @@ public class Grovers extends DenseGate {
 			gate.setElem(i, getSearchedElem(), gate.getElem(i, getSearchedElem()).multiply(new ComplexNum(-1.0,0.0)));	
 		}
 		
+		int optimalNumIter = (int) (Math.sqrt(matrixSize) * Math.PI)/ 4;
+		
+		System.out.println(gate + "\n" + optimalNumIter);
+		
+		for(int i = 0; i < optimalNumIter -1 && !single; i++) {
+			gate = Matrix.multiply(gate, gate);
+			System.out.println(optimalNumIter);
+
+		}
+
+		System.out.println(gate);
+
+		
 		this.setM(gate);
 		
 	}
@@ -50,9 +74,12 @@ public class Grovers extends DenseGate {
 
 	@Override
 	public int getNumArguments() {
-		// searched elem only
+		// searched element only
 		return 1;
 	}
-
+	
+	public Image getImage(){
+		return Toolkit.getDefaultToolkit().getImage("src/grovers.GIF");
+	}
 }
 
