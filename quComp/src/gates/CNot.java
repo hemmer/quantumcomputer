@@ -25,10 +25,10 @@ public class CNot extends DenseGate {
 	   	Matrix outProdB0 = Matrix.outerProduct(b0);  // find outer product of |0> basis vector
 	   	
 		for(int i = 0; i < controlElements.length; i++){
-			if(i == this.getTargetBit()){        
-				controlElements[i] = new Matrix(2,"identity");
-			}else{
+			if(i == this.getCtrl(0)){        
 				controlElements[i] = outProdB0;
+			}else{
+				controlElements[i] = new Matrix(2,"identity");
 			}
 		}
 		
@@ -55,6 +55,8 @@ public class CNot extends DenseGate {
 		Matrix gate2 = Matrix.tensorProductArray(shiftElements);
 		// and sum to find total contribution
 		m = Matrix.add(gate1, gate2);
+		
+		//System.out.println(gate1 + "\n " + gate2 + "\n " + m);
 	}
 	
 	

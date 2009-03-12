@@ -256,6 +256,7 @@ public class Matrix {
 			tempMatrix = Matrix.tensorProduct(tempMatrix, matrixArray[i]);
 		}
 		
+		
 		return tempMatrix;
 	}
 	

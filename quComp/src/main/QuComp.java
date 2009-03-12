@@ -18,8 +18,8 @@ public class QuComp {
 		System.out.println("----------------------------------/-------------");  
 	    System.out.println();
 	    
-    	int numQubits = 4;
-    	boolean displayGui = true;
+    	int numQubits = 3;
+    	boolean displayGui = false;
     	
     	/*
     	BlochGui thing = new BlochGui(500);
@@ -28,8 +28,16 @@ public class QuComp {
     	
     	Register q = new Register(numQubits, false);
     	Circuit test = new Circuit(q,displayGui);
-    	test.addGate(new Had(-1));
-    	test.addGate(new Grovers(2));
+    	test.addGate(new Randomiser());
+    	test.apply();
+		System.out.println(q);
+    	test.addGate(new CNot(0,2));
+    	test.apply();
+		System.out.println(q);
+    	test.addGate(new CNot(0,2));
+    	test.apply();
+		System.out.println(q);
+    	//test.addGate(new Grovers(2));
 
 
     	test.addGate(new Measurement()); 
