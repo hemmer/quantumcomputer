@@ -1,16 +1,37 @@
 package maths;
 
+/**
+ * 
+ * This represents a complex number
+ *
+ */
 
 public class ComplexNum{
 	
-	private double real, imag;   // real and imaginary parts
+	/**
+	 * Real part of the complex number
+	 */
+	private double real;
+	/**
+	 * Imaginary part of the complex number
+	 */
+	private double imag;   // real and imaginary parts
 	
+	/**
+	 * 
+	 * @param r real part
+	 * @param i imaginary part
+	 */
 	public ComplexNum(double r, double i){
 		real = r;
 		imag = i;
 	}
 	
 	// construct real number
+	/**
+	 * Create a real number
+	 * @param real real part 
+	 */
 	public ComplexNum(double real){
 		this.real = real;
 		imag = 0.0;
@@ -26,6 +47,11 @@ public class ComplexNum{
 		return new ComplexNum(real + c.getReal(), imag + c.getImag() );
 	}
 
+	/**
+	 * multiply this complex number by another
+	 * @param c complex number to be multiplied
+	 * @return the product
+	 */
 	public ComplexNum multiply(ComplexNum c){
 			
 		double realTemp = real*c.getReal()+imag*c.getImag();
@@ -56,6 +82,10 @@ public class ComplexNum{
 		imag = i;
 	}
 
+	/**
+	 * 
+	 * @return magnitude of a complex number
+	 */
 	public double getMagnitude() {
 		return Math.sqrt(Math.pow(real, 2)+Math.pow(imag, 2));
 	}

@@ -6,6 +6,12 @@ import java.awt.*;
 import javax.swing.JPanel;
 import maths.StateVector;
 
+/**
+ * This panel displays the probabilities of each state
+ * 
+ * @author Ewan Hemmingway<br>Ian Sullivan<br>James Vokes
+ *
+ */
 
 public class ProbPanel extends JPanel {
 

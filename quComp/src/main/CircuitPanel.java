@@ -19,17 +19,16 @@ import gates.*;
 	class CircuitPanel extends JPanel implements MouseListener{
 
 		Circuit circuit;
-		int width;
-		int height;
-		int xoffset = 10;
-		int yoffset = 40;
-		int betweenlines = 40;
-		int betweengates = 50;
-		int imagesize = 32;
-		int halfimagesize = imagesize/2;
-		int ctrlsize = 8;
-		int halfctrlsize = ctrlsize/2;
-		int sizediff = imagesize -ctrlsize;
+		private int width;
+		private int height;
+		private final int xoffset = 10;
+		private final int yoffset = 40;
+		private final int betweenlines = 40;
+		private final int betweengates = 50;
+		private final int imagesize = 32;
+		private final int halfimagesize = imagesize/2;
+		private final int ctrlsize = 8;
+		private final int halfctrlsize = ctrlsize/2;
 		Image ctrlImage;
 		
 		

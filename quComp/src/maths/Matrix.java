@@ -1,7 +1,7 @@
 package maths;
 
 /**
- * Dense representation of a matrix, includes methods for basic matrix algebra
+ * Represents a matrix, includes methods for basic matrix algebra
  * @author Ewan Hemingway
  *
  */

@@ -1,7 +1,13 @@
 package gates;
 import maths.*;
 
-
+/**
+ * When this gate is applied to a register, each state is given a random probability 
+ * amplitude. This gate is used for debugging purposes
+ * 
+ * @author Ewan Hemmingway<br>Ian Sullivan<br>James Vokes
+ *
+ */
 
 public class Randomiser extends Gate {
 

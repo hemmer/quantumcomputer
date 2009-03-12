@@ -10,6 +10,9 @@ public class StateVector extends Matrix {
 		matrix = new ComplexNum[size][1];
 	}
 	
+	/**
+	 * put the register in the ground state (1,0,0....0)
+	 */
 	public void setGroundState(){
 		
 		 // initialise all states to 0.0 amplitude
@@ -38,10 +41,16 @@ public class StateVector extends Matrix {
 		return s;
 	}
 	
+	/**
+	 * Returns the probability amplitude of a given state
+	 * @param the state
+	 * @return a complex number represented the probability amplitude
+	 */
 	public ComplexNum getAmp(int index){
 		ComplexNum c = matrix[index][0];
 		return new ComplexNum(c.getReal(), c.getImag());
 	}
+	
 	
 	public void setAmp(ComplexNum amp, int index){
 		matrix[index][0].setReal(amp.getReal());
@@ -49,6 +58,9 @@ public class StateVector extends Matrix {
 	}
 
 	// used to properly format binary numbers
+	/**
+	 * Formats the register to be displayed in binary instead of decimal
+	 */
     public static String toBinary(int numQubits, int number){
     	
     	String binString = Integer.toBinaryString(number);

@@ -1,6 +1,13 @@
 package gates;
 import maths.*;
 
+/**
+ * A dense gate is a gate which can be represented by a matrix
+ * 
+ * @author Ewan Hemmingway<br>Ian Sullivan<br>James Vokes
+ *
+ */
+
 public abstract class DenseGate extends Gate{
 
 	protected Matrix m;
@@ -18,6 +25,11 @@ public abstract class DenseGate extends Gate{
 		this.m=m;
 	}
 	
+	/**
+	 * applies the gate to a register. This is matrix multiplication of
+	 * of the matrix that represents the gate and the vector that represents the register
+	 * 
+	 */
 	public void applyGate(Register a){
 		a.updateStateVector(Matrix.multiply(getM(), a.getStateVector()) );
 	}
