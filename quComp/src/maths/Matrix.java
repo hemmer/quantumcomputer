@@ -254,6 +254,7 @@ public class Matrix {
 		// for each matrix in array, tensor product into the previous ones
 		for(int i = 1; i < matrixArray.length; i++){
 			tempMatrix = Matrix.tensorProduct(tempMatrix, matrixArray[i]);
+			System.out.println(tempMatrix);
 		}
 		
 		

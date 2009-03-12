@@ -19,7 +19,7 @@ public class QuComp {
 	    System.out.println();
 	    
     	int numQubits = 3;
-    	boolean displayGui = false;
+    	boolean displayGui = true;
     	
     	/*
     	BlochGui thing = new BlochGui(500);
@@ -28,16 +28,16 @@ public class QuComp {
     	
     	Register q = new Register(numQubits, false);
     	Circuit test = new Circuit(q,displayGui);
-    	test.addGate(new Randomiser());
-    	test.apply();
+    	
+    	test.addGate(new Had(0));
+    	test.addGate(new Had(2));
+
+    	test.addGate(new Toffoli(1,new int[]{2,0}));
+    	
+     	test.apply();
 		System.out.println(q);
-    	test.addGate(new CNot(0,2));
-    	test.apply();
-		System.out.println(q);
-    	test.addGate(new CNot(0,2));
-    	test.apply();
-		System.out.println(q);
-    	//test.addGate(new Grovers(2));
+
+    	test.addGate(new Grovers(2));
 
 
     	test.addGate(new Measurement()); 
