@@ -5,12 +5,23 @@ import java.awt.Toolkit;
 import maths.ComplexNum;
 import maths.Matrix;
 
-
+/**
+ * This generates the matrix representation of the CNOT gate. It works by first calculating which
+ * bits are unchanged by CNOT operator by taking the tensor product of the inner product |0><0|
+ * of the state basis vector with the identity matrix, in the appropriate order. 
+ * Then we find the bit swap elements of the matrix by taking the tensor product of a list of matrices, 
+ * with the outer product of state |1> (i.e. |1><1|) in the position of target bit, NOT gate in the 
+ * control bit position, and identity matrices elsewhere. 
+ * <br/>
+ * This is best explained with an example. Take a 3 qubit system, with control bit 0, and target bit 2 (assuming
+ * zero-index notation). First we fixed the control bits using |0><0| (x) I (x) I, where (x) is the tensor product.
+ * Then we sum onto this, the tensor product: NOT (x) I (x) |1><1|. This generates:
+ *  
+ */
 public class CNot extends DenseGate {
 
 	public CNot(int targetBit, int ctrl) {
 		super(1,targetBit,(new int[] {ctrl}),0);
-		// TODO Auto-generated constructor stub
 	}
 
 	

@@ -18,7 +18,7 @@ public class QuComp {
 		System.out.println("----------------------------------/-------------");  
 	    System.out.println();
 	    
-    	int numQubits = 3;
+    	int numQubits = 5;
     	boolean displayGui = true;
     	
     	/*
@@ -28,15 +28,13 @@ public class QuComp {
     	
     	Register q = new Register(numQubits, false);
     	Circuit test = new Circuit(q,displayGui);
+    	
+    	test.addGate(new Had(-1));
+    	test.addGate(new Had(2));
 
-    	test.addGate(new Had(2));
-    	test.addGate(new CNot(2, 1));
-    	test.addGate(new Had(88));
-    	test.addGate(new Toffoli(1,new int[]{2,0}));
-    	test.addGate(new Grovers(2));
-    	test.addGate(new Randomiser());
-    	test.addGate(new Had(2));
-    	test.addGate(new Measurement());
+    	
+    	test.addGate(new Toffoli(2, new int[]{1,3}));
+    	test.addGate(new Toffoli(2, new int[]{0,4}));
     
     	//test.addGate(new Randomiser());
     	if (displayGui){
