@@ -28,19 +28,17 @@ public class QuComp {
     	
     	Register q = new Register(numQubits, false);
     	Circuit test = new Circuit(q,displayGui);
-    	
-    	test.addGate(new Had(0));
+
     	test.addGate(new Had(2));
-
+    	test.addGate(new CNot(2, 1));
+    	test.addGate(new Had(88));
     	test.addGate(new Toffoli(1,new int[]{2,0}));
-    	
-     	test.apply();
-		System.out.println(q);
-
     	test.addGate(new Grovers(2));
-
-
-    	test.addGate(new Measurement()); 
+    	test.addGate(new Randomiser());
+    	test.addGate(new Had(2));
+    	test.addGate(new Measurement());
+    
+    	//test.addGate(new Randomiser());
     	if (displayGui){
     		new CircuitGui(test);
     	}

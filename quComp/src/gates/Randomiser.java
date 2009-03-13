@@ -1,4 +1,7 @@
 package gates;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import maths.*;
 
 /**
@@ -12,11 +15,11 @@ import maths.*;
 public class Randomiser extends Gate {
 
 	public Randomiser() {
-		super(1,-1,(new int[] {0}),0);
+		super(1,-1,(new int[] {-1}),0);
 	}
 	
 	public Randomiser(int i) {
-		super(1,i,(new int[] {0}),0);
+		super(1,i,(new int[] {-1}),0);
 	}
 	
 	public void applyGate(Register q) {
@@ -41,7 +44,10 @@ public class Randomiser extends Gate {
 
 	}
 
-	@Override
+	public Image getImage(){
+		return Toolkit.getDefaultToolkit().getImage("src/random.PNG");
+	}
+	
 	public int getNumArguments() {
 		// TODO Auto-generated method stub
 		return 0;

@@ -51,6 +51,7 @@ public class Circuit implements CircuitInterface {
 		setNextGate(null);
 		setCurrent(0);
 		this.display = display;
+		total = 0;
 		if (display)frame=new Window(reg);
 	}
 
@@ -62,9 +63,9 @@ public class Circuit implements CircuitInterface {
 	 */
 		public void addGate(Gate gate){
 		
-		setTotal(getTotal() + 1);
 		gate.setNumQubits(reg.getNumQubits());
 		if (gate.checkParams()){
+			total = total+1;
 			if (getNextGate()==null){
 				setCurrent(1);
 				setFirstGate(gate);
@@ -74,7 +75,7 @@ public class Circuit implements CircuitInterface {
 				getNextGate().addToEnd(gate);
 			}
 		}
-		else{System.out.println("Gate number " + (current+1)+ " has invalid arguments");}
+		else{System.out.println("Gate number " + (total+1)+ " has invalid arguments");}
 	}
 	
 	//apply the gate and go to the next one in the list
