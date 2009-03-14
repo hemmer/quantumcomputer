@@ -66,8 +66,6 @@ public class CNot extends DenseGate {
 		Matrix gate2 = Matrix.tensorProductArray(shiftElements);
 		// and sum to find total contribution
 		m = Matrix.add(gate1, gate2);
-		
-		//System.out.println(gate1 + "\n " + gate2 + "\n " + m);
 	}
 	
 	
@@ -81,7 +79,7 @@ public class CNot extends DenseGate {
 	}
 
 	public Image getImage(){
-		return Toolkit.getDefaultToolkit().getImage("src/cnot.GIF");
+		return Toolkit.getDefaultToolkit().getImage("src/cnot.png");
 	}
 
 

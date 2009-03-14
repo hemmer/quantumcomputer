@@ -173,6 +173,10 @@ public class Circuit implements CircuitInterface {
 	    }
 
 	}
+	
+	public DenseGate getOverallGate(){
+		return (DenseGate) overallGate;
+	}
 /**
  * Updates the graphical probability panel
  */

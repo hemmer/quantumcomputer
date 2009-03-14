@@ -38,6 +38,14 @@ public abstract class DenseGate extends Gate{
 		return getM().toString();
 	}
 	
+	/**
+	 * Checks if a gate is unitary. Must always return the identity matrix
+	 * to be a valid gate.
+	 * @return the indentity matrix
+	 */
+	public Matrix checkUnitary(){
+		return Matrix.multiply(m, m);
+	}
 	
 	
 }

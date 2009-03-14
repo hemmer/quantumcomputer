@@ -30,13 +30,9 @@ public class QuComp {
     	Circuit test = new Circuit(q,displayGui);
     	
     	test.addGate(new Had(-1));
-    	test.addGate(new Had(2));
+    	test.addGate(new CNot(2, 0));
+    	test.setOverallMatrix();
 
-    	
-    	test.addGate(new Toffoli(2, new int[]{1,3}));
-    	test.addGate(new Toffoli(2, new int[]{0,4}));
-    
-    	//test.addGate(new Randomiser());
     	if (displayGui){
     		new CircuitGui(test);
     	}

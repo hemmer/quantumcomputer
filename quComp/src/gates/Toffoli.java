@@ -98,8 +98,6 @@ public class Toffoli extends DenseGate {
 		
 		// and sum to find total contribution
 		m = Matrix.add(gate3, Matrix.add(gate1, gate2));
-		
-		System.out.println(gate1 + "1\n " + gate2 + "2\n " + "3\n" + gate3 + "\n" + m);
 	}
 	
 	
