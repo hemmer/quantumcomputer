@@ -1,4 +1,0 @@
-#summary Things we'd like to do if we have the time.
-
-  * Generalise CNOT to work for arbitrary number of control bits. Gate object would need a slight change to accept an array of control bits.
-  * Improve single bit Hadamard gate by more efficient tensor producting. e.g.  Instead of I (x) I (x) H (x) I (x) I, do |00> (x) H (x) <00|. See http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.9.7073
