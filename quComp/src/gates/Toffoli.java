@@ -97,7 +97,7 @@ public class Toffoli extends DenseGate {
 		Matrix gate3 = Matrix.tensorProductArray(shiftElements);
 		
 		// and sum to find total contribution
-		m = Matrix.add(gate3, Matrix.add(gate1, gate2));
+		this.setM(Matrix.add(gate3, Matrix.add(gate1, gate2)));
 	}
 	
 	

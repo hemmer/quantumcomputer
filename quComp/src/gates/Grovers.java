@@ -51,6 +51,7 @@ public class Grovers extends DenseGate {
 		for(int i = 0; i < optimalNumIter -1 && !single; i++) gate = Matrix.multiply(gate, gate);
 		
 		this.setM(gate);
+		System.out.println(gate);
 		
 	}
 	

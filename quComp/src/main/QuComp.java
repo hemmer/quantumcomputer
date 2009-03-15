@@ -18,7 +18,7 @@ public class QuComp {
 		System.out.println("----------------------------------/-------------");  
 	    System.out.println();
 	    
-    	int numQubits = 5;
+    	int numQubits = 3;
     	boolean displayGui = true;
     	
     	/*
@@ -30,8 +30,8 @@ public class QuComp {
     	Circuit test = new Circuit(q,displayGui);
     	
     	test.addGate(new Had(-1));
-    	test.addGate(new CNot(2, 0));
-    	test.setOverallMatrix();
+    	test.addGate(new Grovers(2,true));
+    	
 
     	if (displayGui){
     		new CircuitGui(test);
