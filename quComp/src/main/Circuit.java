@@ -37,7 +37,7 @@ public class Circuit implements CircuitInterface {
 	private boolean display;
 	/**
 	 * Holds the probability window*/
-	Window frame;
+	ProbGui frame;
 	
 
 	/**
@@ -52,7 +52,7 @@ public class Circuit implements CircuitInterface {
 		setCurrent(0);
 		this.display = display;
 		total = 0;
-		if (display)frame=new Window(reg);
+		if (display)frame=new ProbGui(reg);
 	}
 
 	//add a gate to end of the list

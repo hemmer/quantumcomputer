@@ -5,12 +5,12 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 
-public class Window extends JFrame {
+public class ProbGui extends JFrame {
 
 	
 	ProbPanel panel;
 	
-	public Window(Register reg){
+	public ProbGui(Register reg){
 		panel = new ProbPanel(500, 100);
 		panel.update(reg);
 		this.setSize(new Dimension(500,100));

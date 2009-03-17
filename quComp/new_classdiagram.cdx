@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<slime:DocumentModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:slime="http://de.mvmsoft.slimeuml.model.slimemodel" routerType="SHORTEST_PATH">
+  <children xsi:type="slime:ClassModel" x="603" y="107" width="83" height="81" incomingConnections="//@children.21/@outgoingConnections.0" name="GateInterface" classText="GateInterface" qualifiedClassName="gates.GateInterface" javaProjectName="quComp" style="0" type="=quComp/src&lt;gates{GateInterface.java[GateInterface"/>
+  <children xsi:type="slime:ClassModel" x="23" y="193" width="67" height="81" name="ProbPanel" classText="ProbPanel" qualifiedClassName="main.ProbPanel" javaProjectName="quComp" style="0" type="=quComp/src&lt;main{ProbPanel.java[ProbPanel"/>
+  <children xsi:type="slime:ClassModel" x="397" y="585" width="57" height="81" name="Grovers" classText="Grovers" qualifiedClassName="gates.Grovers" javaProjectName="quComp" style="0" type="=quComp/src&lt;gates{Grovers.java[Grovers">
+    <outgoingConnections xsi:type="slime:ClassConnectionModel" target="//@children.23" type="GENERALIZATION" toNavigable="true"/>
+  </children>
+  <children xsi:type="slime:ClassModel" x="194" y="107" width="55" height="81" name="Register" classText="Register" qualifiedClassName="gates.Register" javaProjectName="quComp" style="0" type="=quComp/src&lt;gates{Register.java[Register"/>
+  <children xsi:type="slime:ClassModel" x="823" y="587" width="83" height="81" name="Measurement" classText="Measurement" qualifiedClassName="gates.Measurement" javaProjectName="quComp" style="0" type="=quComp/src&lt;gates{Measurement.java[Measurement">
+    <outgoingConnections xsi:type="slime:ClassConnectionModel" target="//@children.21" type="GENERALIZATION" toNavigable="true"/>
+  </children>
+  <children xsi:type="slime:ClassModel" x="101" y="107" width="70" height="81" name="CircuitGui" classText="CircuitGui" qualifiedClassName="main.CircuitGui" javaProjectName="quComp" style="0" type="=quComp/src&lt;main{CircuitGui.java[CircuitGui"/>
+  <children xsi:type="slime:ClassModel" x="368" y="252" width="73" height="81" name="StateVector" classText="StateVector" qualifiedClassName="maths.StateVector" javaProjectName="quComp" style="0" type="=quComp/src&lt;maths{StateVector.java[StateVector">
+    <outgoingConnections xsi:type="slime:ClassConnectionModel" target="//@children.17" type="GENERALIZATION" toNavigable="true"/>
+  </children>
+  <children xsi:type="slime:ClassModel" x="1001" y="587" width="76" height="81" name="Randomiser" classText="Randomiser" qualifiedClassName="gates.Randomiser" javaProjectName="quComp" style="2" type="=quComp/src&lt;gates{Randomiser.java[Randomiser">
+    <outgoingConnections xsi:type="slime:ClassConnectionModel" target="//@children.21" type="GENERALIZATION" toNavigable="true"/>
+  </children>
+  <children xsi:type="slime:ClassModel" x="101" y="193" width="78" height="81" name="CircuitPanel" classText="CircuitPanel" qualifiedClassName="main.CircuitPanel" javaProjectName="quComp" style="0" type="=quComp/src&lt;main{CircuitPanel.java[CircuitPanel"/>
+  <children xsi:type="slime:ClassModel" x="922" y="587" width="63" height="81" name="FuncHad" classText="FuncHad" qualifiedClassName="gates.FuncHad" javaProjectName="quComp" style="0" type="=quComp/src&lt;gates{FuncHad.java[FuncHad">
+    <outgoingConnections xsi:type="slime:ClassConnectionModel" target="//@children.21" type="GENERALIZATION" toNavigable="true"/>
+  </children>
+  <children xsi:type="slime:ClassModel" x="468" y="585" width="36" height="81" name="Had" classText="Had" qualifiedClassName="gates.Had" javaProjectName="quComp" style="0" type="=quComp/src&lt;gates{Had.java[Had">
+    <outgoingConnections xsi:type="slime:ClassConnectionModel" target="//@children.23" type="GENERALIZATION" toNavigable="true"/>
+  </children>
+  <children xsi:type="slime:ClassModel" x="22" y="107" width="59" height="81" name="ProbGui" classText="ProbGui" qualifiedClassName="main.ProbGui" javaProjectName="quComp" style="0" type="=quComp/src&lt;main{ProbGui.java[ProbGui"/>
+  <children xsi:type="slime:ClassModel" x="263" y="107" width="83" height="81" name="ComplexNum" classText="ComplexNum" qualifiedClassName="maths.ComplexNum" javaProjectName="quComp" style="0" type="=quComp/src&lt;maths{ComplexNum.java[ComplexNum"/>
+  <children xsi:type="slime:ClassModel" x="518" y="585" width="41" height="81" name="CNot" classText="CNot" qualifiedClassName="gates.CNot" javaProjectName="quComp" style="0" type="=quComp/src&lt;gates{CNot.java[CNot">
+    <outgoingConnections xsi:type="slime:ClassConnectionModel" target="//@children.23" type="GENERALIZATION" toNavigable="true"/>
+  </children>
+  <children xsi:type="slime:ClassModel" x="573" y="585" width="78" height="81" name="CustomGate" classText="CustomGate" qualifiedClassName="gates.CustomGate" javaProjectName="quComp" style="0" type="=quComp/src&lt;gates{CustomGate.java[CustomGate">
+    <outgoingConnections xsi:type="slime:ClassConnectionModel" target="//@children.23" type="GENERALIZATION" toNavigable="true"/>
+  </children>
+  <children xsi:type="slime:ClassModel" x="547" y="10" width="62" height="81" name="QuComp" classText="QuComp" qualifiedClassName="main.QuComp" javaProjectName="quComp" style="0" type="=quComp/src&lt;main{QuComp.java[QuComp"/>
+  <children xsi:type="slime:ClassModel" x="717" y="107" width="52" height="81" name="DataIO" classText="DataIO" qualifiedClassName="main.DataIO" javaProjectName="quComp" style="0" type="=quComp/src&lt;main{DataIO.java[DataIO"/>
+  <children xsi:type="slime:ClassModel" x="380" y="107" width="49" height="81" incomingConnections="//@children.6/@outgoingConnections.0" name="Matrix" classText="Matrix" qualifiedClassName="maths.Matrix" javaProjectName="quComp" style="0" type="=quComp/src&lt;maths{Matrix.java[Matrix"/>
+  <children xsi:type="slime:ClassModel" x="493" y="252" width="50" height="81" name="Circuit" classText="Circuit" qualifiedClassName="main.Circuit" javaProjectName="quComp" style="0" type="=quComp/src&lt;main{Circuit.java[Circuit">
+    <outgoingConnections xsi:type="slime:ClassConnectionModel" target="//@children.19" type="REALIZATION" toNavigable="true"/>
+  </children>
+  <children xsi:type="slime:ClassModel" x="470" y="107" width="96" height="81" incomingConnections="//@children.18/@outgoingConnections.0" name="CircuitInterface" classText="CircuitInterface" qualifiedClassName="main.CircuitInterface" javaProjectName="quComp" style="0" type="=quComp/src&lt;main{CircuitInterface.java[CircuitInterface"/>
+  <children xsi:type="slime:ClassModel" x="665" y="585" width="45" height="81" name="Toffoli" classText="Toffoli" qualifiedClassName="gates.Toffoli" javaProjectName="quComp" style="0" type="=quComp/src&lt;gates{Toffoli.java[Toffoli">
+    <outgoingConnections xsi:type="slime:ClassConnectionModel" target="//@children.23" type="GENERALIZATION" toNavigable="true"/>
+  </children>
+  <children xsi:type="slime:ClassModel" x="626" y="252" width="37" height="81" incomingConnections="//@children.4/@outgoingConnections.0 //@children.7/@outgoingConnections.0 //@children.9/@outgoingConnections.0 //@children.23/@outgoingConnections.0" name="Gate" classText="Gate" qualifiedClassName="gates.Gate" javaProjectName="quComp" style="0" type="=quComp/src&lt;gates{Gate.java[Gate">
+    <outgoingConnections xsi:type="slime:ClassConnectionModel" target="//@children.0" type="REALIZATION" toNavigable="true"/>
+  </children>
+  <children xsi:type="slime:ClassModel" x="724" y="585" width="31" height="81" name="Not" classText="Not" qualifiedClassName="gates.Not" javaProjectName="quComp" style="0" type="=quComp/src&lt;gates{Not.java[Not">
+    <outgoingConnections xsi:type="slime:ClassConnectionModel" target="//@children.23" type="GENERALIZATION" toNavigable="true"/>
+  </children>
+  <children xsi:type="slime:ClassModel" x="513" y="369" width="68" height="81" incomingConnections="//@children.2/@outgoingConnections.0 //@children.10/@outgoingConnections.0 //@children.13/@outgoingConnections.0 //@children.14/@outgoingConnections.0 //@children.20/@outgoingConnections.0 //@children.22/@outgoingConnections.0" name="DenseGate" classText="DenseGate" qualifiedClassName="gates.DenseGate" javaProjectName="quComp" style="0" type="=quComp/src&lt;gates{DenseGate.java[DenseGate">
+    <outgoingConnections xsi:type="slime:ClassConnectionModel" target="//@children.21" type="GENERALIZATION" toNavigable="true"/>
+  </children>
+</slime:DocumentModel>
