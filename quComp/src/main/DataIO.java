@@ -8,26 +8,25 @@ import java.util.Properties;
 
 
 public class DataIO {
-	// this is very incomplete, but will read in Grovers, Had, CNot, Measurement and Toffoli gates.
 	
-	private File input = null;
-	private Circuit circuit;
-	private Register register = null;
-	boolean display = false;
-	int numQBits;		
+	public DataIO(){}
 	
-	public DataIO(String input){this.input = new File(input);}
-	public DataIO(){this.input = new File("input.properties");}
-	
-	public Circuit readFromPropertiesFile(){
+	public Circuit readFromPropertiesFile(String inputName){
+		// method parameters
+		Circuit circuit = null;
+		Register register = null;
+	 	File input = new File(inputName);
+	 	boolean display = false;
+		
 		
 		 try {	
+			 	
 			 	ArrayList<Gate> gates = new ArrayList<Gate>(0);
 			 	Gate newGate = null; 
 			 	
 			 	// loads properties file
 			 	Properties properties = new Properties();
-		        properties.load(new FileInputStream(this.input));
+		        properties.load(new FileInputStream(input));
 		        int numberOfGates = Integer.parseInt(properties.getProperty("numberOfGates"));
 		        int numberOfQbits = Integer.parseInt(properties.getProperty("numberOfQbits"));
 		        //System.out.println(numberOfGates);
@@ -42,13 +41,13 @@ public class DataIO {
 		        	gates.add(newGate);
 		       	}
 		       //creates circuit
-		       this.register = new Register(numberOfQbits,true);
-		       this.circuit = new Circuit(register,display);
+		       register = new Register(numberOfQbits,true);
+		       circuit = new Circuit(register,display);
 		        for(int i=0;i < gates.size();i++){
-		        	this.circuit.addGate(gates.get(i));
+		        	circuit.addGate(gates.get(i));
 		        }
 		        return circuit;
-		    } catch (IOException e) {System.out.println("null circuit"); return this.circuit;}
+		    } catch (IOException e) {System.out.println("null circuit"); return circuit;}
 
 	}
 		

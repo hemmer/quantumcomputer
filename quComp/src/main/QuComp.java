@@ -1,4 +1,5 @@
 package main;
+import maths.ComplexNum;
 import gates.*;
 
 /**
@@ -18,21 +19,21 @@ public class QuComp {
 		System.out.println("----------------------------------/-------------");  
 	    System.out.println();
 	    
-    	int numQubits = 3;
-    	boolean displayGui = true;
+    	//int numQubits = 4;
+    	//boolean displayGui = true;
     	
     	/*
     	BlochGui thing = new BlochGui(500);
     	thing.update(new ComplexNum(0.707,0.707));
     	*/
-    	
+    	/*
     	Register q = new Register(numQubits, false);
     	Circuit test = new Circuit(q,displayGui);
-    	
     	test.addGate(new Had(-1));
-    	test.addGate(new Grovers(2,true));
-    	
-
+    	test.addGate(new Toffoli(3,new int[]{0,2}));
+    	test.addGate(new CNot(2,1));
+    	test.addGate(new CNot(3,1));
+    	test.addGate(new Measurement()); 
     	if (displayGui){
     		new CircuitGui(test);
     	}
@@ -40,11 +41,11 @@ public class QuComp {
     		test.applyAll();
     		System.out.println();
     		System.out.println(q);
-    	}
+    	}*/
     	
-    	//DataIO data = new DataIO("input.properties");
-    	//Circuit circuit = data.readFromPropertiesFile();
-    	//data.writeRegisterToFile(circuit.getRegister(), "output.properties");
+    	DataIO data = new DataIO();
+    	Circuit circuit = data.readFromPropertiesFile("input.properties");
+    	data.writeRegisterToFile(circuit.getRegister(), "output.properties");
     	
     	
 //    	test.setOverallMatrix();
