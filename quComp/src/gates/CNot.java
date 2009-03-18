@@ -82,7 +82,6 @@ public class CNot extends DenseGate {
 		return Toolkit.getDefaultToolkit().getImage("src/cnot.png");
 	}
 
-	@Override
 	public int getNumArguments() {
 		// takes control bit and target bit
 		return 2;
