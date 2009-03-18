@@ -229,5 +229,13 @@ public class Circuit implements CircuitInterface {
 		
 	}
 
+	public boolean isDisplay() {
+		return display;
+	}
+
+	public void setDisplay(boolean display) {
+		this.display = display;
+	}
+
 
 }

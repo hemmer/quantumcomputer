@@ -44,10 +44,16 @@ public class QuComp {
     	}*/
     	
     	DataIO data = new DataIO();
-    	Circuit circuit = data.readFromPropertiesFile("input.properties");
-    	data.writeRegisterToFile(circuit.getRegister(), "output.properties");
-    	
-    	
+    	Circuit test = data.readFromPropertiesFile("input.properties");
+    	data.writeRegisterToFile(test.getRegister(), "output.properties");
+    	System.out.println(test.isDisplay());
+    	if (test.isDisplay()){
+    		new CircuitGui(test);
+    	}
+    	else{
+    		test.applyAll();
+    		System.out.println();
+    	}
 //    	test.setOverallMatrix();
 //    	test.runOverallMatrix();
 //    	System.out.println(q);
