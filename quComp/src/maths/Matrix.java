@@ -45,6 +45,11 @@ public class Matrix {
 		numCols = n;
 		initIdentity();
 	}
+	// constructor for specifying numbers from scratch.
+	public Matrix(ComplexNum[][] values){
+		
+		this.matrix=values;
+	}
 	
 	/**
 	 * Creates a matrix with the specified values.
@@ -94,6 +99,8 @@ public class Matrix {
 		initZero();	
 	}
 		
+	
+
 	/**
 	 * Initialises a 2x2 hadamard matrix
 	 */
