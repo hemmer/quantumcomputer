@@ -30,7 +30,7 @@ public class DataIO {
 		        int numberOfGates = Integer.parseInt(properties.getProperty("numberOfGates"));
 		        int numberOfQbits = Integer.parseInt(properties.getProperty("numberOfQbits"));
 		        //System.out.println(numberOfGates);
-		        
+		       display = Boolean.parseBoolean(properties.getProperty("display"));
 		        // parses gates to gate array
 		       for(int i = 0; i < numberOfGates; i++){
 		     
