@@ -36,21 +36,21 @@ public class PhaseShift extends DenseGate {
 		ComplexNum one = new ComplexNum(1,0);
 		ComplexNum zero = new ComplexNum(0,0);
 
-		
+		Matrix[] elements = new Matrix[n];
 		
 		Matrix phaseShift = new Matrix(new ComplexNum[][]{{one, zero}, {zero,eIPhi}});
 		
-		// if target bit is -1, apply to whole register
-		if(target == -1){
-			for (int i=1;i<=n;i++) m=Matrix.tensorProduct(m,phaseShift);
-		}else{
-			Matrix ident = new Matrix(2);
-			for (int i=0;i<n;i++){
-				if (i==target) m = Matrix.tensorProduct(m,phaseShift);
-				else m = Matrix.tensorProduct(m,ident);
+		
+		for(int i = 0; i < elements.length; i++){
+				if(i == target){        
+					elements[i] = phaseShift;
+				}else{
+					elements[i] = new Matrix(2,"identity");
+				}
 			}
+		
 		}
-	}
+	
 	
 	public void applyGate(Register a){
 		a.updateStateVector(Matrix.multiply(getM(), a.getStateVector()) );
