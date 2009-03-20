@@ -1,4 +1,7 @@
 package gates;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import maths.*;
 
 /**
@@ -36,7 +39,7 @@ public class FuncHad extends Gate {
 		int targetShift = (int) Math.pow(2, this.getTargetBit());
 		int totalShift = (int) Math.pow(2, reg.getNumQubits() - this.getTargetBit() - 1);
 		int diff = reg.getNumQubits() - this.getTargetBit();
-		
+
 		// for each |xx0xx> and each |xx1xx> where x can be 1 or 0,
 		// take sum and difference of both
 		for(int i = 0; i < targetShift; i++){
@@ -58,7 +61,6 @@ public class FuncHad extends Gate {
 				reg.getStateVector().setAmp(difference, bit2);
 			}
 		}
-
 	}
 
 	@Override
@@ -67,4 +69,7 @@ public class FuncHad extends Gate {
 		return 1;
 	}
 
+	public Image getImage(){
+		return Toolkit.getDefaultToolkit().getImage("src/hadamard.GIF");
+	}
 }

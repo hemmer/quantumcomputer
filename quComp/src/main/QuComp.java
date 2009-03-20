@@ -19,21 +19,25 @@ public class QuComp {
 		System.out.println("----------------------------------/-------------");  
 	    System.out.println();
 	    
-    	//int numQubits = 4;
-    	//boolean displayGui = true;
+    	int numQubits = 5;
+    	boolean displayGui = true;
     	
-    	/*
-    	BlochGui thing = new BlochGui(500);
-    	thing.update(new ComplexNum(0.707,0.707));
-    	*/
-    	/*
     	Register q = new Register(numQubits, false);
     	Circuit test = new Circuit(q,displayGui);
-    	test.addGate(new Had(-1));
-    	test.addGate(new Toffoli(3,new int[]{0,2}));
-    	test.addGate(new CNot(2,1));
-    	test.addGate(new CNot(3,1));
-    	test.addGate(new Measurement()); 
+
+    	test.addGate(new Had(0));
+    	test.addGate(new Had(1));
+    	test.addGate(new Had(2));
+    	test.addGate(new Had(3));
+    	test.addGate(new Had(4));
+
+    	test.addGate(new Grovers(3,true));
+    	test.addGate(new Grovers(3,true));
+    	test.addGate(new Grovers(3,true));
+    	test.addGate(new Grovers(3,true));
+
+    	test.addGate(new Measurement());
+    	
     	if (displayGui){
     		new CircuitGui(test);
     	}
@@ -41,46 +45,7 @@ public class QuComp {
     		test.applyAll();
     		System.out.println();
     		System.out.println(q);
-    	}*/
+    	}
     	
-    	DataIO data = new DataIO();
-    	Circuit test = data.readFromPropertiesFile("input.properties");
-    	data.writeRegisterToFile(test.getRegister(), "output.properties");
-    	System.out.println(test.isDisplay());
-    	if (test.isDisplay()){
-    		new CircuitGui(test);
-    	}
-    	else{
-    		test.applyAll();
-    		System.out.println();
-    	}
-//    	test.setOverallMatrix();
-//    	test.runOverallMatrix();
-//    	System.out.println(q);
-/*
-    	test.addGate(new Grovers(5));
-    	test.addGate(new Grovers(5));
-    	test.addGate(new Grovers(5));
-    	test.addGate(new Grovers(5));
-    	test.addGate(new Grovers(5));
-    	test.addGate(new Grovers(5));
-    	test.addGate(new Measurement());
-    	test.applyAll();
-    	System.out.println(q);
-    	*/
-    	/*q.setGroundState();
-    	Circuit test2 = new Circuit(q);
-    	test2.addGate(new FuncHad(0));
-    	test2.apply();
-    	System.out.println(q);   	
-
-    	test2.addGate(new FuncHad(1));
-    	test2.apply();
-    	System.out.println(q);   	
-
-    	test2.addGate(new FuncHad(2));
-    	test2.apply();
-    	System.out.println(q);   
- */
     }
 }

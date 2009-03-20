@@ -46,13 +46,18 @@ public class Grovers extends DenseGate {
 			gate.setElem(i, getSearchedElem(), gate.getElem(i, getSearchedElem()).multiply(new ComplexNum(-1.0,0.0)));	
 		}
 		
+		// find optimal number of times to apply Grovers
 		int optimalNumIter = (int) (Math.sqrt(matrixSize) * Math.PI)/ 4;
-	
-		for(int i = 0; i < optimalNumIter -1 && !single; i++) gate = Matrix.multiply(gate, gate);
 		
-		this.setM(gate);
-		System.out.println(gate);
+		// use scale as a lazy clone method!
+		Matrix optimalGate = Matrix.scale(new ComplexNum(1.0,0.0), gate);
 		
+		// if we require the gate to act the optimal number of times
+		// the multiple the matrix by itself
+		for(int i = 0; i < optimalNumIter-1 && !single; i++) optimalGate = Matrix.multiply(optimalGate, gate);
+		
+		// set DenseGate matrix
+		this.setM(optimalGate);
 	}
 	
 	public void setNumQubits(int N){
