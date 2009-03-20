@@ -26,7 +26,7 @@ import javax.swing.*;
 				pack();
 				//add to the content pane
 				int height = circuit.getRegister().getNumQubits()*40+70;
-				setBounds(0,125,width,height);
+				setBounds(0,300,width,height);
 				panel = new CircuitPanel(circuit,width,height);
 				
 				getContentPane().add(panel, BorderLayout.CENTER);
