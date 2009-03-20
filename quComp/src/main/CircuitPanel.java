@@ -58,7 +58,6 @@ import gates.*;
 				
 				
 				Gate next = circuit.getGate(i);
-				System.out.println(next.getName());
 				Image gateimg = next.getImage();
 				//draw ctrl bit
 				ctrlBit = next.getCtrl(0);
