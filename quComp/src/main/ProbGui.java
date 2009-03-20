@@ -11,11 +11,10 @@ public class ProbGui extends JFrame {
 	ProbPanel panel;
 	
 	public ProbGui(Register reg){
-		panel = new ProbPanel(500, 100);
+		panel = new ProbPanel(650, 250);
 		panel.update(reg);
-		this.setSize(new Dimension(500,100));
+		this.setSize(new Dimension(650,250));
 		setTitle("Probabilities");
-		pack();
 		setVisible(true);
 		this.add(panel);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
